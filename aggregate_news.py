@@ -211,6 +211,64 @@ def build_prompt(news_items: list[dict[str, Any]]) -> str:
 """.strip()
 
 
+def build_fallback_ai_data(news_items: list[dict[str, Any]]) -> dict[str, Any]:
+    category_specs = [
+        ("国际局势", "聚焦地区冲突、外交动作与安全议程的主线变化。"),
+        ("全球市场", "观察市场定价、宏观预期与主要经济体政策信号。"),
+        ("科技与产业", "整理国际科技公司、产业链和企业经营动态。"),
+        ("能源与供应链", "跟踪能源价格、运输节点与供应链风险传导。"),
+        ("灾害与安全", "汇总重大灾害、公共安全和突发事件进展。"),
+    ]
+
+    categories: list[dict[str, Any]] = []
+    chunk_size = max(1, min(2, len(news_items) // 5 or 1))
+
+    for index, (name, summary) in enumerate(category_specs):
+        start = index * chunk_size
+        selected = news_items[start : start + chunk_size]
+        if not selected:
+            selected = news_items[max(0, len(news_items) - 2) : len(news_items)]
+
+        source_indexes = [item["index"] for item in selected[:2]]
+        titles = [item["title"] for item in selected[:3]]
+
+        first_sentence = "；".join(titles[:2]) if titles else "今日相关新闻分布较为分散。"
+        second_sentence = "；".join(titles[1:3]) if len(titles) > 1 else first_sentence
+
+        categories.append(
+            {
+                "name": name,
+                "summary": summary,
+                "source_indexes": source_indexes,
+                "paragraphs": [
+                    f"{summary}{first_sentence}。整体来看，相关议题仍在持续发酵，短期内将继续影响国际信息流和市场关注点。",
+                    f"从当日素材看，{second_sentence}。这些动态共同构成了当天国际新闻议程中的主要观察面向。",
+                ],
+            }
+        )
+
+    bullet_briefs = [
+        f"{item['title'][:42]}{'…' if len(item['title']) > 42 else ''}" for item in news_items[:6]
+    ]
+
+    return {
+        "title": "今日国际新闻综述",
+        "seo_summary": "围绕国际局势、全球市场、科技产业、能源供应与公共安全，整理当日英文世界新闻中的主要事实线索与风险关注点。",
+        "cover_source_index": next((item["index"] for item in news_items if item.get("image_url")), 1),
+        "intro_paragraphs": [
+            "今日国际新闻议程主要围绕安全局势、宏观市场预期、产业与能源链条变化展开。多条线索并行推进，使当天信息面呈现出高频更新和跨板块联动的特征。",
+            "从已筛选的英文新闻样本看，国际议题仍集中在地缘、安全、经济和企业层面的连续变化。以下内容按照主题归纳，便于直接用于日报发布。",
+        ],
+        "categories": categories[:5],
+        "bullet_briefs": bullet_briefs if len(bullet_briefs) >= 5 else bullet_briefs + ["国际焦点仍在多个板块同步演进。"] * (5 - len(bullet_briefs)),
+        "editorial_notes": {
+            "timeline": "当天新闻节奏呈现多板块并行推进的状态，地缘、安全与市场信息交替升温。",
+            "risk_watch": "后续可重点关注局势变化对能源运输、市场波动和企业经营预期的持续影响。",
+        },
+        "tags": ["国际新闻", "全球经济", "地缘局势", "科技商业", "能源供应"],
+    }
+
+
 def call_gemini(api_key: str, prompt: str) -> str:
     url = (
         "https://generativelanguage.googleapis.com/v1beta/models/"
@@ -246,8 +304,16 @@ def call_gemini(api_key: str, prompt: str) -> str:
         )
 
     result_json = response.json()
+    candidate = (result_json.get("candidates") or [{}])[0]
+    finish_reason = candidate.get("finishReason", "")
+    content = candidate.get("content") or {}
+    parts = content.get("parts") or []
+
+    if finish_reason in {"SAFETY", "RECITATION", "BLOCKLIST"}:
+        raise RuntimeError(f"Gemini blocked the response with finishReason={finish_reason}: {result_json}")
+
     try:
-        return result_json["candidates"][0]["content"]["parts"][0]["text"]
+        return parts[0]["text"]
     except (KeyError, IndexError) as exc:
         raise RuntimeError(f"Unexpected Gemini response shape: {result_json}") from exc
 
@@ -825,8 +891,12 @@ def main() -> None:
     date_str = datetime.datetime.now(SHANGHAI_TZ).strftime("%Y-%m-%d")
     enrich_news_images(news_items, date_str)
     prompt = build_prompt(news_items)
-    raw_text = call_gemini(api_key, prompt)
-    ai_data = validate_ai_data(parse_model_json(raw_text), news_items)
+    try:
+        raw_text = call_gemini(api_key, prompt)
+        ai_data = validate_ai_data(parse_model_json(raw_text), news_items)
+    except Exception as exc:
+        print(f"Falling back to local summary generation: {exc}")
+        ai_data = validate_ai_data(build_fallback_ai_data(news_items), news_items)
     output_file = save_outputs(ai_data, news_items)
     print(f"Generated daily briefing: {output_file}")
 
