@@ -801,14 +801,17 @@ def render_html(
 
     for article in ai_data["articles"]:
         parts.append(
-            "<section style=\"margin:0 0 38px 0;\">"
-            "<div style=\"display:flex;align-items:center;margin:0 0 14px 0;\">"
-            "<span style=\"display:inline-block;width:36px;height:2px;background:#111827;margin-right:12px;\"></span>"
-            f"<h2 style=\"margin:0;font-size:22px;color:#111827;letter-spacing:0.4px;\">{html.escape(article['title_cn'])}</h2>"
-            "</div>"
+            "<section style=\"margin:0 0 28px 0;padding:22px 18px 20px 18px;background:#fff;"
+            "border:1px solid #e7e1d6;box-shadow:0 8px 24px rgba(15,23,42,0.04);\">"
+            f"<h2 style=\"margin:0 0 16px 0;font-size:22px;line-height:1.4;color:#111827;letter-spacing:0.2px;\">{html.escape(article['title_cn'])}</h2>"
         )
         parts.append(render_article_images(article))
         parts.append(render_paragraph(article["summary_cn"]))
+        parts.append(
+            "<div style=\"margin-top:16px;padding-top:12px;border-top:1px solid #ece7de;\">"
+            "<span style=\"display:inline-block;font-size:11px;letter-spacing:1.6px;color:#9a8f7c;text-transform:uppercase;\">Global Watch</span>"
+            "</div>"
+        )
         parts.append("</section>")
 
     parts.append(
@@ -877,12 +880,18 @@ def save_outputs(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) -> s
     cover_url = attach_article_images(ai_data, news_items)
     html_content = render_html(ai_data, news_items, cover_url, current_time)
     markdown_content = render_markdown(ai_data, news_items, cover_url, current_time)
+    peitu_urls = [
+        article["image_urls"][0]
+        for article in ai_data["articles"]
+        if article.get("image_urls")
+    ]
 
     final_output = {
         "title": ai_data["title"],
         "seo_summary": ai_data["seo_summary"],
         "url": NEWS_SOURCE_URL,
         "cover": cover_url,
+        "peitu_url": peitu_urls,
         "wechat_html": html_content,
         "intro_paragraphs": ai_data["intro_paragraphs"],
         "articles": ai_data["articles"],
