@@ -34,5 +34,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add *.md
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📝 auto-generate daily global news" && git push)
+          # 注意：这里改成了提交 *.json 文件
+          git add *.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "📝 auto-generate daily global news JSON" && git push)
