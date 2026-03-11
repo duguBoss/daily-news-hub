@@ -40,7 +40,7 @@ PLAYWRIGHT_TIMEOUT_MS = 25000
 MAX_NEWS_ITEMS = 36
 MIN_NEWS_ITEMS = 10
 MAX_IMAGE_DISCOVERY_ITEMS = 12
-MAX_DOWNLOADED_IMAGES = 8
+MAX_IMAGES_PER_ARTICLE = 3
 MIN_IMAGE_WIDTH = 360
 MIN_IMAGE_HEIGHT = 200
 SHANGHAI_TZ = pytz.timezone("Asia/Shanghai")
@@ -125,7 +125,9 @@ def collect_news_items(feed: Any) -> list[dict[str, Any]]:
                 "google_news_url": google_news_url,
                 "resolved_url": "",
                 "image_url": "",
+                "image_urls": [],
                 "image_path": "",
+                "image_paths": [],
                 "image_source": "",
                 "image_caption": "",
             }
@@ -177,19 +179,12 @@ def build_prompt(news_items: list[dict[str, Any]]) -> str:
     "第一段导语，70到110字",
     "第二段导语，70到110字"
   ],
-  "categories": [
+  "articles": [
     {{
-      "name": "分类名称",
-      "summary": "该分类的一句话提要，40到70字",
-      "source_indexes": [1, 2],
-      "paragraphs": [
-        "第1段，70到120字",
-        "第2段，70到120字"
-      ]
+      "source_index": 1,
+      "title_cn": "这条新闻的中文标题，18到32字",
+      "summary_cn": "这条新闻的中文说明，45到90字，简短但包含关键信息"
     }}
-  ],
-  "bullet_briefs": [
-    "5到8条简报，每条 28到45 字"
   ],
   "editorial_notes": {{
     "timeline": "一句话描述今天国际新闻节奏，30到50字",
@@ -199,12 +194,11 @@ def build_prompt(news_items: list[dict[str, Any]]) -> str:
 }}
 
 进一步约束：
-1. categories 必须是 4 到 5 个分类。
-2. 每个分类必须包含 summary、source_indexes、paragraphs。
-3. source_indexes 必须引用下面素材编号中的 1 到 36，且每个分类给出 1 到 2 个编号。
-4. 如果没有合适编号，也要尽量选择最接近该分类的素材编号。
-5. bullet_briefs 至少 5 条，最多 8 条。
-6. tags 固定输出 5 个。
+1. articles 必须覆盖下面素材中的每一条新闻，条数必须与素材条数完全一致。
+2. articles 中每一项都必须包含 source_index、title_cn、summary_cn。
+3. summary_cn 要简短，但必须包含关键事实、主体和最新进展，不要空泛。
+4. cover_source_index 必须从 articles 的 source_index 中选择一个最适合作为封面的编号。
+5. tags 固定输出 5 个。
 
 以下是今日素材：
 {news_text}
@@ -212,55 +206,22 @@ def build_prompt(news_items: list[dict[str, Any]]) -> str:
 
 
 def build_fallback_ai_data(news_items: list[dict[str, Any]]) -> dict[str, Any]:
-    category_specs = [
-        ("国际局势", "聚焦地区冲突、外交动作与安全议程的主线变化。"),
-        ("全球市场", "观察市场定价、宏观预期与主要经济体政策信号。"),
-        ("科技与产业", "整理国际科技公司、产业链和企业经营动态。"),
-        ("能源与供应链", "跟踪能源价格、运输节点与供应链风险传导。"),
-        ("灾害与安全", "汇总重大灾害、公共安全和突发事件进展。"),
-    ]
-
-    categories: list[dict[str, Any]] = []
-    chunk_size = max(1, min(2, len(news_items) // 5 or 1))
-
-    for index, (name, summary) in enumerate(category_specs):
-        start = index * chunk_size
-        selected = news_items[start : start + chunk_size]
-        if not selected:
-            selected = news_items[max(0, len(news_items) - 2) : len(news_items)]
-
-        source_indexes = [item["index"] for item in selected[:2]]
-        titles = [item["title"] for item in selected[:3]]
-
-        first_sentence = "；".join(titles[:2]) if titles else "今日相关新闻分布较为分散。"
-        second_sentence = "；".join(titles[1:3]) if len(titles) > 1 else first_sentence
-
-        categories.append(
-            {
-                "name": name,
-                "summary": summary,
-                "source_indexes": source_indexes,
-                "paragraphs": [
-                    f"{summary}{first_sentence}。整体来看，相关议题仍在持续发酵，短期内将继续影响国际信息流和市场关注点。",
-                    f"从当日素材看，{second_sentence}。这些动态共同构成了当天国际新闻议程中的主要观察面向。",
-                ],
-            }
-        )
-
-    bullet_briefs = [
-        f"{item['title'][:42]}{'…' if len(item['title']) > 42 else ''}" for item in news_items[:6]
-    ]
-
     return {
         "title": "今日国际新闻综述",
-        "seo_summary": "围绕国际局势、全球市场、科技产业、能源供应与公共安全，整理当日英文世界新闻中的主要事实线索与风险关注点。",
+        "seo_summary": "整理当日英文世界新闻中的主要国际动态，覆盖安全、经济、产业、能源与突发事件，并逐条输出简明中文说明。",
         "cover_source_index": next((item["index"] for item in news_items if item.get("image_url")), 1),
         "intro_paragraphs": [
-            "今日国际新闻议程主要围绕安全局势、宏观市场预期、产业与能源链条变化展开。多条线索并行推进，使当天信息面呈现出高频更新和跨板块联动的特征。",
-            "从已筛选的英文新闻样本看，国际议题仍集中在地缘、安全、经济和企业层面的连续变化。以下内容按照主题归纳，便于直接用于日报发布。",
+            "今日国际新闻主要集中在地缘安全、全球市场、科技产业、能源链条及突发事件等方向，多条线索同步推进。",
+            "以下内容按新闻条目逐条整理，统一转为中文，并保留每条新闻的原文链接与配图地址，便于直接使用。",
         ],
-        "categories": categories[:5],
-        "bullet_briefs": bullet_briefs if len(bullet_briefs) >= 5 else bullet_briefs + ["国际焦点仍在多个板块同步演进。"] * (5 - len(bullet_briefs)),
+        "articles": [
+            {
+                "source_index": item["index"],
+                "title_cn": item["title"],
+                "summary_cn": item["summary"][:88] or item["title"],
+            }
+            for item in news_items
+        ],
         "editorial_notes": {
             "timeline": "当天新闻节奏呈现多板块并行推进的状态，地缘、安全与市场信息交替升温。",
             "risk_watch": "后续可重点关注局势变化对能源运输、市场波动和企业经营预期的持续影响。",
@@ -343,6 +304,85 @@ def parse_model_json(raw_text: str) -> dict[str, Any]:
         raise RuntimeError(f"Model response is not valid JSON: {cleaned_text}") from exc
 
 
+def build_article_translation_prompt(item: dict[str, Any]) -> str:
+    lines = [
+        "你是一个严格客观的国际新闻翻译与摘要助手。",
+        "请把下面这条英文新闻转为简体中文，并输出合法 JSON。",
+        "要求：",
+        "1. 只输出 JSON，不要输出 markdown 或解释。",
+        "2. 绝对客观，不添加观点，不夸张，不编造。",
+        "3. 输出结构必须是：",
+        '{"title_cn":"中文标题，18到32字","summary_cn":"中文说明，45到90字，简短但包含关键信息、主体和最新进展"}',
+        f"英文标题：{item['title']}",
+    ]
+    if item.get("summary"):
+        lines.append(f"英文摘要：{item['summary']}")
+    if item.get("resolved_url") or item.get("google_news_url"):
+        lines.append(f"原文链接：{item.get('resolved_url') or item.get('google_news_url')}")
+    return "\n".join(lines)
+
+
+def translate_news_items(api_key: str, news_items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    translated_articles: list[dict[str, Any]] = []
+
+    for item in news_items:
+        prompt = build_article_translation_prompt(item)
+        try:
+            raw_text = call_gemini(api_key, prompt)
+            translated = parse_model_json(raw_text)
+            title_cn = normalize_whitespace(str(translated.get("title_cn", "")))
+            summary_cn = normalize_whitespace(str(translated.get("summary_cn", "")))
+            if not title_cn or not summary_cn:
+                raise ValueError("Missing translated fields.")
+        except Exception as exc:
+            print(f"Skipping article {item['index']} due to translation failure: {exc}")
+            continue
+
+        translated_articles.append(
+            {
+                "source_index": item["index"],
+                "title_cn": title_cn,
+                "summary_cn": summary_cn,
+                "image_urls": [],
+                "image_caption": "",
+                "image_source": "",
+                "original_title": item["title"],
+                "original_url": item["resolved_url"] or item["google_news_url"],
+            }
+        )
+
+    return translated_articles
+
+
+def build_ai_data_from_articles(
+    translated_articles: list[dict[str, Any]], news_items: list[dict[str, Any]]
+) -> dict[str, Any]:
+    if not translated_articles:
+        raise RuntimeError("No translated articles were produced.")
+
+    cover_source_index = translated_articles[0]["source_index"]
+    for item in news_items:
+        if item["index"] in {article["source_index"] for article in translated_articles} and item["image_urls"]:
+            cover_source_index = item["index"]
+            break
+
+    return {
+        "title": "今日国际新闻速览",
+        "seo_summary": f"精选 {len(translated_articles)} 条国际新闻，逐条转为中文，并附原文链接与仓库配图地址，便于直接分发和结构化读取。",
+        "cover_source_index": cover_source_index,
+        "intro_paragraphs": [
+            f"本期内容共整理 {len(translated_articles)} 条国际新闻，覆盖安全、经济、产业、能源与突发事件等方向，统一转写为简体中文。",
+            "每条新闻均尽量保留关键事实与最新进展，并在可抓取时附上已下载到 GitHub 的图片地址，便于直接用于前端或内容分发。",
+        ],
+        "articles": translated_articles,
+        "editorial_notes": {
+            "timeline": "当天国际新闻节奏整体偏密集，多个议题并行推进，安全与市场信息交替成为焦点。",
+            "risk_watch": "后续可重点关注局势变化向市场、能源运输和企业经营预期的进一步传导。",
+        },
+        "tags": ["国际新闻", "全球经济", "地缘局势", "科技商业", "能源供应"],
+    }
+
+
 def ensure_list_of_strings(value: Any, field_name: str, min_items: int = 1) -> list[str]:
     if not isinstance(value, list):
         raise ValueError(f"{field_name} must be a list.")
@@ -384,9 +424,6 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
     intro_paragraphs = ensure_list_of_strings(
         ai_data.get("intro_paragraphs", []), "intro_paragraphs", min_items=2
     )[:2]
-    bullet_briefs = ensure_list_of_strings(
-        ai_data.get("bullet_briefs", []), "bullet_briefs", min_items=5
-    )[:8]
     tags = ensure_list_of_strings(ai_data.get("tags", []), "tags", min_items=5)[:5]
 
     raw_notes = ai_data.get("editorial_notes", {})
@@ -402,40 +439,59 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
         ),
     }
 
-    categories = []
-    raw_categories = ai_data.get("categories", [])
-    if not isinstance(raw_categories, list) or len(raw_categories) < 4:
-        raise ValueError("categories must contain at least 4 items.")
-
     max_index = len(news_items)
-    for raw_category in raw_categories[:5]:
-        if not isinstance(raw_category, dict):
+    raw_articles = ai_data.get("articles", [])
+    if not isinstance(raw_articles, list) or len(raw_articles) < max_index:
+        raise ValueError("articles must cover all source items.")
+
+    articles = []
+    seen_indexes = set()
+    for raw_article in raw_articles:
+        if not isinstance(raw_article, dict):
             continue
-
-        name = normalize_whitespace(str(raw_category.get("name", "国际焦点")))
-        summary = normalize_whitespace(str(raw_category.get("summary", "")))
-        paragraphs = ensure_list_of_strings(
-            raw_category.get("paragraphs", []), f"{name}.paragraphs", min_items=2
-        )[:2]
-        source_indexes = normalize_source_indexes(raw_category.get("source_indexes", []), max_index)
-
-        if not name or not summary:
+        try:
+            source_index = int(raw_article.get("source_index"))
+        except (TypeError, ValueError):
             continue
-
-        categories.append(
+        if source_index in seen_indexes or not (1 <= source_index <= max_index):
+            continue
+        title_cn = normalize_whitespace(str(raw_article.get("title_cn", "")))
+        summary_cn = normalize_whitespace(str(raw_article.get("summary_cn", "")))
+        if not title_cn or not summary_cn:
+            continue
+        seen_indexes.add(source_index)
+        articles.append(
             {
-                "name": name,
-                "summary": summary,
-                "source_indexes": source_indexes,
-                "paragraphs": paragraphs,
-                "image_url": "",
+                "source_index": source_index,
+                "title_cn": title_cn,
+                "summary_cn": summary_cn,
+                "image_urls": [],
                 "image_caption": "",
                 "image_source": "",
+                "original_title": "",
+                "original_url": "",
             }
         )
 
-    if len(categories) < 4:
-        raise ValueError("Effective categories are fewer than 4.")
+    if len(articles) < max_index:
+        news_by_index = {item["index"]: item for item in news_items}
+        for source_index in range(1, max_index + 1):
+            if source_index in seen_indexes:
+                continue
+            item = news_by_index[source_index]
+            articles.append(
+                {
+                    "source_index": source_index,
+                    "title_cn": item["title"],
+                    "summary_cn": item["summary"][:88] or item["title"],
+                    "image_urls": [],
+                    "image_caption": "",
+                    "image_source": "",
+                    "original_title": item["title"],
+                    "original_url": item["resolved_url"] or item["google_news_url"],
+                }
+            )
+    articles.sort(key=lambda article: article["source_index"])
 
     cover_source_index = 0
     try:
@@ -450,8 +506,7 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
         "seo_summary": seo_summary,
         "cover_source_index": cover_source_index,
         "intro_paragraphs": intro_paragraphs,
-        "categories": categories,
-        "bullet_briefs": bullet_briefs,
+        "articles": articles,
         "editorial_notes": editorial_notes,
         "tags": tags,
     }
@@ -513,6 +568,32 @@ def choose_best_image_candidate(candidates: list[dict[str, Any]]) -> dict[str, A
     return best
 
 
+def choose_image_candidates(candidates: list[dict[str, Any]], limit: int) -> list[dict[str, Any]]:
+    cleaned_candidates = []
+    seen = set()
+
+    for candidate in candidates:
+        src = normalize_whitespace(str(candidate.get("src", "")))
+        if not src or src in seen:
+            continue
+        seen.add(src)
+        lowered = src.lower()
+        if lowered.startswith("data:") or lowered.endswith(".svg"):
+            continue
+        normalized_candidate = {
+            "src": src,
+            "width": int(candidate.get("width") or 0),
+            "height": int(candidate.get("height") or 0),
+            "alt": normalize_whitespace(str(candidate.get("alt", ""))),
+            "source": normalize_whitespace(str(candidate.get("source", ""))),
+        }
+        if score_image_candidate(normalized_candidate) >= 0:
+            cleaned_candidates.append(normalized_candidate)
+
+    cleaned_candidates.sort(key=score_image_candidate, reverse=True)
+    return cleaned_candidates[:limit]
+
+
 def guess_extension(image_url: str, content_type: str) -> str:
     if content_type:
         content_type = content_type.split(";")[0].strip().lower()
@@ -565,8 +646,6 @@ def enrich_news_images(news_items: list[dict[str, Any]], date_str: str) -> None:
         return
 
     target_dir = ASSET_ROOT / date_str
-    downloaded = 0
-
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
         context = browser.new_context()
@@ -620,34 +699,34 @@ def enrich_news_images(news_items: list[dict[str, Any]], date_str: str) -> None:
             except Exception:
                 continue
 
-            best_candidate = choose_best_image_candidate(candidates)
-            if not best_candidate:
+            best_candidates = choose_image_candidates(candidates, MAX_IMAGES_PER_ARTICLE)
+            if not best_candidates:
                 continue
 
-            try:
-                image_path, image_url = download_image(
-                    image_url=best_candidate["src"],
-                    target_dir=target_dir,
-                    file_stem=f"{item['index']:02d}-{slugify(item['title'])}",
-                    referer=item["resolved_url"],
-                )
-            except Exception:
-                continue
+            for image_index, candidate in enumerate(best_candidates, start=1):
+                try:
+                    image_path, image_url = download_image(
+                        image_url=candidate["src"],
+                        target_dir=target_dir,
+                        file_stem=f"{item['index']:02d}-{image_index}-{slugify(item['title'])}",
+                        referer=item["resolved_url"],
+                    )
+                except Exception:
+                    continue
 
-            item["image_url"] = image_url
-            item["image_path"] = image_path
-            item["image_source"] = best_candidate["src"]
-            item["image_caption"] = item["title"]
-            downloaded += 1
-
-            if downloaded >= MAX_DOWNLOADED_IMAGES:
-                break
+                item["image_paths"].append(image_path)
+                item["image_urls"].append(image_url)
+                if not item["image_url"]:
+                    item["image_url"] = image_url
+                    item["image_path"] = image_path
+                    item["image_source"] = candidate["src"]
+                    item["image_caption"] = item["title"]
 
         context.close()
         browser.close()
 
 
-def attach_category_images(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) -> str:
+def attach_article_images(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) -> str:
     news_by_index = {item["index"]: item for item in news_items}
     selected_cover = ""
 
@@ -658,18 +737,19 @@ def attach_category_images(ai_data: dict[str, Any], news_items: list[dict[str, A
 
     if not selected_cover:
         for item in news_items:
-            if item["image_url"]:
-                selected_cover = item["image_url"]
+            if item["image_urls"]:
+                selected_cover = item["image_urls"][0]
                 break
 
-    for category in ai_data["categories"]:
-        for source_index in category["source_indexes"]:
-            item = news_by_index.get(source_index)
-            if item and item["image_url"]:
-                category["image_url"] = item["image_url"]
-                category["image_caption"] = item["title"]
-                category["image_source"] = item["resolved_url"] or item["google_news_url"]
-                break
+    for article in ai_data["articles"]:
+        item = news_by_index.get(article["source_index"])
+        if not item:
+            continue
+        article["image_urls"] = item["image_urls"][:]
+        article["image_caption"] = item["title"]
+        article["image_source"] = item["resolved_url"] or item["google_news_url"]
+        article["original_title"] = item["title"]
+        article["original_url"] = item["resolved_url"] or item["google_news_url"]
 
     return selected_cover or FALLBACK_COVER_URL
 
@@ -684,23 +764,14 @@ def render_paragraph(text: str, extra_style: str = "") -> str:
     return f"<p style=\"{style}\">{html.escape(text)}</p>"
 
 
-def render_category_image(category: dict[str, Any]) -> str:
-    if not category["image_url"]:
+def render_article_images(article: dict[str, Any]) -> str:
+    if not article["image_urls"]:
         return ""
 
-    source_line = ""
-    if category["image_source"]:
-        source_line = (
-            f"<div style=\"margin-top:8px;font-size:12px;color:#6b7280;\">"
-            f"图片来源：<a href=\"{html.escape(category['image_source'])}\" style=\"color:#6b7280;text-decoration:none;\">原文页面</a>"
-            f"</div>"
-        )
-
+    first_image_url = article["image_urls"][0]
     return (
         "<section style=\"margin:0 0 18px 0;\">"
-        f"<img src=\"{html.escape(category['image_url'])}\" style=\"width:100%;display:block;border-radius:2px;\">"
-        f"<div style=\"margin-top:10px;font-size:13px;line-height:1.7;color:#4b5563;\">{html.escape(category['image_caption'] or category['name'])}</div>"
-        f"{source_line}"
+        f"<img src=\"{html.escape(first_image_url)}\" style=\"width:100%;display:block;border-radius:2px;\">"
         "</section>"
     )
 
@@ -712,8 +783,6 @@ def render_html(
     generated_at: str,
 ) -> str:
     title = html.escape(ai_data["title"])
-    summary = html.escape(ai_data["seo_summary"])
-    image_count = sum(1 for item in news_items if item["image_url"])
 
     parts = [
         "<section style=\"margin:0;padding:0;background:#ebe7df;\">",
@@ -726,47 +795,20 @@ def render_html(
             "<section style=\"padding:34px 0 20px 0;border-bottom:1px solid #d6d0c4;margin-bottom:24px;\">"
             "<div style=\"font-size:12px;letter-spacing:2px;color:#8b7d67;text-transform:uppercase;margin-bottom:12px;\">Global Briefing</div>"
             f"<h1 style=\"margin:0 0 14px 0;font-size:31px;line-height:1.25;color:#0f172a;font-weight:700;\">{title}</h1>"
-            f"<p style=\"margin:0;font-size:15px;line-height:1.9;color:#4b5563;\">{summary}</p>"
             "</section>"
         ),
-        (
-            "<section style=\"display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px 0;font-size:12px;color:#6b7280;\">"
-            f"<span style=\"padding:5px 10px;border:1px solid #d1d5db;background:#fff;\">北京时间 {html.escape(generated_at)}</span>"
-            f"<span style=\"padding:5px 10px;border:1px solid #d1d5db;background:#fff;\">样本 {len(news_items)} 条</span>"
-            f"<span style=\"padding:5px 10px;border:1px solid #d1d5db;background:#fff;\">配图 {image_count} 张</span>"
-            "</section>"
-        ),
-        f"<img peitu=\"true\" src=\"{html.escape(cover_url)}\" style=\"width:100%;display:block;margin:0 0 26px 0;\">",
     ]
 
-    for paragraph in ai_data["intro_paragraphs"]:
-        parts.append(render_paragraph(paragraph))
-
-    parts.append(
-        "<section style=\"margin:26px 0 34px 0;padding:18px 20px;background:#f7f5f0;border-left:4px solid #111827;\">"
-        "<div style=\"font-size:13px;letter-spacing:1.8px;color:#6b7280;text-transform:uppercase;margin-bottom:12px;\">News Briefs</div>"
-    )
-    for brief in ai_data["bullet_briefs"]:
-        parts.append(
-            "<div style=\"display:flex;align-items:flex-start;margin:0 0 12px 0;\">"
-            "<span style=\"display:inline-block;width:6px;height:6px;background:#111827;border-radius:50%;margin:10px 10px 0 0;flex:0 0 auto;\"></span>"
-            f"<span style=\"font-size:15px;line-height:1.8;color:#374151;\">{html.escape(brief)}</span>"
-            "</div>"
-        )
-    parts.append("</section>")
-
-    for category in ai_data["categories"]:
+    for article in ai_data["articles"]:
         parts.append(
             "<section style=\"margin:0 0 38px 0;\">"
             "<div style=\"display:flex;align-items:center;margin:0 0 14px 0;\">"
             "<span style=\"display:inline-block;width:36px;height:2px;background:#111827;margin-right:12px;\"></span>"
-            f"<h2 style=\"margin:0;font-size:22px;color:#111827;letter-spacing:0.4px;\">{html.escape(category['name'])}</h2>"
+            f"<h2 style=\"margin:0;font-size:22px;color:#111827;letter-spacing:0.4px;\">{html.escape(article['title_cn'])}</h2>"
             "</div>"
-            f"<p style=\"margin:0 0 18px 0;font-size:14px;line-height:1.85;color:#6b7280;border-bottom:1px solid #e5e7eb;padding-bottom:14px;\">{html.escape(category['summary'])}</p>"
         )
-        parts.append(render_category_image(category))
-        for paragraph in category["paragraphs"]:
-            parts.append(render_paragraph(paragraph))
+        parts.append(render_article_images(article))
+        parts.append(render_paragraph(article["summary_cn"]))
         parts.append("</section>")
 
     parts.append(
@@ -801,30 +843,13 @@ def render_markdown(
     lines = [
         f"# {ai_data['title']}",
         "",
-        f"> 生成时间：{generated_at}（Asia/Shanghai）",
-        f"> 封面图：{cover_url}",
-        "",
-        f"> {ai_data['seo_summary']}",
-        "",
     ]
 
-    for paragraph in ai_data["intro_paragraphs"]:
-        lines.extend([paragraph, ""])
-
-    lines.extend(["## 快讯", ""])
-    for brief in ai_data["bullet_briefs"]:
-        lines.append(f"- {brief}")
-    lines.append("")
-
-    for category in ai_data["categories"]:
-        lines.extend([f"## {category['name']}", "", category["summary"], ""])
-        if category["image_url"]:
-            lines.append(f"配图：{category['image_url']}")
-            if category["image_source"]:
-                lines.append(f"原文：{category['image_source']}")
-            lines.append("")
-        for paragraph in category["paragraphs"]:
-            lines.extend([paragraph, ""])
+    for article in ai_data["articles"]:
+        lines.extend([f"## {article['title_cn']}", ""])
+        if article["image_urls"]:
+            lines.append(f"配图：{article['image_urls'][0]}")
+        lines.extend(["", article["summary_cn"], ""])
 
     lines.extend(
         [
@@ -849,7 +874,7 @@ def render_markdown(
 def save_outputs(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) -> str:
     now = datetime.datetime.now(SHANGHAI_TZ)
     current_time = now.strftime("%Y-%m-%d %H:%M:%S")
-    cover_url = attach_category_images(ai_data, news_items)
+    cover_url = attach_article_images(ai_data, news_items)
     html_content = render_html(ai_data, news_items, cover_url, current_time)
     markdown_content = render_markdown(ai_data, news_items, cover_url, current_time)
 
@@ -860,14 +885,13 @@ def save_outputs(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) -> s
         "cover": cover_url,
         "wechat_html": html_content,
         "intro_paragraphs": ai_data["intro_paragraphs"],
-        "categories": ai_data["categories"],
-        "bullet_briefs": ai_data["bullet_briefs"],
+        "articles": ai_data["articles"],
         "editorial_notes": ai_data["editorial_notes"],
         "tags": ai_data["tags"],
         "generated_at": current_time,
         "is_daily_featured": True,
         "source_count": len(news_items),
-        "image_count": sum(1 for item in news_items if item["image_url"]),
+        "image_count": sum(len(item["image_urls"]) for item in news_items),
         "sources": news_items,
     }
 
@@ -890,10 +914,9 @@ def main() -> None:
     news_items = collect_news_items(feed)
     date_str = datetime.datetime.now(SHANGHAI_TZ).strftime("%Y-%m-%d")
     enrich_news_images(news_items, date_str)
-    prompt = build_prompt(news_items)
     try:
-        raw_text = call_gemini(api_key, prompt)
-        ai_data = validate_ai_data(parse_model_json(raw_text), news_items)
+        translated_articles = translate_news_items(api_key, news_items)
+        ai_data = build_ai_data_from_articles(translated_articles, news_items)
     except Exception as exc:
         print(f"Falling back to local summary generation: {exc}")
         ai_data = validate_ai_data(build_fallback_ai_data(news_items), news_items)
