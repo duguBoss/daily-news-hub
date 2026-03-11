@@ -253,12 +253,27 @@ def call_gemini(api_key: str, prompt: str) -> str:
 
 
 def parse_model_json(raw_text: str) -> dict[str, Any]:
-    cleaned_text = re.sub(r"^```json\s*", "", raw_text.strip(), flags=re.IGNORECASE)
-    cleaned_text = re.sub(r"\s*```$", "", cleaned_text).strip()
+    cleaned_text = raw_text.strip()
+    code_block_match = re.search(r"```json\s*(\{.*?\})\s*```", cleaned_text, flags=re.IGNORECASE | re.DOTALL)
+    if code_block_match:
+        cleaned_text = code_block_match.group(1).strip()
+    else:
+        cleaned_text = re.sub(r"^```json\s*", "", cleaned_text, flags=re.IGNORECASE)
+        cleaned_text = re.sub(r"\s*```$", "", cleaned_text).strip()
 
+    decoder = json.JSONDecoder()
     try:
-        return json.loads(cleaned_text)
+        parsed, _ = decoder.raw_decode(cleaned_text)
+        return parsed
     except json.JSONDecodeError as exc:
+        first_object_match = re.search(r"\{.*", cleaned_text, flags=re.DOTALL)
+        if first_object_match:
+            candidate = first_object_match.group(0)
+            try:
+                parsed, _ = decoder.raw_decode(candidate)
+                return parsed
+            except json.JSONDecodeError:
+                pass
         raise RuntimeError(f"Model response is not valid JSON: {cleaned_text}") from exc
 
 
