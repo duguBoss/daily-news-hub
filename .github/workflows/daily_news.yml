@@ -1,8 +1,8 @@
-name: 每日全球新闻自动化生成
+name: Daily Global News Generator
 
 on:
   schedule:
-    - cron: '0 0 * * *' # UTC 0点执行，即北京时间早上8点
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -23,17 +23,17 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install feedparser requests pytz
+          pip install feedparser requests pytz playwright
+          python -m playwright install --with-deps chromium
 
-      - name: Run News Aggregator Script
+      - name: Run news generator
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python aggregate_news.py
 
-      - name: Commit and Push generated file
+      - name: Commit and push generated files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          # 注意：这里改成了提交 *.json 文件
-          git add *.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "📝 auto-generate daily global news JSON" && git push)
+          git add *.md *.json assets/generated
+          git diff --quiet && git diff --staged --quiet || (git commit -m "auto-generate daily global news" && git push)
