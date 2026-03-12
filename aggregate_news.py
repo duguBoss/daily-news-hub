@@ -61,7 +61,7 @@ FALLBACK_COVER_URL = (
     "93a57b73c1977bb9.png"
 )
 
-CHINA_RELATED_PATTERNS = [
+CHINA_RELATED_PATTERNS =[
     r"\bchina\b",
     r"\bchinese\b",
     r"\bbeijing\b",
@@ -106,7 +106,7 @@ def is_china_related(text: str) -> bool:
 
 
 def collect_news_items(feed: Any) -> list[dict[str, Any]]:
-    items: list[dict[str, Any]] = []
+    items: list[dict[str, Any]] =[]
 
     for entry in feed.entries:
         title = normalize_whitespace(entry.get("title", ""))
@@ -125,9 +125,9 @@ def collect_news_items(feed: Any) -> list[dict[str, Any]]:
                 "google_news_url": google_news_url,
                 "resolved_url": "",
                 "image_url": "",
-                "image_urls": [],
+                "image_urls":[],
                 "image_path": "",
-                "image_paths": [],
+                "image_paths":[],
                 "image_source": "",
                 "image_caption": "",
             }
@@ -144,73 +144,12 @@ def collect_news_items(feed: Any) -> list[dict[str, Any]]:
     return items
 
 
-def build_prompt(news_items: list[dict[str, Any]]) -> str:
-    news_lines = []
-    for item in news_items:
-        line = f"{item['index']}. 标题：{item['title']}"
-        if item["summary"]:
-            line += f"；摘要：{item['summary']}"
-        if item["resolved_url"]:
-            line += f"；原文链接：{item['resolved_url']}"
-        news_lines.append(line)
-
-    news_text = "\n".join(news_lines)
-
-    return f"""
-你是一个严格客观的国际新闻编辑系统。输入是 Google News WORLD 频道中经过初筛的英文新闻标题、摘要和部分原文链接。
-请输出一份适合微信公众号发布的国际宏观日报，使用简体中文。
-
-硬约束：
-1. 只陈述事实和趋势，不写主观评价，不煽情，不夸张。
-2. 任何与中国相关的信息都必须排除，包括中国大陆、香港、澳门、台湾，以及中国企业和中国政治人物。
-3. 内容范围仅限：国际地缘局势、全球宏观经济、国际科技与商业、能源与供应链、重大自然灾害与公共安全。
-4. 尽量全面，覆盖多个板块，不要只聚焦单一事件。
-5. 如果某个板块素材不足，不要编造。
-6. 输出内容要像正式成稿，不要出现“可能”“或许”“根据标题推测”等措辞。
-
-输出要求：
-1. 只返回合法 JSON，不要输出 markdown 代码块，不要输出解释。
-2. JSON 必须严格符合以下结构：
-{{
-  "title": "一个偏国际媒体风格的主标题，不超过22字",
-  "seo_summary": "90到120字摘要",
-  "cover_source_index": 1,
-  "intro_paragraphs": [
-    "第一段导语，70到110字",
-    "第二段导语，70到110字"
-  ],
-  "articles": [
-    {{
-      "source_index": 1,
-      "title_cn": "这条新闻的中文标题，18到32字",
-      "summary_cn": "这条新闻的中文说明，45到90字，简短但包含关键信息"
-    }}
-  ],
-  "editorial_notes": {{
-    "timeline": "一句话描述今天国际新闻节奏，30到50字",
-    "risk_watch": "一句话描述接下来值得关注的风险点，30到50字"
-  }},
-  "tags": ["国际新闻", "全球经济", "地缘局势", "科技商业", "能源供应"]
-}}
-
-进一步约束：
-1. articles 必须覆盖下面素材中的每一条新闻，条数必须与素材条数完全一致。
-2. articles 中每一项都必须包含 source_index、title_cn、summary_cn。
-3. summary_cn 要简短，但必须包含关键事实、主体和最新进展，不要空泛。
-4. cover_source_index 必须从 articles 的 source_index 中选择一个最适合作为封面的编号。
-5. tags 固定输出 5 个。
-
-以下是今日素材：
-{news_text}
-""".strip()
-
-
 def build_fallback_ai_data(news_items: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "title": "今日国际新闻综述",
         "seo_summary": "整理当日英文世界新闻中的主要国际动态，覆盖安全、经济、产业、能源与突发事件，并逐条输出简明中文说明。",
         "cover_source_index": next((item["index"] for item in news_items if item.get("image_url")), 1),
-        "intro_paragraphs": [
+        "intro_paragraphs":[
             "今日国际新闻主要集中在地缘安全、全球市场、科技产业、能源链条及突发事件等方向，多条线索同步推进。",
             "以下内容按新闻条目逐条整理，统一转为中文，并保留每条新闻的原文链接与配图地址，便于直接使用。",
         ],
@@ -226,7 +165,7 @@ def build_fallback_ai_data(news_items: list[dict[str, Any]]) -> dict[str, Any]:
             "timeline": "当天新闻节奏呈现多板块并行推进的状态，地缘、安全与市场信息交替升温。",
             "risk_watch": "后续可重点关注局势变化对能源运输、市场波动和企业经营预期的持续影响。",
         },
-        "tags": ["国际新闻", "全球经济", "地缘局势", "科技商业", "能源供应"],
+        "tags":["国际新闻", "全球经济", "地缘局势", "科技商业", "能源供应"],
     }
 
 
@@ -236,13 +175,13 @@ def call_gemini(api_key: str, prompt: str) -> str:
         f"{MODEL_NAME}:generateContent?key={api_key}"
     )
     payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
+        "contents":[{"parts": [{"text": prompt}]}],
         "generationConfig": {
             "temperature": 0.35,
             "topP": 0.9,
             "responseMimeType": "application/json",
         },
-        "safetySettings": [
+        "safetySettings":[
             {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_LOW_AND_ABOVE"},
             {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_LOW_AND_ABOVE"},
             {
@@ -268,7 +207,7 @@ def call_gemini(api_key: str, prompt: str) -> str:
     candidate = (result_json.get("candidates") or [{}])[0]
     finish_reason = candidate.get("finishReason", "")
     content = candidate.get("content") or {}
-    parts = content.get("parts") or []
+    parts = content.get("parts") or[]
 
     if finish_reason in {"SAFETY", "RECITATION", "BLOCKLIST"}:
         raise RuntimeError(f"Gemini blocked the response with finishReason={finish_reason}: {result_json}")
@@ -305,14 +244,14 @@ def parse_model_json(raw_text: str) -> dict[str, Any]:
 
 
 def build_article_translation_prompt(item: dict[str, Any]) -> str:
-    lines = [
+    lines =[
         "你是一个严格客观的国际新闻翻译与摘要助手。",
         "请把下面这条英文新闻转为简体中文，并输出合法 JSON。",
         "要求：",
         "1. 只输出 JSON，不要输出 markdown 或解释。",
         "2. 绝对客观，不添加观点，不夸张，不编造。",
         "3. 输出结构必须是：",
-        '{"title_cn":"中文标题，18到32字","summary_cn":"中文说明，45到90字，简短但包含关键信息、主体和最新进展"}',
+        '{"title_cn":"内容驱动的中文标题，概括核心事实，适合SEO，18到32字","summary_cn":"包含核心事实、事件主体和最新进展的内容摘要，适合SEO提取，45到90字"}',
         f"英文标题：{item['title']}",
     ]
     if item.get("summary"):
@@ -323,7 +262,7 @@ def build_article_translation_prompt(item: dict[str, Any]) -> str:
 
 
 def translate_news_items(api_key: str, news_items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    translated_articles: list[dict[str, Any]] = []
+    translated_articles: list[dict[str, Any]] =[]
 
     for item in news_items:
         prompt = build_article_translation_prompt(item)
@@ -343,7 +282,7 @@ def translate_news_items(api_key: str, news_items: list[dict[str, Any]]) -> list
                 "source_index": item["index"],
                 "title_cn": title_cn,
                 "summary_cn": summary_cn,
-                "image_urls": [],
+                "image_urls":[],
                 "image_caption": "",
                 "image_source": "",
                 "original_title": item["title"],
@@ -354,11 +293,52 @@ def translate_news_items(api_key: str, news_items: list[dict[str, Any]]) -> list
     return translated_articles
 
 
+def generate_metadata(api_key: str, translated_articles: list[dict[str, Any]]) -> dict[str, Any]:
+    articles_text = "\n".join([f"- {a['title_cn']}: {a['summary_cn']}" for a in translated_articles])
+    prompt = f"""
+你是一个专业的国际新闻编辑。请根据以下今日精选的新闻内容，生成一篇微信公众号推文的全局元数据。
+
+要求：
+1. 必须客观中立，不带有任何主观评价。
+2. title：生成一个内容驱动的中文主标题（不超过22字），用于文章大标题，必须概括今天最核心的国际事件，高度适合SEO传播。
+3. seo_summary：生成一段高度浓缩的新闻内容摘要（90-120字），提取今天最重磅的2-3个国际事件，作为分享卡片的简介（Digest），对SEO极为友好。
+4. timeline：一句话概括今天新闻的整体节奏或主要脉络（30-50字）。
+5. risk_watch：一句话提示从今天新闻中观察到的值得重点关注的演变趋势或风险点（30-50字）。
+6. 仅返回合法的 JSON 格式，禁止输出 markdown 代码块。
+
+输出 JSON 结构：
+{{
+  "title": "...",
+  "seo_summary": "...",
+  "timeline": "...",
+  "risk_watch": "..."
+}}
+
+今日新闻素材：
+{articles_text}
+"""
+    try:
+        raw_text = call_gemini(api_key, prompt)
+        return parse_model_json(raw_text)
+    except Exception as exc:
+        print(f"Failed to generate metadata: {exc}")
+        return {}
+
+
 def build_ai_data_from_articles(
-    translated_articles: list[dict[str, Any]], news_items: list[dict[str, Any]]
+    api_key: str,
+    translated_articles: list[dict[str, Any]], 
+    news_items: list[dict[str, Any]]
 ) -> dict[str, Any]:
     if not translated_articles:
         raise RuntimeError("No translated articles were produced.")
+
+    metadata = generate_metadata(api_key, translated_articles)
+
+    title = metadata.get("title") or "今日国际新闻速览"
+    seo_summary = metadata.get("seo_summary") or f"精选 {len(translated_articles)} 条国际新闻，涵盖地缘、经济、科技与能源等重点事件摘要。"
+    timeline = metadata.get("timeline") or "当天国际新闻节奏整体偏密集，多个议题并行推进，安全与市场信息交替成为焦点。"
+    risk_watch = metadata.get("risk_watch") or "后续可重点关注局势变化向市场、能源运输和企业经营预期的进一步传导。"
 
     cover_source_index = translated_articles[0]["source_index"]
     for item in news_items:
@@ -367,19 +347,19 @@ def build_ai_data_from_articles(
             break
 
     return {
-        "title": "今日国际新闻速览",
-        "seo_summary": f"精选 {len(translated_articles)} 条国际新闻，逐条转为中文，并附原文链接与仓库配图地址，便于直接分发和结构化读取。",
+        "title": title,
+        "seo_summary": seo_summary,
         "cover_source_index": cover_source_index,
-        "intro_paragraphs": [
+        "intro_paragraphs":[
             f"本期内容共整理 {len(translated_articles)} 条国际新闻，覆盖安全、经济、产业、能源与突发事件等方向，统一转写为简体中文。",
             "每条新闻均尽量保留关键事实与最新进展，并在可抓取时附上已下载到 GitHub 的图片地址，便于直接用于前端或内容分发。",
         ],
         "articles": translated_articles,
         "editorial_notes": {
-            "timeline": "当天国际新闻节奏整体偏密集，多个议题并行推进，安全与市场信息交替成为焦点。",
-            "risk_watch": "后续可重点关注局势变化向市场、能源运输和企业经营预期的进一步传导。",
+            "timeline": timeline,
+            "risk_watch": risk_watch,
         },
-        "tags": ["国际新闻", "全球经济", "地缘局势", "科技商业", "能源供应"],
+        "tags":["国际新闻", "全球经济", "地缘局势", "科技商业", "能源供应"],
     }
 
 
@@ -387,7 +367,7 @@ def ensure_list_of_strings(value: Any, field_name: str, min_items: int = 1) -> l
     if not isinstance(value, list):
         raise ValueError(f"{field_name} must be a list.")
 
-    cleaned = [normalize_whitespace(str(item)) for item in value if str(item).strip()]
+    cleaned =[normalize_whitespace(str(item)) for item in value if str(item).strip()]
     if len(cleaned) < min_items:
         raise ValueError(f"{field_name} requires at least {min_items} items.")
     return cleaned
@@ -395,9 +375,9 @@ def ensure_list_of_strings(value: Any, field_name: str, min_items: int = 1) -> l
 
 def normalize_source_indexes(value: Any, max_index: int) -> list[int]:
     if not isinstance(value, list):
-        return []
+        return[]
 
-    indexes: list[int] = []
+    indexes: list[int] =[]
     for item in value:
         try:
             index = int(item)
@@ -422,7 +402,7 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
         )
     )
     intro_paragraphs = ensure_list_of_strings(
-        ai_data.get("intro_paragraphs", []), "intro_paragraphs", min_items=2
+        ai_data.get("intro_paragraphs",[]), "intro_paragraphs", min_items=2
     )[:2]
     tags = ensure_list_of_strings(ai_data.get("tags", []), "tags", min_items=5)[:5]
 
@@ -440,11 +420,11 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
     }
 
     max_index = len(news_items)
-    raw_articles = ai_data.get("articles", [])
+    raw_articles = ai_data.get("articles",[])
     if not isinstance(raw_articles, list) or len(raw_articles) < max_index:
         raise ValueError("articles must cover all source items.")
 
-    articles = []
+    articles =[]
     seen_indexes = set()
     for raw_article in raw_articles:
         if not isinstance(raw_article, dict):
@@ -465,7 +445,7 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
                 "source_index": source_index,
                 "title_cn": title_cn,
                 "summary_cn": summary_cn,
-                "image_urls": [],
+                "image_urls":[],
                 "image_caption": "",
                 "image_source": "",
                 "original_title": "",
@@ -484,7 +464,7 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
                     "source_index": source_index,
                     "title_cn": item["title"],
                     "summary_cn": item["summary"][:88] or item["title"],
-                    "image_urls": [],
+                    "image_urls":[],
                     "image_caption": "",
                     "image_source": "",
                     "original_title": item["title"],
@@ -527,7 +507,7 @@ def score_image_candidate(candidate: dict[str, Any]) -> int:
         score += 160
     if "hero" in alt or "lead" in alt:
         score += 80
-    if any(token in src.lower() for token in ["logo", "icon", "sprite", "avatar"]):
+    if any(token in src.lower() for token in["logo", "icon", "sprite", "avatar"]):
         score -= 250
     if width < MIN_IMAGE_WIDTH or height < MIN_IMAGE_HEIGHT:
         score -= 300
@@ -535,7 +515,7 @@ def score_image_candidate(candidate: dict[str, Any]) -> int:
 
 
 def choose_best_image_candidate(candidates: list[dict[str, Any]]) -> dict[str, Any] | None:
-    cleaned_candidates = []
+    cleaned_candidates =[]
     seen = set()
 
     for candidate in candidates:
@@ -569,7 +549,7 @@ def choose_best_image_candidate(candidates: list[dict[str, Any]]) -> dict[str, A
 
 
 def choose_image_candidates(candidates: list[dict[str, Any]], limit: int) -> list[dict[str, Any]]:
-    cleaned_candidates = []
+    cleaned_candidates =[]
     seen = set()
 
     for candidate in candidates:
@@ -604,7 +584,7 @@ def guess_extension(image_url: str, content_type: str) -> str:
             return guessed
 
     path = urlparse(image_url).path.lower()
-    for ext in [".jpg", ".jpeg", ".png", ".webp", ".gif"]:
+    for ext in[".jpg", ".jpeg", ".png", ".webp", ".gif"]:
         if path.endswith(ext):
             return ".jpg" if ext == ".jpeg" else ext
     return ".jpg"
@@ -673,7 +653,7 @@ def enrich_news_images(news_items: list[dict[str, Any]], date_str: str) -> None:
             try:
                 candidates = page.evaluate(
                     """() => {
-                        const urls = [];
+                        const urls =[];
                         const push = (src, width, height, alt, source) => {
                             if (!src) return;
                             try {
@@ -755,9 +735,10 @@ def attach_article_images(ai_data: dict[str, Any], news_items: list[dict[str, An
 
 
 def render_paragraph(text: str, extra_style: str = "") -> str:
+    # 调整文字颜色为高级深灰 Slate 700 (#334155)，减弱纯黑的生硬感，仅保留微小的下边距
     style = (
-        "margin:0 0 18px 0;line-height:1.95;color:#1f2937;font-size:16px;"
-        "letter-spacing:0.2px;text-align:justify;"
+        "margin:0 0 6px 0;line-height:1.8;color:#334155;font-size:16px;"
+        "letter-spacing:0.5px;text-align:justify;"
     )
     if extra_style:
         style += extra_style
@@ -769,9 +750,10 @@ def render_article_images(article: dict[str, Any]) -> str:
         return ""
 
     first_image_url = article["image_urls"][0]
+    # 给图片增加极轻微的圆角与边框，使其融入白底不突兀
     return (
-        "<section style=\"margin:0 0 18px 0;\">"
-        f"<img src=\"{html.escape(first_image_url)}\" style=\"width:100%;display:block;border-radius:2px;\">"
+        "<section style=\"margin:0 0 10px 0;\">"
+        f"<img src=\"{html.escape(first_image_url)}\" style=\"width:100%;display:block;border-radius:4px;border:1px solid #f1f5f9;\">"
         "</section>"
     )
 
@@ -784,51 +766,57 @@ def render_html(
 ) -> str:
     title = html.escape(ai_data["title"])
 
-    parts = [
-        "<section style=\"margin:0;padding:0;background:#ebe7df;\">",
+    parts =[
+        # 最外层改为白底，提升极简高级感，抛弃花哨背景
+        "<section style=\"margin:0;padding:0;background:#ffffff;\">",
         f"<img src=\"{TOP_BANNER_URL}\" style=\"width:100%;display:block;\">",
         (
-            "<section style=\"max-width:760px;margin:0 auto;padding:0 20px 44px 20px;"
-            "background:linear-gradient(180deg,#f5f0e8 0%,#fbfaf7 18%,#ffffff 100%);\">"
+            # 去除冗余的渐变背景，仅仅做内容限宽，左右边距 2px 贴边让微信处理留白
+            "<section style=\"max-width:760px;margin:0 auto;padding:2px;\">"
         ),
         (
-            "<section style=\"padding:34px 0 20px 0;border-bottom:1px solid #d6d0c4;margin-bottom:24px;\">"
-            "<div style=\"font-size:12px;letter-spacing:2px;color:#8b7d67;text-transform:uppercase;margin-bottom:12px;\">Global Briefing</div>"
-            f"<h1 style=\"margin:0 0 14px 0;font-size:31px;line-height:1.25;color:#0f172a;font-weight:700;\">{title}</h1>"
+            # 顶部标题区，引入深石板色下划粗线，设计感更强
+            "<section style=\"margin:12px 0 16px 0;padding:2px 2px 8px 2px;border-bottom:2px solid #1e293b;\">"
+            "<div style=\"font-size:12px;letter-spacing:2px;color:#b59f7b;text-transform:uppercase;margin-bottom:4px;font-weight:600;\">Global Briefing</div>"
+            f"<h1 style=\"margin:0;font-size:26px;line-height:1.4;color:#0f172a;font-weight:bold;letter-spacing:0.5px;\">{title}</h1>"
             "</section>"
         ),
     ]
 
     for article in ai_data["articles"]:
         parts.append(
-            "<section style=\"margin:0 0 28px 0;padding:22px 18px 20px 18px;background:#fff;"
-            "border:1px solid #e7e1d6;box-shadow:0 8px 24px rgba(15,23,42,0.04);\">"
-            f"<h2 style=\"margin:0 0 16px 0;font-size:22px;line-height:1.4;color:#111827;letter-spacing:0.2px;\">{html.escape(article['title_cn'])}</h2>"
+            # 文章区块，去掉全包围边框与大片内边距，底部采用低调虚线分割
+            "<section style=\"margin:0 0 18px 0;padding:0 2px 14px 2px;border-bottom:1px solid #f1f5f9;\">"
+            # 文章标题，加入香槟金左侧高亮边框强调
+            f"<h2 style=\"margin:0 0 12px 0;padding-left:10px;border-left:4px solid #b59f7b;font-size:20px;line-height:1.5;color:#1e293b;letter-spacing:0.5px;\">{html.escape(article['title_cn'])}</h2>"
         )
         parts.append(render_article_images(article))
         parts.append(render_paragraph(article["summary_cn"]))
         parts.append(
-            "<div style=\"margin-top:16px;padding-top:12px;border-top:1px solid #ece7de;\">"
-            "<span style=\"display:inline-block;font-size:11px;letter-spacing:1.6px;color:#9a8f7c;text-transform:uppercase;\">Global Watch</span>"
+            # 卡片尾部标签，极简处理
+            "<div style=\"margin-top:8px;text-align:right;\">"
+            "<span style=\"display:inline-block;font-size:11px;letter-spacing:1px;color:#94a3b8;text-transform:uppercase;border-bottom:1px solid #f1f5f9;padding-bottom:2px;\">Global Watch</span>"
             "</div>"
+            "</section>"
         )
-        parts.append("</section>")
 
+    # 风险提示版块：深色沉浸卡片，顶部用金色边框压条
     parts.append(
-        "<section style=\"margin:6px 0 34px 0;padding:22px 20px;background:#111827;color:#f9fafb;\">"
-        "<div style=\"font-size:13px;letter-spacing:1.8px;text-transform:uppercase;color:#d1d5db;margin-bottom:12px;\">Risk Watch</div>"
-        f"<p style=\"margin:0 0 10px 0;font-size:15px;line-height:1.8;color:#f3f4f6;\"><strong>节奏：</strong>{html.escape(ai_data['editorial_notes']['timeline'])}</p>"
-        f"<p style=\"margin:0;font-size:15px;line-height:1.8;color:#f3f4f6;\"><strong>关注：</strong>{html.escape(ai_data['editorial_notes']['risk_watch'])}</p>"
+        "<section style=\"margin:16px 2px;padding:14px;background:#0f172a;border-top:3px solid #b59f7b;border-radius:2px;\">"
+        "<div style=\"font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b59f7b;margin-bottom:8px;font-weight:600;\">Risk Watch</div>"
+        f"<p style=\"margin:0 0 6px 0;font-size:15px;line-height:1.8;color:#e2e8f0;text-align:justify;\"><strong>趋势：</strong>{html.escape(ai_data['editorial_notes']['timeline'])}</p>"
+        f"<p style=\"margin:0;font-size:15px;line-height:1.8;color:#e2e8f0;text-align:justify;\"><strong>关注：</strong>{html.escape(ai_data['editorial_notes']['risk_watch'])}</p>"
         "</section>"
     )
 
+    # 关键词模块，轻量化标签框
     parts.append(
-        "<section style=\"margin:0;padding-top:18px;border-top:1px solid #d1d5db;\">"
-        "<div style=\"font-size:12px;letter-spacing:1.8px;color:#8b7d67;text-transform:uppercase;margin-bottom:12px;\">Keywords</div>"
+        "<section style=\"margin:12px 2px 0 2px;padding-top:12px;border-top:1px dashed #cbd5e1;\">"
+        "<div style=\"font-size:12px;letter-spacing:1px;color:#64748b;text-transform:uppercase;margin-bottom:8px;\">Keywords</div>"
     )
     for tag in ai_data["tags"]:
         parts.append(
-            f"<span style=\"display:inline-block;margin:0 10px 10px 0;padding:6px 12px;border:1px solid #d1d5db;background:#fafaf9;color:#4b5563;font-size:12px;\">{html.escape(tag)}</span>"
+            f"<span style=\"display:inline-block;margin:0 8px 8px 0;padding:4px 10px;border:1px solid #e2e8f0;border-radius:2px;background:#f8fafc;color:#475569;font-size:12px;letter-spacing:0.5px;\">{html.escape(tag)}</span>"
         )
     parts.append("</section>")
     parts.append("</section>")
@@ -854,8 +842,7 @@ def render_markdown(
             lines.append(f"配图：{article['image_urls'][0]}")
         lines.extend(["", article["summary_cn"], ""])
 
-    lines.extend(
-        [
+    lines.extend([
             "## 编辑注",
             "",
             f"- 新闻节奏：{ai_data['editorial_notes']['timeline']}",
@@ -925,7 +912,8 @@ def main() -> None:
     enrich_news_images(news_items, date_str)
     try:
         translated_articles = translate_news_items(api_key, news_items)
-        ai_data = build_ai_data_from_articles(translated_articles, news_items)
+        # 将 api_key 传入以便 AI 基于翻译后的文章归纳全局摘要和标题
+        ai_data = build_ai_data_from_articles(api_key, translated_articles, news_items)
     except Exception as exc:
         print(f"Falling back to local summary generation: {exc}")
         ai_data = validate_ai_data(build_fallback_ai_data(news_items), news_items)
