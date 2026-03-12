@@ -7,6 +7,7 @@ import json
 import mimetypes
 import os
 import re
+import time  # 新增：用于增加请求缓冲
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -112,7 +113,7 @@ def collect_news_items(feed: Any) -> list[dict[str, Any]]:
         title = normalize_whitespace(entry.get("title", ""))
         summary = normalize_whitespace(re.sub(r"<[^>]+>", " ", entry.get("summary", "")))
         google_news_url = entry.get("link", "")
-        combined = " ".join(part for part in [title, summary] if part)
+        combined = " ".join(part for part in[title, summary] if part)
 
         if not title or is_china_related(combined):
             continue
@@ -146,8 +147,8 @@ def collect_news_items(feed: Any) -> list[dict[str, Any]]:
 
 def build_fallback_ai_data(news_items: list[dict[str, Any]]) -> dict[str, Any]:
     return {
-        "title": "今日国际新闻综述",
-        "seo_summary": "整理当日英文世界新闻中的主要国际动态，覆盖安全、经济、产业、能源与突发事件，并逐条输出简明中文说明。",
+        "title": "今日国际要闻与市场焦点",
+        "seo_summary": "全面追踪当日核心国际动态，重点解析地缘安全、多国宏观经济、前沿科技产业与全球能源链条的突发事件。",
         "cover_source_index": next((item["index"] for item in news_items if item.get("image_url")), 1),
         "intro_paragraphs":[
             "今日国际新闻主要集中在地缘安全、全球市场、科技产业、能源链条及突发事件等方向，多条线索同步推进。",
@@ -175,7 +176,7 @@ def call_gemini(api_key: str, prompt: str) -> str:
         f"{MODEL_NAME}:generateContent?key={api_key}"
     )
     payload = {
-        "contents":[{"parts": [{"text": prompt}]}],
+        "contents":[{"parts":[{"text": prompt}]}],
         "generationConfig": {
             "temperature": 0.35,
             "topP": 0.9,
@@ -251,7 +252,7 @@ def build_article_translation_prompt(item: dict[str, Any]) -> str:
         "1. 只输出 JSON，不要输出 markdown 或解释。",
         "2. 绝对客观，不添加观点，不夸张，不编造。",
         "3. 输出结构必须是：",
-        '{"title_cn":"内容驱动的中文标题，概括核心事实，适合SEO，18到32字","summary_cn":"包含核心事实、事件主体和最新进展的内容摘要，适合SEO提取，45到90字"}',
+        '{"title_cn":"包含核心实体名称的中文标题，适合SEO，18到32字","summary_cn":"包含核心事实、具体事件主体和最新进展的内容摘要，适合SEO抓取，45到90字"}',
         f"英文标题：{item['title']}",
     ]
     if item.get("summary"):
@@ -295,13 +296,14 @@ def translate_news_items(api_key: str, news_items: list[dict[str, Any]]) -> list
 
 def generate_metadata(api_key: str, translated_articles: list[dict[str, Any]]) -> dict[str, Any]:
     articles_text = "\n".join([f"- {a['title_cn']}: {a['summary_cn']}" for a in translated_articles])
+    # 全新升级的抗空泛 Prompt
     prompt = f"""
-你是一个专业的国际新闻编辑。请根据以下今日精选的新闻内容，生成一篇微信公众号推文的全局元数据。
+你是一个专业的国际财经与政治新闻主编。请根据以下今日精选的新闻内容，生成一篇公众号推文的全局元数据。
 
 要求：
 1. 必须客观中立，不带有任何主观评价。
-2. title：生成一个内容驱动的中文主标题（不超过22字），用于文章大标题，必须概括今天最核心的国际事件，高度适合SEO传播。
-3. seo_summary：生成一段高度浓缩的新闻内容摘要（90-120字），提取今天最重磅的2-3个国际事件，作为分享卡片的简介（Digest），对SEO极为友好。
+2. title：生成一个强内容驱动的主标题（不超过26字），【极其重要】必须提取今天最核心的一两个具体事件或国家实体（如“俄乌冲突”、“美联储降息”、“中东局势”等）。绝对禁止使用“今日国际新闻速览”、“全球新闻大盘点”等毫无信息量的空泛废话。
+3. seo_summary：生成一段高度浓缩的新闻摘要（90-120字），提取今天最重磅的2-3个具体事件。【极其重要】绝对禁止写“涵盖地缘、经济、科技等重点事件摘要”这种凑字数的套话，必须写出具体的事件内容和进展，让搜索引擎抓取到确切新闻。
 4. timeline：一句话概括今天新闻的整体节奏或主要脉络（30-50字）。
 5. risk_watch：一句话提示从今天新闻中观察到的值得重点关注的演变趋势或风险点（30-50字）。
 6. 仅返回合法的 JSON 格式，禁止输出 markdown 代码块。
@@ -321,7 +323,7 @@ def generate_metadata(api_key: str, translated_articles: list[dict[str, Any]]) -
         raw_text = call_gemini(api_key, prompt)
         return parse_model_json(raw_text)
     except Exception as exc:
-        print(f"Failed to generate metadata: {exc}")
+        print(f"Failed to generate metadata via AI (Likely Rate Limit), using smart fallback. Error: {exc}")
         return {}
 
 
@@ -333,12 +335,32 @@ def build_ai_data_from_articles(
     if not translated_articles:
         raise RuntimeError("No translated articles were produced.")
 
+    # 新增：加入 3 秒休眠，防止上文连续的十几条翻译调用耗尽 API 并发限制
+    time.sleep(3)
+
     metadata = generate_metadata(api_key, translated_articles)
 
-    title = metadata.get("title") or "今日国际新闻速览"
-    seo_summary = metadata.get("seo_summary") or f"精选 {len(translated_articles)} 条国际新闻，涵盖地缘、经济、科技与能源等重点事件摘要。"
-    timeline = metadata.get("timeline") or "当天国际新闻节奏整体偏密集，多个议题并行推进，安全与市场信息交替成为焦点。"
-    risk_watch = metadata.get("risk_watch") or "后续可重点关注局势变化向市场、能源运输和企业经营预期的进一步传导。"
+    # ---------------------------------------------------------
+    # 核心优化：智能动态兜底（Smart Fallback）
+    # 就算 API 请求彻底报错了，也绝对不用“国际新闻速览”这种空壳
+    # 直接提取今天最重磅的前两条新闻标题和摘要作为替代！
+    # ---------------------------------------------------------
+    fallback_t1 = translated_articles[0]["title_cn"].split("，")[0].split("：")[0][:14]
+    fallback_t2 = ""
+    if len(translated_articles) > 1:
+        fallback_t2 = translated_articles[1]["title_cn"].split("，")[0].split("：")[0][:12]
+        
+    smart_title = f"{fallback_t1}，{fallback_t2}等国际要闻" if fallback_t2 else f"{fallback_t1}及今日国际要闻"
+    
+    smart_summary = f"今日重点关注：{translated_articles[0]['summary_cn']} "
+    if len(translated_articles) > 1:
+        smart_summary += f"此外，内容还跟踪了：{translated_articles[1]['title_cn']} 等共 {len(translated_articles)} 条核心事件最新进展。"
+
+    # 如果 metadata 为 {}，将直接采用自带 SEO 实体的智能兜底
+    title = metadata.get("title") or smart_title
+    seo_summary = metadata.get("seo_summary") or smart_summary
+    timeline = metadata.get("timeline") or "当天国际新闻节奏密集，多板块地缘与市场信息交替成为焦点。"
+    risk_watch = metadata.get("risk_watch") or "后续可重点关注重大事件演变对全球供应链、能源定价及市场预期的传导。"
 
     cover_source_index = translated_articles[0]["source_index"]
     for item in news_items:
@@ -404,7 +426,7 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
     intro_paragraphs = ensure_list_of_strings(
         ai_data.get("intro_paragraphs",[]), "intro_paragraphs", min_items=2
     )[:2]
-    tags = ensure_list_of_strings(ai_data.get("tags", []), "tags", min_items=5)[:5]
+    tags = ensure_list_of_strings(ai_data.get("tags",[]), "tags", min_items=5)[:5]
 
     raw_notes = ai_data.get("editorial_notes", {})
     if not isinstance(raw_notes, dict):
@@ -734,8 +756,9 @@ def attach_article_images(ai_data: dict[str, Any], news_items: list[dict[str, An
     return selected_cover or FALLBACK_COVER_URL
 
 
+# ================== 以下为优化后的 UI 代码 ================== #
+
 def render_paragraph(text: str, extra_style: str = "") -> str:
-    # 调整文字颜色为高级深灰 Slate 700 (#334155)，减弱纯黑的生硬感，仅保留微小的下边距
     style = (
         "margin:0 0 6px 0;line-height:1.8;color:#334155;font-size:16px;"
         "letter-spacing:0.5px;text-align:justify;"
@@ -750,7 +773,6 @@ def render_article_images(article: dict[str, Any]) -> str:
         return ""
 
     first_image_url = article["image_urls"][0]
-    # 给图片增加极轻微的圆角与边框，使其融入白底不突兀
     return (
         "<section style=\"margin:0 0 10px 0;\">"
         f"<img src=\"{html.escape(first_image_url)}\" style=\"width:100%;display:block;border-radius:4px;border:1px solid #f1f5f9;\">"
@@ -767,15 +789,12 @@ def render_html(
     title = html.escape(ai_data["title"])
 
     parts =[
-        # 最外层改为白底，提升极简高级感，抛弃花哨背景
         "<section style=\"margin:0;padding:0;background:#ffffff;\">",
         f"<img src=\"{TOP_BANNER_URL}\" style=\"width:100%;display:block;\">",
         (
-            # 去除冗余的渐变背景，仅仅做内容限宽，左右边距 2px 贴边让微信处理留白
             "<section style=\"max-width:760px;margin:0 auto;padding:2px;\">"
         ),
         (
-            # 顶部标题区，引入深石板色下划粗线，设计感更强
             "<section style=\"margin:12px 0 16px 0;padding:2px 2px 8px 2px;border-bottom:2px solid #1e293b;\">"
             "<div style=\"font-size:12px;letter-spacing:2px;color:#b59f7b;text-transform:uppercase;margin-bottom:4px;font-weight:600;\">Global Briefing</div>"
             f"<h1 style=\"margin:0;font-size:26px;line-height:1.4;color:#0f172a;font-weight:bold;letter-spacing:0.5px;\">{title}</h1>"
@@ -785,22 +804,18 @@ def render_html(
 
     for article in ai_data["articles"]:
         parts.append(
-            # 文章区块，去掉全包围边框与大片内边距，底部采用低调虚线分割
             "<section style=\"margin:0 0 18px 0;padding:0 2px 14px 2px;border-bottom:1px solid #f1f5f9;\">"
-            # 文章标题，加入香槟金左侧高亮边框强调
             f"<h2 style=\"margin:0 0 12px 0;padding-left:10px;border-left:4px solid #b59f7b;font-size:20px;line-height:1.5;color:#1e293b;letter-spacing:0.5px;\">{html.escape(article['title_cn'])}</h2>"
         )
         parts.append(render_article_images(article))
         parts.append(render_paragraph(article["summary_cn"]))
         parts.append(
-            # 卡片尾部标签，极简处理
             "<div style=\"margin-top:8px;text-align:right;\">"
             "<span style=\"display:inline-block;font-size:11px;letter-spacing:1px;color:#94a3b8;text-transform:uppercase;border-bottom:1px solid #f1f5f9;padding-bottom:2px;\">Global Watch</span>"
             "</div>"
             "</section>"
         )
 
-    # 风险提示版块：深色沉浸卡片，顶部用金色边框压条
     parts.append(
         "<section style=\"margin:16px 2px;padding:14px;background:#0f172a;border-top:3px solid #b59f7b;border-radius:2px;\">"
         "<div style=\"font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b59f7b;margin-bottom:8px;font-weight:600;\">Risk Watch</div>"
@@ -809,7 +824,6 @@ def render_html(
         "</section>"
     )
 
-    # 关键词模块，轻量化标签框
     parts.append(
         "<section style=\"margin:12px 2px 0 2px;padding-top:12px;border-top:1px dashed #cbd5e1;\">"
         "<div style=\"font-size:12px;letter-spacing:1px;color:#64748b;text-transform:uppercase;margin-bottom:8px;\">Keywords</div>"
@@ -912,7 +926,6 @@ def main() -> None:
     enrich_news_images(news_items, date_str)
     try:
         translated_articles = translate_news_items(api_key, news_items)
-        # 将 api_key 传入以便 AI 基于翻译后的文章归纳全局摘要和标题
         ai_data = build_ai_data_from_articles(api_key, translated_articles, news_items)
     except Exception as exc:
         print(f"Falling back to local summary generation: {exc}")
