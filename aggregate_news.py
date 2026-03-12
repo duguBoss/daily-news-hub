@@ -7,7 +7,7 @@ import json
 import mimetypes
 import os
 import re
-import time  # 新增：用于增加请求缓冲
+import time
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -147,14 +147,14 @@ def collect_news_items(feed: Any) -> list[dict[str, Any]]:
 
 def build_fallback_ai_data(news_items: list[dict[str, Any]]) -> dict[str, Any]:
     return {
-        "title": "今日国际要闻与市场焦点",
-        "seo_summary": "全面追踪当日核心国际动态，重点解析地缘安全、多国宏观经济、前沿科技产业与全球能源链条的突发事件。",
+        "title": "突发！多国重磅消息流出，国际局势突变",
+        "seo_summary": "重磅进展：深入追踪当日核心突发动态，一文看懂地缘冲突、宏观经济与科技巨头最新异动。",
         "cover_source_index": next((item["index"] for item in news_items if item.get("image_url")), 1),
         "intro_paragraphs":[
             "今日国际新闻主要集中在地缘安全、全球市场、科技产业、能源链条及突发事件等方向，多条线索同步推进。",
             "以下内容按新闻条目逐条整理，统一转为中文，并保留每条新闻的原文链接与配图地址，便于直接使用。",
         ],
-        "articles": [
+        "articles":[
             {
                 "source_index": item["index"],
                 "title_cn": item["title"],
@@ -178,7 +178,7 @@ def call_gemini(api_key: str, prompt: str) -> str:
     payload = {
         "contents":[{"parts":[{"text": prompt}]}],
         "generationConfig": {
-            "temperature": 0.35,
+            "temperature": 0.4,
             "topP": 0.9,
             "responseMimeType": "application/json",
         },
@@ -296,14 +296,14 @@ def translate_news_items(api_key: str, news_items: list[dict[str, Any]]) -> list
 
 def generate_metadata(api_key: str, translated_articles: list[dict[str, Any]]) -> dict[str, Any]:
     articles_text = "\n".join([f"- {a['title_cn']}: {a['summary_cn']}" for a in translated_articles])
-    # 全新升级的抗空泛 Prompt
+    # 彻底重写提示词：设定"标题党"、"紧迫感"，并严格限制 32字 和 50字
     prompt = f"""
-你是一个专业的国际财经与政治新闻主编。请根据以下今日精选的新闻内容，生成一篇公众号推文的全局元数据。
+你是一个深谙新媒体爆款逻辑的高级国际新闻主编。请根据今日的新闻内容，生成极具吸引力的推文元数据。
 
 要求：
-1. 必须客观中立，不带有任何主观评价。
-2. title：生成一个强内容驱动的主标题（不超过26字），【极其重要】必须提取今天最核心的一两个具体事件或国家实体（如“俄乌冲突”、“美联储降息”、“中东局势”等）。绝对禁止使用“今日国际新闻速览”、“全球新闻大盘点”等毫无信息量的空泛废话。
-3. seo_summary：生成一段高度浓缩的新闻摘要（90-120字），提取今天最重磅的2-3个具体事件。【极其重要】绝对禁止写“涵盖地缘、经济、科技等重点事件摘要”这种凑字数的套话，必须写出具体的事件内容和进展，让搜索引擎抓取到确切新闻。
+1. 语气要带有“突发”、“重磅”等实时新闻的紧迫感（即适度的“标题党”），必须基于事实制造悬念或强调其巨大影响。
+2. title：生成一个极具冲击力的主标题（必须完整，严格控制在 32 字以内）。【极其重要】必须包含今天最核心、最具爆点的具体事件或实体。绝对禁止使用“新闻速览”、“大盘点”等废话。
+3. seo_summary：生成一段极度凝练且极具吸引力的新闻摘要（严格控制在 50 字以内）。提炼最震撼的核心事件，话术精简直击痛点，适合SEO且能瞬间抓住读者眼球。绝不要凑字数。
 4. timeline：一句话概括今天新闻的整体节奏或主要脉络（30-50字）。
 5. risk_watch：一句话提示从今天新闻中观察到的值得重点关注的演变趋势或风险点（30-50字）。
 6. 仅返回合法的 JSON 格式，禁止输出 markdown 代码块。
@@ -335,32 +335,35 @@ def build_ai_data_from_articles(
     if not translated_articles:
         raise RuntimeError("No translated articles were produced.")
 
-    # 新增：加入 3 秒休眠，防止上文连续的十几条翻译调用耗尽 API 并发限制
+    # 加入 3 秒休眠，防止上文连续的十几条翻译调用耗尽 API 并发限制
     time.sleep(3)
 
     metadata = generate_metadata(api_key, translated_articles)
 
     # ---------------------------------------------------------
-    # 核心优化：智能动态兜底（Smart Fallback）
-    # 就算 API 请求彻底报错了，也绝对不用“国际新闻速览”这种空壳
-    # 直接提取今天最重磅的前两条新闻标题和摘要作为替代！
+    # 极其严谨的备用兜底策略 (Smart Fallback)
+    # 强制限制备用 title 在 32 字以内，备用 summary 在 50 字以内
     # ---------------------------------------------------------
-    fallback_t1 = translated_articles[0]["title_cn"].split("，")[0].split("：")[0][:14]
+    fallback_t1 = translated_articles[0]["title_cn"].split("，")[0].split("：")[0][:12]
     fallback_t2 = ""
     if len(translated_articles) > 1:
-        fallback_t2 = translated_articles[1]["title_cn"].split("，")[0].split("：")[0][:12]
+        fallback_t2 = translated_articles[1]["title_cn"].split("，")[0].split("：")[0][:10]
         
-    smart_title = f"{fallback_t1}，{fallback_t2}等国际要闻" if fallback_t2 else f"{fallback_t1}及今日国际要闻"
+    smart_title = f"突发！{fallback_t1}；{fallback_t2}等重磅要闻" if fallback_t2 else f"重磅：{fallback_t1}最新局势进展"
+    smart_title = smart_title[:32] # 绝对防爆限长 32字
     
-    smart_summary = f"今日重点关注：{translated_articles[0]['summary_cn']} "
-    if len(translated_articles) > 1:
-        smart_summary += f"此外，内容还跟踪了：{translated_articles[1]['title_cn']} 等共 {len(translated_articles)} 条核心事件最新进展。"
+    first_summary_brief = translated_articles[0]['summary_cn'][:32]
+    smart_summary = f"突发重磅：{first_summary_brief}...速看国际局势详情。"
+    smart_summary = smart_summary[:50] # 绝对防爆限长 50字
 
-    # 如果 metadata 为 {}，将直接采用自带 SEO 实体的智能兜底
     title = metadata.get("title") or smart_title
     seo_summary = metadata.get("seo_summary") or smart_summary
-    timeline = metadata.get("timeline") or "当天国际新闻节奏密集，多板块地缘与市场信息交替成为焦点。"
-    risk_watch = metadata.get("risk_watch") or "后续可重点关注重大事件演变对全球供应链、能源定价及市场预期的传导。"
+    timeline = metadata.get("timeline") or "当天国际新闻节奏密集，多板块地缘与市场信息交替成为核心焦点。"
+    risk_watch = metadata.get("risk_watch") or "请高度警惕重大事件演变对全球供应链、能源定价及市场预期的传导。"
+
+    # 强制二次裁剪，确保 AI 即便违背提示词规则，返回的长度也绝对符合你的要求
+    title = title[:32]
+    seo_summary = seo_summary[:50]
 
     cover_source_index = translated_articles[0]["source_index"]
     for item in news_items:
@@ -381,7 +384,7 @@ def build_ai_data_from_articles(
             "timeline": timeline,
             "risk_watch": risk_watch,
         },
-        "tags":["国际新闻", "全球经济", "地缘局势", "科技商业", "能源供应"],
+        "tags":["国际新闻", "全球经济", "地缘局势", "科技商业", "突发要闻"], # 标签增加了“突发要闻”
     }
 
 
@@ -414,15 +417,15 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
     if not isinstance(ai_data, dict):
         raise ValueError("Model output is not a JSON object.")
 
-    title = normalize_whitespace(str(ai_data.get("title", "今日国际宏观观察")))
+    title = normalize_whitespace(str(ai_data.get("title", "突发！多国重磅消息流出，国际局势突变")))[:32]
     seo_summary = normalize_whitespace(
         str(
             ai_data.get(
                 "seo_summary",
-                "聚焦国际局势、全球经济、科技产业与重大风险事件的每日要点。",
+                "重磅进展：深入追踪当日核心突发动态，一文看懂地缘冲突、宏观经济与科技巨头最新异动。",
             )
         )
-    )
+    )[:50]
     intro_paragraphs = ensure_list_of_strings(
         ai_data.get("intro_paragraphs",[]), "intro_paragraphs", min_items=2
     )[:2]
@@ -755,8 +758,6 @@ def attach_article_images(ai_data: dict[str, Any], news_items: list[dict[str, An
 
     return selected_cover or FALLBACK_COVER_URL
 
-
-# ================== 以下为优化后的 UI 代码 ================== #
 
 def render_paragraph(text: str, extra_style: str = "") -> str:
     style = (
