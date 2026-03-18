@@ -7,6 +7,7 @@ import json
 import mimetypes
 import os
 import re
+import shutil
 import time
 from pathlib import Path
 from typing import Any
@@ -39,7 +40,7 @@ MODEL_NAME = "gemini-3.1-flash-lite-preview"
 REQUEST_TIMEOUT = 30
 PLAYWRIGHT_TIMEOUT_MS = 25000
 MAX_NEWS_ITEMS = 36
-MIN_NEWS_ITEMS = 10
+MIN_NEWS_ITEMS = 8
 MAX_IMAGE_DISCOVERY_ITEMS = 12
 MAX_IMAGES_PER_ARTICLE = 3
 MIN_IMAGE_WIDTH = 360
@@ -930,7 +931,44 @@ def save_outputs(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) -> s
     return json_file_name
 
 
+def clean_old_files(days_to_keep: int = 7) -> None:
+    cutoff_date = datetime.datetime.now(SHANGHAI_TZ) - datetime.timedelta(days=days_to_keep)
+
+    for file_path in Path(".").glob("Daily_News_*.md"):
+        file_date_str = file_path.stem.replace("Daily_News_", "")
+        try:
+            file_date = datetime.datetime.strptime(file_date_str, "%Y-%m-%d").replace(tzinfo=SHANGHAI_TZ)
+            if file_date < cutoff_date:
+                file_path.unlink()
+                print(f"Deleted old file: {file_path}")
+        except ValueError:
+            continue
+
+    for file_path in Path(".").glob("Daily_News_*.json"):
+        file_date_str = file_path.stem.replace("Daily_News_", "")
+        try:
+            file_date = datetime.datetime.strptime(file_date_str, "%Y-%m-%d").replace(tzinfo=SHANGHAI_TZ)
+            if file_date < cutoff_date:
+                file_path.unlink()
+                print(f"Deleted old file: {file_path}")
+        except ValueError:
+            continue
+
+    assets_dir = Path("assets") / "generated"
+    if assets_dir.exists():
+        for date_dir in assets_dir.iterdir():
+            if date_dir.is_dir():
+                try:
+                    dir_date = datetime.datetime.strptime(date_dir.name, "%Y-%m-%d").replace(tzinfo=SHANGHAI_TZ)
+                    if dir_date < cutoff_date:
+                        shutil.rmtree(date_dir)
+                        print(f"Deleted old directory: {date_dir}")
+                except ValueError:
+                    continue
+
+
 def main() -> None:
+    clean_old_files()
     api_key = require_api_key()
     feed = fetch_feed()
     news_items = collect_news_items(feed)
