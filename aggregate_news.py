@@ -36,13 +36,29 @@ NEWS_SOURCE_URL = (
 )
 DEFAULT_REPOSITORY = "duguBoss/daily-news-hub"
 DEFAULT_BRANCH = "main"
-MODEL_NAME = "gemini-3.1-flash-lite-preview"
+GEMINI_MODELS = [
+    model.strip()
+    for model in os.environ.get(
+        "GEMINI_MODELS",
+        (
+            "gemini-3.1-pro-preview,"
+            "gemini-3-flash-preview,"
+            "gemini-3.1-flash-lite-preview,"
+            "gemini-2.5-flash,"
+            "gemini-2.5-flash-lite,"
+            "gemini-2.5-pro"
+        ),
+    ).split(",")
+    if model.strip()
+]
+GEMINI_MODEL_RETRIES = max(1, int(os.environ.get("GEMINI_MODEL_RETRIES", "2")))
 REQUEST_TIMEOUT = 30
 PLAYWRIGHT_TIMEOUT_MS = 25000
 MAX_NEWS_ITEMS = 36
 MIN_NEWS_ITEMS = 8
 MAX_IMAGE_DISCOVERY_ITEMS = 12
 MAX_IMAGES_PER_ARTICLE = 3
+MIN_REQUIRED_ARTICLE_IMAGES = 3
 MIN_IMAGE_WIDTH = 360
 MIN_IMAGE_HEIGHT = 200
 SHANGHAI_TZ = pytz.timezone("Asia/Shanghai")
@@ -171,10 +187,22 @@ def build_fallback_ai_data(news_items: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def call_gemini(api_key: str, prompt: str) -> str:
+def is_quota_or_rate_limit_error(error_text: str) -> bool:
+    text = (error_text or "").lower()
+    return (
+        "resource_exhausted" in text
+        or "quota exceeded" in text
+        or "insufficient_quota" in text
+        or "rate limit" in text
+        or "(429)" in text
+        or " 429" in text
+    )
+
+
+def request_gemini(api_key: str, prompt: str, model_name: str) -> str:
     url = (
         "https://generativelanguage.googleapis.com/v1beta/models/"
-        f"{MODEL_NAME}:generateContent?key={api_key}"
+        f"{model_name}:generateContent?key={api_key}"
     )
     payload = {
         "contents":[{"parts":[{"text": prompt}]}],
@@ -202,7 +230,7 @@ def call_gemini(api_key: str, prompt: str) -> str:
     )
     if response.status_code != 200:
         raise RuntimeError(
-            f"Gemini API request failed with status {response.status_code}: {response.text}"
+            f"{model_name} request failed ({response.status_code}): {response.text}"
         )
 
     result_json = response.json()
@@ -217,7 +245,28 @@ def call_gemini(api_key: str, prompt: str) -> str:
     try:
         return parts[0]["text"]
     except (KeyError, IndexError) as exc:
-        raise RuntimeError(f"Unexpected Gemini response shape: {result_json}") from exc
+        raise RuntimeError(f"{model_name} returned unexpected response shape: {result_json}") from exc
+
+
+def call_gemini(api_key: str, prompt: str) -> str:
+    last_error = None
+    for model_name in GEMINI_MODELS:
+        for attempt in range(1, GEMINI_MODEL_RETRIES + 1):
+            try:
+                return request_gemini(api_key=api_key, prompt=prompt, model_name=model_name)
+            except Exception as exc:
+                last_error = exc
+                print(
+                    f"Gemini attempt {attempt}/{GEMINI_MODEL_RETRIES} with {model_name} failed: {exc}"
+                )
+                if attempt < GEMINI_MODEL_RETRIES:
+                    time.sleep(1.2 * attempt)
+                if is_quota_or_rate_limit_error(str(exc)):
+                    continue
+
+    raise RuntimeError(
+        f"Gemini failed on all fallback models after retries. Last error: {last_error}"
+    )
 
 
 def parse_model_json(raw_text: str) -> dict[str, Any]:
@@ -268,6 +317,8 @@ def translate_news_items(api_key: str, news_items: list[dict[str, Any]]) -> list
 
     for item in news_items:
         prompt = build_article_translation_prompt(item)
+        fallback_title = item["title"]
+        fallback_summary = item["summary"][:120] or item["title"]
         try:
             raw_text = call_gemini(api_key, prompt)
             translated = parse_model_json(raw_text)
@@ -276,8 +327,9 @@ def translate_news_items(api_key: str, news_items: list[dict[str, Any]]) -> list
             if not title_cn or not summary_cn:
                 raise ValueError("Missing translated fields.")
         except Exception as exc:
-            print(f"Skipping article {item['index']} due to translation failure: {exc}")
-            continue
+            print(f"Translation failed for article {item['index']}, using fallback text: {exc}")
+            title_cn = fallback_title
+            summary_cn = fallback_summary
 
         translated_articles.append(
             {
@@ -529,6 +581,56 @@ def validate_ai_data(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) 
     }
 
 
+def is_valid_image_url(url: str) -> bool:
+    value = normalize_whitespace(str(url))
+    if not value:
+        return False
+    parsed = urlparse(value)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return False
+    path = parsed.path.lower()
+    return any(path.endswith(ext) for ext in (".jpg", ".jpeg", ".png", ".webp", ".gif"))
+
+
+def sanitize_image_url_list(urls: list[Any]) -> list[str]:
+    cleaned: list[str] = []
+    seen: set[str] = set()
+    for raw in urls:
+        value = normalize_whitespace(str(raw))
+        if not value or value in seen:
+            continue
+        if not is_valid_image_url(value):
+            continue
+        seen.add(value)
+        cleaned.append(value)
+    return cleaned
+
+
+def normalize_news_item_images(item: dict[str, Any]) -> None:
+    valid_urls = sanitize_image_url_list(item.get("image_urls", []))
+    valid_paths = [normalize_whitespace(str(path)) for path in item.get("image_paths", []) if str(path).strip()]
+
+    item["image_urls"] = valid_urls
+    item["image_paths"] = valid_paths[: len(valid_urls)]
+    if valid_urls:
+        item["image_url"] = valid_urls[0]
+        item["image_path"] = item["image_paths"][0] if item["image_paths"] else ""
+    else:
+        item["image_url"] = ""
+        item["image_path"] = ""
+        item["image_source"] = ""
+        item["image_caption"] = ""
+
+
+def count_news_items_with_images(news_items: list[dict[str, Any]]) -> int:
+    count = 0
+    for item in news_items:
+        normalize_news_item_images(item)
+        if item.get("image_urls"):
+            count += 1
+    return count
+
+
 def score_image_candidate(candidate: dict[str, Any]) -> int:
     src = candidate.get("src", "")
     width = int(candidate.get("width") or 0)
@@ -657,22 +759,35 @@ def download_image(image_url: str, target_dir: Path, file_stem: str, referer: st
     return str(relative_path.as_posix()), raw_asset_url(relative_path)
 
 
-def enrich_news_images(news_items: list[dict[str, Any]], date_str: str) -> None:
+def enrich_news_images(
+    news_items: list[dict[str, Any]],
+    date_str: str,
+    max_items: int | None = None,
+    only_missing: bool = True,
+) -> None:
     if not PLAYWRIGHT_AVAILABLE:
         print("Playwright is not installed. Skipping article image discovery.")
         return
 
     target_dir = ASSET_ROOT / date_str
+    candidate_items = [
+        item
+        for item in news_items
+        if item.get("google_news_url") and (not only_missing or not item.get("image_urls"))
+    ]
+    if max_items is not None and max_items > 0:
+        candidate_items = candidate_items[:max_items]
+
+    if not candidate_items:
+        return
+
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
         context = browser.new_context()
         page = context.new_page()
         page.set_default_navigation_timeout(PLAYWRIGHT_TIMEOUT_MS)
 
-        for item in news_items[:MAX_IMAGE_DISCOVERY_ITEMS]:
-            if not item["google_news_url"]:
-                continue
-
+        for item in candidate_items:
             try:
                 page.goto(item["google_news_url"], wait_until="domcontentloaded")
                 page.wait_for_timeout(1800)
@@ -738,9 +853,42 @@ def enrich_news_images(news_items: list[dict[str, Any]], date_str: str) -> None:
                     item["image_path"] = image_path
                     item["image_source"] = candidate["src"]
                     item["image_caption"] = item["title"]
+            normalize_news_item_images(item)
 
         context.close()
         browser.close()
+
+
+def ensure_minimum_article_images(news_items: list[dict[str, Any]], date_str: str) -> None:
+    current_with_images = count_news_items_with_images(news_items)
+    if current_with_images >= MIN_REQUIRED_ARTICLE_IMAGES:
+        return
+
+    if not PLAYWRIGHT_AVAILABLE:
+        raise RuntimeError(
+            "Playwright is required to guarantee image availability, but it is not installed."
+        )
+
+    discovery_limits = [
+        max(MAX_IMAGE_DISCOVERY_ITEMS, MIN_REQUIRED_ARTICLE_IMAGES * 4),
+        min(len(news_items), max(MAX_IMAGE_DISCOVERY_ITEMS * 2, MIN_REQUIRED_ARTICLE_IMAGES * 8)),
+        len(news_items),
+    ]
+    for limit in discovery_limits:
+        if current_with_images >= MIN_REQUIRED_ARTICLE_IMAGES:
+            break
+        enrich_news_images(news_items, date_str=date_str, max_items=limit, only_missing=True)
+        current_with_images = count_news_items_with_images(news_items)
+        print(
+            f"Image coverage check: {current_with_images} articles with valid images "
+            f"(required {MIN_REQUIRED_ARTICLE_IMAGES}, scanned up to {limit})."
+        )
+
+    if current_with_images < MIN_REQUIRED_ARTICLE_IMAGES:
+        raise RuntimeError(
+            f"Not enough articles with valid images after retries: "
+            f"{current_with_images}/{MIN_REQUIRED_ARTICLE_IMAGES}."
+        )
 
 
 def attach_article_images(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) -> str:
@@ -749,11 +897,14 @@ def attach_article_images(ai_data: dict[str, Any], news_items: list[dict[str, An
 
     if ai_data["cover_source_index"]:
         cover_item = news_by_index.get(ai_data["cover_source_index"])
-        if cover_item and cover_item["image_url"]:
-            selected_cover = cover_item["image_url"]
+        if cover_item:
+            normalize_news_item_images(cover_item)
+            if cover_item["image_url"]:
+                selected_cover = cover_item["image_url"]
 
     if not selected_cover:
         for item in news_items:
+            normalize_news_item_images(item)
             if item["image_urls"]:
                 selected_cover = item["image_urls"][0]
                 break
@@ -762,6 +913,7 @@ def attach_article_images(ai_data: dict[str, Any], news_items: list[dict[str, An
         item = news_by_index.get(article["source_index"])
         if not item:
             continue
+        normalize_news_item_images(item)
         article["image_urls"] = item["image_urls"][:]
         article["image_caption"] = item["title"]
         article["image_source"] = item["resolved_url"] or item["google_news_url"]
@@ -894,11 +1046,23 @@ def save_outputs(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) -> s
     cover_url = attach_article_images(ai_data, news_items)
     html_content = render_html(ai_data, news_items, cover_url, current_time)
     markdown_content = render_markdown(ai_data, news_items, cover_url, current_time)
-    peitu_urls = [
-        article["image_urls"][0]
-        for article in ai_data["articles"]
-        if article.get("image_urls")
-    ]
+    peitu_urls: list[str] = []
+    seen_peitu: set[str] = set()
+    for article in ai_data["articles"]:
+        article_urls = sanitize_image_url_list(article.get("image_urls", []))
+        if not article_urls:
+            continue
+        first_url = article_urls[0]
+        if first_url in seen_peitu:
+            continue
+        seen_peitu.add(first_url)
+        peitu_urls.append(first_url)
+
+    if len(peitu_urls) < MIN_REQUIRED_ARTICLE_IMAGES:
+        raise RuntimeError(
+            f"peitu_url must include at least {MIN_REQUIRED_ARTICLE_IMAGES} valid image URLs, "
+            f"but got {len(peitu_urls)}."
+        )
 
     final_output = {
         "title": ai_data["title"],
@@ -973,7 +1137,7 @@ def main() -> None:
     feed = fetch_feed()
     news_items = collect_news_items(feed)
     date_str = datetime.datetime.now(SHANGHAI_TZ).strftime("%Y-%m-%d")
-    enrich_news_images(news_items, date_str)
+    ensure_minimum_article_images(news_items, date_str)
     try:
         translated_articles = translate_news_items(api_key, news_items)
         ai_data = build_ai_data_from_articles(api_key, translated_articles, news_items)
