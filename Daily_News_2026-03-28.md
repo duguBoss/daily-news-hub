@@ -1,137 +1,185 @@
-# 突发重磅！持续一个月的冲突摧毁了伊朗三分之一的导弹储备
+# 重磅！伊朗以色列互袭核设施，中东战火全面升级！
 
-## 美国情报显示：持续一个月的冲突摧毁了伊朗三分之一的导弹储备
-
-
-据美国情报部门评估，在持续一个月的军事冲突中，伊朗约三分之一的导弹储备已被摧毁。与此同时，以色列誓言将升级对伊朗的打击行动，美国外交官鲁比奥则对定居者暴力事件表示谴责。
-
-## 以色列防长卡茨警告：将加大对伊朗打击力度，以应对伊朗持续的导弹袭击
+## 伊朗支持的胡塞武装向以色列发射导弹，正式卷入伊朗相关冲突
 
 
-以色列国防部长卡茨表示，鉴于伊朗持续向以色列平民区发射导弹，以方将加大打击力度。与此同时，伊朗方面称将促进并加快通过霍尔木兹海峡的人道主义援助物资运输。
+据《纽约时报》及CNN报道，伊朗支持的胡塞武装近日对以色列发动导弹袭击。这一行动标志着胡塞武装正式介入与伊朗相关的地区冲突，局势进展引发国际社会高度关注。
 
-## 乌克兰寻求与中东国家达成协议以应对伊朗无人机威胁
-
-
-乌克兰正积极与中东国家商讨防务合作，旨在获取技术支持以应对伊朗无人机威胁。乌克兰总统泽连斯基已开启海湾国家访问行程，并与沙特阿拉伯签署了相关无人机技术协议。
-
-## 尼泊尔最年轻总理宣誓就职，此前曾发布团结主题说唱歌曲
+## 法国警方在巴黎挫败针对美国银行的恐袭企图，嫌疑人试图引爆自制炸弹
 
 
-尼泊尔新任总理沙阿在选举获胜后正式宣誓就职。作为该国历史上最年轻的总理，他此前曾发布一首关于国家团结的说唱歌曲，引发广泛关注。
+法国警方在巴黎美国银行大楼外挫败一起恐怖袭击企图。嫌疑人试图引爆自制炸弹，但在最后时刻被警方制止。该事件目前已得到控制，警方正对袭击动机及相关嫌疑人展开深入调查。
 
-## 美国与以色列打击伊朗核设施，德黑兰袭击海湾地区目标
-
-
-据彭博社及美联社报道，在以色列警告升级军事行动后，伊朗称其核设施遭到打击。与此同时，德黑兰对海湾地区发动了袭击，局势正在进一步升级。
-
-## 科学家首次拍摄到抹香鲸分娩过程，同伴在旁协助保护
+## 加拿大魁北克省小岛举行大斋期中期庆祝活动，民众佩戴面具跳起吉格舞
 
 
-《卫报》报道，科学家首次记录了抹香鲸的分娩过程。观察发现，其他抹香鲸在分娩期间通过协作行为提供保护与协助，该研究已发表于《科学报告》期刊，揭示了抹香鲸复杂的社会行为与交流方式。
+在进入大斋期一半之际，加拿大魁北克省的一座小岛举行了传统庆祝活动。当地居民通过佩戴面具和跳吉格舞的方式，延续了这一历史悠久的民俗。该活动标志着严谨斋戒期中的短暂欢乐时刻，充分展现了当地独特的社区文化特色。
+
+## 霍尔木兹海峡石油运输恢复的前提条件：伊朗军事优势与地缘政治风险
+
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/generated/2026-03-28/04-1-here-s-what-needs-to-happen-before-oil-starts-flowing-throug-9c04a0f024e5.jpg
+
+哥伦比亚广播公司分析了恢复霍尔木兹海峡石油运输的必要条件。伊朗凭借水雷、导弹和海岸线优势掌控局势，特朗普政府正面临新的石油供应挑战，航运保险和安全局势成为各方关注的焦点。
+
+## 伊朗袭击沙特阿拉伯苏丹王子空军基地导致12名美军受伤
+
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/generated/2026-03-28/05-1-12-americans-injured-in-iranian-strike-on-prince-sultan-air--e11883872486.jpg
+
+据福克斯新闻和纽约时报报道，伊朗对沙特阿拉伯苏丹王子空军基地发动袭击，造成12名美国士兵受伤，其中2人伤势严重。目前美国官员已证实该消息，这是该地区紧张局势的最新进展。
+
+## 乌克兰总统泽连斯基访问海湾国家，与卡塔尔及阿联酋签署国防合作协议
+
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/generated/2026-03-28/06-1-qatar-and-ukraine-sign-defence-agreement-amid-zelenskyy-gulf-850e4fcf6b70.jpg
+
+乌克兰总统泽连斯基近日出访海湾地区，先后与卡塔尔、阿联酋及沙特阿拉伯达成国防合作协议。此次访问旨在深化军事合作，在国际局势变动中为乌克兰拓展新的安全伙伴关系。
+
+## 卢比奥告知盟友伊朗战争将持续2至4周，美军空袭行动正在升级
+
+
+美国外交官卢比奥告知盟友，对伊朗战争预计还将持续2至4周。随着空袭行动升级，卢比奥认为战事将在数周内结束，同时他对霍尔木兹海峡的局势及暴力行为表示谴责。
+
+## 伊朗战争引发全球化肥短缺及粮价波动，粮食供应链面临瓶颈
+
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/generated/2026-03-28/08-1-the-war-in-iran-sparks-a-global-fertilizer-shortage-and-thre-c63836e3b3c8.jpg
+
+随着伊朗冲突持续，全球化肥出口中断引发供应短缺，直接威胁国际粮食价格。美联社报道指出，中东冲突的最新后果使全球粮食供应链陷入危险瓶颈，增加了农业生产成本。
+
+## 明尼苏达州将举办No Kings旗舰集会，布鲁斯·斯普林斯汀领衔出席
+
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/generated/2026-03-28/09-1-minnesota-to-host-no-kings-flagship-rally-headlining-springs-9b6e10ba7779.jpg
+
+明尼苏达州圣保罗市正筹备No Kings旗舰集会，布鲁斯·斯普林斯汀将领衔参加。在涉及ICE及战争的紧张局势下，该活动旨在表达相关立场。目前集会现场的各项准备工作正在进行中。
+
+## 以色列轰炸两座伊朗革命卫队关联钢厂及两处核设施，伊朗誓言报复
+
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/generated/2026-03-28/10-1-israel-bombs-2-irgc-linked-steel-plants-2-nuclear-facilities-54b48800b733.jpg
+
+以色列对伊朗境内两座关联革命卫队的钢铁厂和两处核设施实施轰炸。伊朗方面随后誓言将对此举展开报复。此次行动加剧了地区紧张局势，目前双方正就后续影响及潜在的反击行动进行表态。
+
+## 教宗利奥访问摩纳哥，寻求在促进和平与信仰方面的合作
+
+
+教宗利奥开启2026年首次出访，抵达摩纳哥这一天主教国家。双方在促进全球和平与信仰传播方面达成共识，教宗并呼吁在国际社会中实现更大程度的公正。
+
+## 伊朗向以色列发射弹道导弹，以多地拉响防空警报
+
+
+伊朗向以色列南部及中部地区发射多枚弹道导弹，导致多地拉响防空警报。据报道，有导弹落入内盖夫地区的开阔地带，以色列军方已采取针对伊朗导弹发射装置的军事行动。
+
+## 伊朗霍尔木兹海峡局势引发担忧，油价或将维持L型平稳而非V型反弹
+
+
+受霍尔木兹海峡航运局势影响，全球贸易面临不确定性。分析指出，原油价格走势可能呈现L型平稳状态，而非市场预期的V型快速反弹，该地区已成为全球贸易的潜在薄弱环节。
 
 ## 波罗的海度假区搁浅鲸鱼已脱离沙洲，但生存状况仍不容乐观
 
 
-近日，一条在波罗的海度假区搁浅的鲸鱼成功从沙洲游回深水区。尽管该鲸鱼已脱离搁浅状态，但专家表示其健康状况依然令人担忧，目前尚处于危险之中。
+据美联社报道，一条在波罗的海度假区搁浅的鲸鱼目前已成功从沙洲游离。尽管脱离了搁浅状态，但专家表示该鲸鱼的健康状况依然令人担忧，尚未完全脱离危险。
 
-## 伊朗战争持续引发全球粮食供应瓶颈与肥料价格上涨风险
+## 中东冲突持续引发担忧，美国在亚洲盟友对地缘政治风险感到不安
 
 
-受伊朗战争持续影响，全球粮食供应链正面临严峻瓶颈。肥料成本的显著攀升对全球农业生产造成压力，并可能进一步导致终端消费市场的食品价格上涨。
+据《华盛顿邮报》报道，中东战争的长期化加剧了美国亚洲盟友的深层忧虑。各国担心对美国的过度依赖可能在当前动荡的国际局势中转化为自身脆弱性，并对跨大西洋及全球盟友关系的稳定性产生担忧。
+
+## 匈牙利总理欧尔班在公开活动中因乌克兰立场遭民众嘘声
+
+
+匈牙利总理欧尔班近期在公开场合因其乌克兰政策立场遭到现场民众嘘声，引发舆论关注。欧盟方面对此表示，希望匈牙利即将到来的选举能改变欧尔班政府在欧盟决策中的阻碍立场。
+
+## 美联社分析：非洲再次因全球性危机遭受严重负面影响
+
+
+美联社报道指出，非洲大陆再次受到全球性危机的冲击。尽管非洲在这些危机的起因中并未扮演任何角色，但其经济与社会发展却因此承受了沉重的代价，面临严峻挑战。
+
+## 英国皇家海军女水兵因多次性侵舰上船员被判有罪
+
+
+一名英国皇家海军女水兵因在军舰上多次性侵犯船员而被判有罪。她被指控选择那些不太可能投诉的受害者，并进行机会主义性侵犯。
+
+## 科学家首次拍摄到抹香鲸分娩过程，同伴在旁协作提供辅助
+
+
+据《卫报》报道，科学家首次拍摄到抹香鲸分娩的珍贵画面，记录了其他抹香鲸在分娩过程中协作提供辅助的行为，该研究已发表于《科学报告》期刊。
 
 ## 消息人士称伊朗预计将于周五对美国和平提案作出回应
 
 
-据哥伦比亚广播公司报道，伊朗已拒绝美国的停火方案并提出了自身条件。消息人士透露，伊朗预计将于本周五就美国提出的和平提案作出正式回应。
+据路透社及哥伦比亚广播公司报道，消息人士透露伊朗预计将于周五针对美国提出的和平提案作出正式回应。此前有报道称伊朗在拒绝美方提议后提出了结束冲突的五项条件。
 
-## 教皇方济各向坎特伯雷大主教承诺在真理与爱中进行对话
-
-
-梵蒂冈新闻报道，教皇方济各向坎特伯雷大主教保证，双方将继续在真理与爱的基础上进行宗教对话。据悉，教皇计划于四月与新任坎特伯雷大主教举行会晤。
-
-## 巴尔干半岛遭遇强风暴雪天气，多地学校关闭道路受阻且电力中断
+## 乌克兰无人机据报袭击俄罗斯雅罗斯拉夫尔市炼油厂
 
 
-受强风与暴雪天气影响，巴尔干半岛多个国家出现交通中断、学校停课及电力供应故障。相关部门正积极应对恶劣天气带来的基础设施损害，目前灾情评估工作仍在持续进行中。
+据基辅独立报报道，乌克兰无人机袭击了俄罗斯雅罗斯拉夫尔市的一家炼油厂。路透社数据分析显示，近期袭击已导致俄罗斯约40%的石油出口产能被迫中断。
 
-## 气旋袭击澳大利亚能源设施导致液化天然气供应进一步削减
-
-
-受气旋“纳雷尔”影响，澳大利亚沿海地区遭遇恶劣天气，该国多家大型液化天然气（LNG）工厂被迫停产，导致液化天然气供应量进一步减少。
-
-## 乌克兰抵御俄军增强攻势并袭击俄罗斯石油出口设施
+## 匈牙利记者被控间谍罪，称遭欧尔班政府情报人员监视
 
 
-乌克兰近期成功抵御了俄罗斯增强的军事攻势，并对俄罗斯石油基础设施发动袭击。据报道，乌斯季卢加码头受损可能迫使俄罗斯炼油厂削减产量，俄罗斯波罗的海主要石油港口再次发生火灾。
+匈牙利一名记者被控从事间谍活动并面临相关调查。该记者公开指控欧尔班政府派遣情报人员对其进行监视。此事件引发了外界对匈牙利政府监控行为的质疑，并导致相关政治争议持续发酵。
 
-## 西班牙25岁女子诺埃利亚·卡斯蒂略在接受安乐死前接受电视采访
-
-
-25岁的西班牙女子诺埃利亚·卡斯蒂略在经历了20个月的法律抗争后，于周四获准执行安乐死。在程序实施前数小时，她接受了电视媒体采访，公开讲述了其寻求安乐死的经历。
-
-## 联合国报告称叙利亚苏韦达暴力事件致1700人死亡，或涉战争罪
+## 伊朗与以色列互换打击之际，伊朗采取行动试图加强对霍尔木兹海峡的控制
 
 
-据路透社报道，联合国调查显示叙利亚苏韦达省发生的暴力冲突已造成1700人死亡。联合国相关机构指出，这些事件可能构成战争罪，目前正对此进行进一步评估与记录。
+在伊朗与以色列近期发生多轮军事打击的背景下，伊朗正寻求加强对战略要道霍尔木兹海峡的控制权。国际社会密切关注该海峡的通航安全及可能引发的地区局势升级风险。
 
-## 匈牙利政府以涉嫌间谍罪名对一名知名记者提起刑事指控
-
-
-匈牙利政府近日对一名知名记者提起间谍罪指控。此前该记者曾报道称匈牙利政府部长与莫斯科方面存在联系，并声称自己受到匈牙利情报部门的监视。
-
-## 欧盟成员国推动在年底前建立境外非法移民遣返中心
+## 西班牙巴塞罗那25岁女子诺埃利亚·卡斯蒂略接受安乐死离世
 
 
-欧盟成员国正积极推动在欧盟境外建立遣返中心，欧洲议会已批准相关惩戒性拘留与遣返计划，旨在加强对非法移民的管理，并计划在今年年底前落实该项政策。
+西班牙巴塞罗那25岁女子诺埃利亚·卡斯蒂略在经历了长达20个月的法律争取后，于周四根据该国安乐死法接受了安乐死。此案此前在西班牙国内引发了广泛关注。
 
-## 国际法是否支持伊朗立场？联合国安理会相关指责引发争议
+## 美国与以色列打击伊朗核设施，德黑兰袭击海湾地区引发局势升级
 
 
-针对伊朗在国际冲突中的行为，舆论探讨国际法准则的适用性。部分观点质疑联合国安理会针对伊朗的立场，认为其忽视了国际法框架下的相关事实，引发关于战争规范与联合国宪章执行的讨论。
+据彭博社与半岛电视台报道，美国与以色列对伊朗核设施发动打击，德黑兰对此表示将进行报复并袭击了海湾地区。俄罗斯核能机构负责人对当前局势表示担忧，地区冲突风险进一步加剧。
+
+## 路透社：美国情报显示仅能确认伊朗约三分之一导弹库被摧毁
+
+
+据路透社援引消息人士报道，美国情报评估显示，在近期相关行动中，仅能确认伊朗约三分之一的导弹库存遭到摧毁。目前美国官方尚未对该评估结果的细节做出进一步公开说明。
+
+## 伊朗局势引发地缘政治变局，美国与以色列面临新秩序挑战
+
+
+随着伊朗军事力量的持续演变及地区冲突的延续，美国与以色列正面临日益复杂的地缘政治环境。相关分析指出，当前的地区局势正在揭示一种令两国感到不安的国际新秩序。
+
+## 胡塞武装卷入伊朗战争且霍尔木兹海峡持续封锁，特朗普寻求达成协议
+
+
+胡塞武装正式介入伊朗战争，霍尔木兹海峡仍处于封锁状态。与此同时，美国前总统特朗普正积极推动相关协议的达成，以应对当前持续升级的地区冲突局势。
 
 ## 编辑注
 
-- 新闻节奏：当天国际新闻节奏密集，多板块地缘与市场信息交替成为核心焦点。
-- 风险观察：请高度警惕重大事件演变对全球供应链、能源定价及市场预期的传导。
+- 新闻节奏：伊朗与以色列互袭升级，核设施遭打击，胡塞武装卷入，全球供应链受冲击。
+- 风险观察：中东战火恐失控，核设施遇袭加剧核扩散风险，全球能源与粮食危机迫在眉睫。
 
 ## 原始素材
 
-- [1] A month of war has destroyed a third of Iran's missiles, per U.S. intelligence - NPR | https://news.google.com/rss/articles/CBMiggFBVV95cUxPZU0teGhJamhGS0RQVDlib0JfdkZKOElHTWhhY2daSklaX1RvbU9lZkhJZXBLdjhjNnBJV25ldlFXV1czN1FiTW1DWlg0d0lDYWNvVnB6ZGNrMmQ3UDZ3ckVuNkdKWmdYZ24tTTJONEx2NU81Q3g0bWNYX0VBd0dkYV9R?oc=5
-- [2] Katz warns strikes on Iran to intensify as regime keeps up missile fire at Israeli civilian areas - The Times of Israel | https://news.google.com/rss/articles/CBMiugFBVV95cUxOcWpWZU5DOE5SLWdIYTh1RzlFdm51WjlZNzVJVFdqSUtnOXZFNl96aVJCZm4xZl9sdWZYRERPNW5vNTNjbGVVQUNFcHFtWk5lOHJBMGpxdHd5akwtYnNZS3ZTZEtrRUFIUFpaUkJGMU1BeFkwMGkxUElqNjI0WnlLM0stQm9PQl93dksteUl6aW1kakNOd2RadUtXR3B3aERiZkI0VjNfc3RaQXBUNjdLR2JFQ0tGV1FlOUHSAb8BQVVfeXFMT1MzYnV5aFZqRTV6N2RGTjVDTmd5Y1c5MzNzeTFaOGFZQ3N1aWRKOEowVTQzN0RsbVIwWHRwa083VFg0ZjA2NlBhT0UyRkRrRW1QbmlIRWdmZnFxU0poaUh0d2lQMjd6VUhrX0dtM2wySzIyLTZrZ1dqUjhjRmVBN0ZZVUl0a0ZKTjVBTzB1Uk1XUUhWREJUTnhFcTZXdkdwUi1wNkk2bjdPamVabGxnRlhBdnV6Szl4VjFkSVBJbVE?oc=5
-- [3] Ukraine closes on Mideast deals to help counter Iranian drones - Reuters | https://news.google.com/rss/articles/CBMipwFBVV95cUxNYUZobDF2eUt4U1BzRWo4bGJfWURPeEFKcDM2SDhaV0R5RmlGREN2MURYdUJ6RFphQ0JqWmVDUlg0bnVlcWw4U0pRZWpoQjN1alV3WHExMjZJUWVJaTU2NzB1X1UyMnJxNm5kMUFCaG43VlNwWWdEb0VRQjg2dEctMVI4NkhFT3lqckFWLVBFSUp2dlNjZWJ3SUpFeHU3OG5DVmlXNGtiWQ?oc=5
-- [4] Nepal’s youngest premier sworn in after releasing new rap song about unity - Al Jazeera | https://news.google.com/rss/articles/CBMitAFBVV95cUxObXZLdUZPSmRwN2NzTUx5TVVpdUFGZDFUZW0tTDY0MkRGRGt4RGhocjVPWFI4eXVhUGNmRVB0UW9aUFNJY1BYRFNlUE82WHYxdllpZzQ0d0pDbnVLNTlvMXBIdFBkdGdlNk5MZ3cteDFCOTZJTWhmRU9VaHpZZmxGYTZVem9wQ1UzV0hqSlZLU0QwcVl2UEhqTkVqNFhXd1NnZXY1TlB5S3BwdWVKWDMwRVRzQ1LSAboBQVVfeXFMT280LTAwQUNyeG5DVnJWeWM4OWxMek4xVzJ0NzBWYWtkVWYzVzlSRVlaTHA0YWVVRjlUMWE4R1RiWDNiam9oSjFUTFp5cGVOV0lmTjdCRXU5NkRMTFNfOUx4YzBleUJjcHRjNHVIZjkzeEg1c0xVc2JtUkFjQVFPS05IbEdxeTh1bnZxZldLNXp1MUJvUHY5RGFub1pYT0ZDTFdkR2lXS181VmhPOFY2QlhaQnM1Y1djaXV3?oc=5
-- [5] US, Israel Hit Iran’s Nuclear Facilities as Tehran Attacks Gulf - Bloomberg.com | https://news.google.com/rss/articles/CBMiswFBVV95cUxPT1lyU19ZVDZLRWc2emFWcWhUcFo5clVjM0N5R2FVQ3ZZZjQtOExQV0hpZ2xScEU3Xy1yUmYtR3hTenNLaWtlZUREdGZ4Ni1lNjZ0RzZGeWhRaU4wUHhHTm5OM1RYLTZKNUVQY2JfdGVnVzVLODE4N3kwOG1fb3AxWDhvYlBub29XdXZ6MGJkWVVTVXBwRGtET1JkM2Z1dXpXTF9EcEpYUmlnMlVoOVVmcXctaw?oc=5
-- [6] Scientists film whale giving birth while other whales work together to help her - The Guardian | https://news.google.com/rss/articles/CBMirAFBVV95cUxQZWlQQ0FBSFI5bzhvYlpaZmNqUTBtMEVBS1lSRkVjek1sY0hudVV3WHh5M1RQM3VmVGx3WUpRTm9sd2gtcXNyeHhyQzdkMFduX1VIdUdudmpVRE5qeEZtay1XQmpvYzRDX1A3dzRRaFdTaXdxa1BqR0d5eUZ6MU15X3h6d296MTI3bEI1cWY4SlJzV3daUnR6MDZjQURTRGFGSksxVGhzN1ozaklZ?oc=5
-- [7] A whale stranded at a Baltic Sea resort has swum off a sandbank. But it isn’t safe yet - AP News | https://news.google.com/rss/articles/CBMiogFBVV95cUxNczJwZS14UzZXM2E3YXEzQXBmZEhobW5reFlKT0pmaFkyLUNxR1BLTlRLc3NBcW5hVkhtMTBGNnFyME1mZEJRVUhzcWxtWTZ2M21ZY1l6WWlXSExJTjRLNjM5dlhiSWRDR0dxMlFGaDRWRzZFaFBtQ0l1b3lfQTlLSUtuVTh4SUU4V2ZlLVZpdFNYZGs0RHZ0blJYMnQ3SHBJVnc?oc=5
-- [8] Global Food Supply Faces a Dangerous Bottleneck as Iran War Persists - The New York Times | https://news.google.com/rss/articles/CBMikgFBVV95cUxQQUxTekxqSkpMNTByYjU1d1BySU43WjM5NDhFMFk2ZVFOcmVVZEQtUnVFVjJERHRUblRFdVM2WVZJbWlLRWdmU2VKUE5lZFNVRmhDMU83TVdnSTBGZUhtMmoyV09EbWlXWnhUMGZKNWpvaE5zdDVCbjVZSUVvVXdMYi1OeWROTGNIT193RklkUW1ZQQ?oc=5
-- [9] Iran's response to U.S. peace proposal expected Friday, sources say - CBS News | https://news.google.com/rss/articles/CBMic0FVX3lxTE95Q3NHRmx3eUZsa3U2dWR4QnRBWWU1OXdOMEo3VnNmcmx5VlNSUVMxYzhPdkYyYWw1RDg1QTRfT1Y4ZTNmcFlxRkg3RGJvTE92MUdlWGJWbUt0SFBMNktKbXBUZnpHdlc1NTF6bG1Ld2ZPcTTSAXhBVV95cUxNTmZldi1SVVRCenhXQWFtemRtb3JYRmx5RVNXSDhDRHVlMEZGaEswVnpzcGI1VDhWbXZmeTJKMnkwQUZyZERYU1dCMXlkTXhJbmJHTFZ1V3FlYU1VZEdsVkZ3ajVlX1hZdGtiWDdUNDI3TTdrVkpiNDc?oc=5
-- [10] Pope assures Archbishop of Canterbury of dialogue 'in truth and love‘ - Vatican News | https://news.google.com/rss/articles/CBMiqAFBVV95cUxPTjVFYm50YngyVkppOXE0YkxwRnNSQ2pLdlRDWGNaWUI4VlFHSE1UbHd1TnVfdEJSeEttb0x6SXd4TGt1U3RDTFNrTzZ2REdKd2ZlUmw4V1VrUUsyVG1QM3VFU3FLdzdfV3FBUFRBU000MUZFcHh4MVR6UHUtTmVaNU1HbW40bGR6VjUyXzRYUGpKaE1XRjZpU3NzVm9TX2JHUmlzS0hmbjc?oc=5
-- [11] Snow and stormy winds close schools and roads, and cut power in some Balkan countries - AP News | https://news.google.com/rss/articles/CBMinAFBVV95cUxPSkh4cjFpX2FuTzItYVF5Y0xvQU03OWxpM2ZPZmY5Nml5WmRGdnlGVkJPWVhGUG9sclhwcWI5Y2NPYVZ1TElMUlBaajRZZmgxWUZaQzFCN1JlQnZKakM5UUVhVDBVMU15Y3ZvMkVydHlYaDRHSmtTbWUwc3Uzek1NWF8wdFYwZTl3M191WHpYLS1zQW9BMTVzSHdjSE0?oc=5
-- [12] LNG Supply Cut Further After Cyclone Hits Australian Plants - Bloomberg.com | https://news.google.com/rss/articles/CBMitAFBVV95cUxOa2w5UzBodlhpMW9ZTnVVWVpOS1V3Rlh4VlFYMDV4b2NyeWRucHRyNUFMZmdOYkJnVkxzZHVBX0IwcUZGV0Q5UF84Y0dFay1ZRFRyMGJZN2dJNmI1bUdaaWdNSXZoR0FqWkotelM0Y2s2RmlqeWVLcVhFZ014cU9hX0J2TlRYWEJQSWF6MDMyTWUxMktCQVk1X1BXbGptbGRhblJwTEZRc3RhNjNydC1GV1NEdUg?oc=5
-- [13] Ukraine fends off increased attacks, strikes Russian oil revenue - Al Jazeera | https://news.google.com/rss/articles/CBMirAFBVV95cUxPX0E5cDdQcjhRbUFGM3R5Uk01a2VkUVNXeVA5RFltUHB3TUlCSUxkc05Mc3JnX1Z3dnVXNXByZUdyb3NqZFFmS21QMWZ6eGRBb3EzQ2NvU2k2bHh5ZjNtaFE3bmRhMUJBOG82eWRJcEpVaGVGU1pMc2tkVDJJc0ExZlNKV0pGT1Z4Y0lieGtUcmUtbXpqdnl5UnZ4Z0NudjJjREVab3NIdGZtaUFJ0gGyAUFVX3lxTE5WSFZLMUJjbDlxZmJRWXFjNUNYMFhkQ1o5Wi1UOTBGTFk4YzZHQmt5eWV1aXk2dXBHY0FNdTFjUXhiS3R1NmZOeS16bHhGUUdsYWhKOVNkRjdqSU5JQS02LXdjbkIzNnZveEdwVzBNV0VUVDMybGN3SDBzdFVqMncxazlEY3Y3NzdMX1d4cUxWYWNnQ2ZxekFVVVhfcXNIeHR2Mlppc280cGRmTzZORkdkOHc?oc=5
-- [14] Noelia Castillo’s TV interview hours before her euthanasia - Euronews.com | https://news.google.com/rss/articles/CBMiwgFBVV95cUxPc3RYZXRXX1BKS1NWaFZKckhURlNobkFZVFBaai1kXzc2a2s2T1RRNVVQX3dwdUN5clpXWXNsTnRZR2syWlBYMFBvZXBBTGlKSGltZWRUT3FQWXl5YkhteFhqMGpMNVk2clQ5Um0tNTBtQW9UQmUzTUYtcDl3NmRxeWg1RzdXdHJyME5Vb2JhaEI3emYyb1JVenN4WlNSMl94cTFWTktZeERlMkFjbWI3cGJEM3V1c1AyWEtwUUlpWUJGdw?oc=5
-- [15] UN says 1,700 killed in Syria’s Suweida violence, cites possible war crimes - Reuters | https://news.google.com/rss/articles/CBMiwAFBVV95cUxQUkczOTVpTlZRb1htNnRZNEQwc19IeHdNd1dUM3pkTTBPMUZNbUlkT05Qc3NHYUtJQU1Pd0xQTnUwNmMtTWJiOHotbml4M0theUFmTW5wQVMzUWZpMEsxX2xHNTdPMDBvQkpfbUJvSldCNHJ1a0gtZHRJcjJvWXFuUUVlMkI1dUxBVVlTOERBWE9lYnQ3S3VSNnhpb3U5ZTNzMXJKclkzczZ4YVFUZUtVRXFMQzFVbGxRVTFYbHFibmY?oc=5
-- [16] MAGA is growing anxious over Orbán’s fate - Politico | https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZnJmOFpGS3ltQXNWVEJrVzFHV2k1ejdXN1J0ZW13QkF1VzJYLWh4ejFDa0t0Q2JFVzVCY3NuMk45aGRLamlIMFFUT2lDaHBqaC1zdVJZRjFXN2s1dS1qeXREUjJnVkVpRWtGNG40ZElPbFQxSzZXNy1vM0VVVVRWdmN3cnEzTVhXeU1wTGk4NlJDY2VvR0xTR3RuNUVJMFIzVnYwN0l6c1JCUQ?oc=5
-- [17] 9 injured as Iran fires 7 missile salvos at Israel within hours, many with cluster warheads - The Times of Israel | https://news.google.com/rss/articles/CBMivgFBVV95cUxOazM5aVI0RjBGa0NfUzU4UGNKMXpONTNmc2tQdG5Gc0E1UTBrS292SHJCSzZHcTlHdXNEVHhtM2hXeDh4OFVqZFM4N24xVzZlVTZSNlJmWlhxQmhvZWtWd3NlV2dZdDVCNWhvQ0lYN244cEt6QTFlcWM3ZTVTaGtBUUlRTUdUMkd4R1kxWjhacEVrNnV1MHRfZmtQXzN1WXliN194MnJEZEJWa0R3Qmt6ZU1Eckg3ZXNBc0xIU0930gHDAUFVX3lxTE83b3hyNjVEWXUtWE5KRTZEX040cnZhcTdvb1VFeEhxR1luQXVTR2lKaWE3T2xmWElrT3U2NV9xMkdHd0hxV21BLTJmUjhxODc3blNfUGtwNHRCdWM2YmplQnVqMFgzS0dDaWVoZ2ZOME4zSVNBaVo2LTE5MElLQlBiTjZVYnhPSkMtMkw3VlFjSnEwcjJ6NU54Y1laX0cxWFJ6QWtCU0hqMmN0MERiQjV0azRIYVZpdWd6VDNua1I4RThzOA?oc=5
-- [18] Hungary’s government files charges against prominent journalist for alleged espionage - AP News | https://news.google.com/rss/articles/CBMipAFBVV95cUxQanhmM18zbHZ5eng0cXE4NXJHMllENUJqSHZ0ZmR1TGl4em5ubkFZREwzZzFIaUtuSzVObmw4SF8xM3dWbWZPb011aThEX0g5X01fdUpFSVJVS2RCQmJNbjZjb1RYYU9tbHd3UEJsX0F1Y2N4aGh4cjFqSUNQd0o0cl92Q2tEQVZOZG9SV3pEaTVXdk1VOVM2bUE2YU5zZVNfdy1aQg?oc=5
-- [19] Iran Is Applying the Lessons of Russia’s Drone Warfare Against America - WSJ | https://news.google.com/rss/articles/CBMihwFBVV95cUxNWS1peE4xS3ZuV2hCdVI0MW5kdFZkQnJxaUhnRHVhTUN2RTQ2LUliYTRQcGw3N1ptNTJRUkZ1RlBLWEJfZkFBa2FZdW1oRjlrLWRkcHlnc3ByR2o3RG1GOFFUOTJWeHI4cl9INTN4VUdlS1pZWmk4Yi0wU0toV2Rxd1I4a0lrc28?oc=5
-- [20] EU countries push to set up deportation hubs by year-end - politico.eu | https://news.google.com/rss/articles/CBMijwFBVV95cUxPUlNyaFgwaUxPUWtjakRTS1pVTGVucHMwMTBjc3VLcmZpVU9NRzJkQmd5bkN3em1JVXFCVzdFSUxEWGFZRXR1YUd2OS1oZGphVEdPdDRGV3FKblYxaFhiNHpoVFJ2OFVsNlVOMm5xMzBZRE1rLVpUSDVaUFJTT3RnTHgtc1NGVnRZVFE4UWExWQ?oc=5
-- [21] International law is on Iran’s side – so why is the UNSC blaming the victim? - thecradle.co | https://news.google.com/rss/articles/CBMiT0FVX3lxTE1manltTGdaWDFNX0xwUnVHSWhIY1poNVpVZlJ0SWpIejJRYVpma3owendVZW1aUFFGNzQtMXFJS0JtVVJUVFl4T0cwdjgxajQ?oc=5
-- [22] Slovenia says it has confirmed foreign influence on last weekend’s election - AP News | https://news.google.com/rss/articles/CBMitwFBVV95cUxOLWtuY1Q0WXgtREY2QXFKYWFxVnV5M19lVzBHZEx6MUg4SmRFQVdjTHFCdnFGbHljSWY0eGppU2dTLUpPSjFIVUo4YVlBR0ZqMzU4Q3F6ZTVsdWRYeUJ1aG8tX2R3dXVNOGgyVHVmNmJRZldzWDZoM1N6WVlwOXQtUTRxMC1tMC0tb3lHbEVqblN5djFrSzNnc3NLR3lvSzl6dmhTeC1EbEJhdnNVVHdtOEJCcW5SaVU?oc=5
-- [23] In Monaco, Pope Leo finds a natural ally in advancing peace, faith - National Catholic Reporter | https://news.google.com/rss/articles/CBMipgFBVV95cUxOWTc4Tlg5b1M4UFJYXy1jeHdmSWk0dzM2dkJuU1dvU3NhWDBxaDBHcWdJWmVFa19zb25tWGRETE9wZ1VSc1E2NzFOU3RVN0RSMFMtSEVGRXpaMHhoS1RNcm53NDlrMndIZnpPV3VWWDQ0VkZoMXdTSEpsY0JOQ2g1dS1KclVtM29HQWJwQjhrNWJqc3VfdWRqUHFkVTBuejBYQ04yZXZ3?oc=5
-- [24] Gulf of Mexico oil spill spread hundreds of miles, killed wildlife and polluted Mexican reserves - AP News | https://news.google.com/rss/articles/CBMijgFBVV95cUxOY2xOVDdDa0N2anJpR05FS29qajYzRy1NLUhVaGFkWFJvR3JxSXpCbGFiWFotSzlqTzNnNGsyYUQtZWdUR1VMQUJwUVVUUERDdmhicURxN0NLVWlpd2x1VHhXUS1nX3czN3U5blluYzBpOU1oektQN2J4QWI5VWpwT0NkYmVuYzNhVEdRa1JB?oc=5
-- [25] Ancient bones show dogs have been woven into human life for nearly 16,000 years - The Conversation | https://news.google.com/rss/articles/CBMitAFBVV95cUxPZkd5T1RTMkZYQ0tBeGZvWkFyRWFVX2dXamZGaEtuanFCcUhVR0lZdlQwU2d5ZnZMQmpTY2ZTMFpoSTZiS3pIMDNFU2Z5VjkxZjJkNjJxTEpjWjJ5WEk2ZTVvWl9TOWhlUGRxZlB0RUVqZ2IyZkgtd1pMR0gzQ19wRzNwdXZ4QThkRFVuUng0MjRnVGJVRVZObndpV1dVOTdoMFBfQ0FnbVA2UDZiZUJDMW1lTG8?oc=5
-- [26] Nixon to Trump: Pakistan’s long record as backchannel between rival powers - Al Jazeera | https://news.google.com/rss/articles/CBMiswFBVV95cUxQc25UYXpzazZrN29maTFFc0NRSkxaeHRRRllYc0ZkS1drS3lzZ1pPSzgzZWpiVVJOTEw5bXVGT2hKUXYwQlZrT2s0VFpfSVdfRE9lRGlGODVTSUNWN1J6T21KRzVFT3Z3YVhmZTJSa2FOQ0xEWmdFeXJYMWJodVdYSjhNRndkZGFGRHR2UFdMMlRHRDlrcmRiRDdScnkwNDF0WFhkeXNodzR6dTVPVTc2ZnBzTdIBuAFBVV95cUxNNHRRU2pjM2diaTFhTzZSenp0NlFHRE0zaXlSWndkZGlrSTA4d1R5dzdsMUNLeDFkN2MtcGxtMW1zb3doQ1BUeFZkM1dNcVpLczM0RjJpaWo5Vm11VFQ2MkpUY2ZUdENQRDZJTnVFV3gtc1VPV1AzbHhtT2JQMkYzdVFaS3ItMG1JWmxnakRxVHg1MlA1RzRFR284WUhWSUFZdVB2TURlU2drbUs0azF3U3dsX19kNTRV?oc=5
-- [27] In Israel, outrage rises over wartime settler violence in West Bank - The Christian Science Monitor | https://news.google.com/rss/articles/CBMisAFBVV95cUxPak9NN0xFR0FBX1J2MDFnNFoxN1ZCVkpuZHZUdWF0LVl0RGRzNkgzMEdrcGVaVXlkczNza3JTd1F1LVQ4UktJMExIeE04bG9xWnJLYmItYjhlUVJQZGx3Qkg2MEdUNnRZc2xzU0V6WXBvX1J1c05NR3hEcDNYTUp6Z3NpdnN3Snc5ZE9iTnZ3eXlQSTU2RTJfVUVfbzdLZHpLTHdMTU1GaHBBNW80ZGNIc9IBygFBVV95cUxPMkpONU9sMmFiRWRsc0ZKU19oT1RqWW0xaURIU3Byc01MYmZvZlpQUml1V28yUERWemV0cXBvQmVkZ3ZGMkU4c3RxQmJXUkhNNTFSZnFNQ1MtTjBTNllfbU1FSVFYQk1xZnFPTXd5em1ycnpmZTB0T1hZRHkyUlpNYlhLdVY3cVlXaHhMX2pMY2NHeUtkdjctdTNhb2lHOGhwWGdhTUQtTVBRckwxWHBveW43S3M5YVNMek16WXBzX3dWT3d5dUktblR3?oc=5
-- [28] Austria plans to ban social media use for under-14s, joining a string of other countries - AP News | https://news.google.com/rss/articles/CBMipwFBVV95cUxONVd5UWxXTWN1c2wzdlFtVExfQXg2NEMxVkJiQUU2Wi1ZT1RTRldSTzdpb1hRMlVKbzY3RDM4Tl9md01PNmVTeEE0amYzcFpOQV9BQmRjY1RSVmxLci16SUpUNEJLR1JjRlMyRWlDb19pOUtFc3VmTjBlSGhrZGR3MVgxTFdkLTZtdDhVMm9qRWhiUTFWa1NtU0JjaDRCbjlFM2pvQmpGVQ?oc=5
-- [29] Iran war: Houthi restraint driven by domestic priorities - DW.com | https://news.google.com/rss/articles/CBMijgFBVV95cUxOQ0FheVkxdm9YVkpjMmQzSXp2OHZCY3Iyalg3c0QwRGloVFhoQ0drazFTZnZBYjZtZVJnSDVuNTBMM2RuOVZGdWw3NWpDb3g0MG45b3k0WWRSUzlncWFqeEtueHdPLUNpSXByQ3BjM2ZkSW9qbjFJeGdvMW1OUzNya0lvUG9oUHRTMnd1enln0gGOAUFVX3lxTE1fc3B1TVFqZzRQRHR3M1pfc0FzWEdIbE1rMGlNVlZQZC0xSDNFTnJzNEFwRDJPREt2NG1qVkJlZkxCOHJRYjNQQlVwa0hieHN0anJ5NFh1dlg2akdMcEFyekpxRTlyY1JmUDhHOUt3RXJIUVp0VzZobEkxYlpidGctekE5NXRNREZGRE1MUWc?oc=5
-- [30] Brazil’s Bolsonaro leaves hospital and heads home to serve his 27-year sentence - AP News | https://news.google.com/rss/articles/CBMipwFBVV95cUxNcjlpaFRBWjJTZVZEOFRrQXo2TGJBNy1BSEJqS1lDMnZUNGExVW92eUNxYllfR3VQdG9KVmQ5NUVtWVZtSXpzeE5jZTQxVVJwUkJkZFJ6b2oyY2tzWkpSaEY5dEo2UHRtdFV3ZVNRdUs2d3REbXhXU2ZFUEFzMmpRMHJ6bzk4WF9YdVdta2M5MHc4b21nQTdjUmJwS052b29hWHhrRllKRQ?oc=5
-- [31] Air Canada CEO Issues Apology Over English-Only Message - WSJ | https://news.google.com/rss/articles/CBMioAFBVV95cUxNVmtJOXhlaFRQUVlhOTktS1lMX0wzQmdGci1LbjRDZ001WjN1ZjJuVmllWGVEVFJ0c3Q4OFlsUXJhdWFybDU0dW5oc051UVBPMU83WFkxQkJ1X3RETnJrR3gxN2R2eG5LYVhtZTFBUGVIbHhBQUllQlpvRmxJVGswTTJqU1ZxRFExZUtSWlhoRkJtYmcwNVVhWThiV0E1bjJV?oc=5
-- [32] Repair Workers Accidentally Stumble Upon Lost Remains of Legendary ‘Fourth Musketeer’ - Gizmodo | https://news.google.com/rss/articles/CBMitAFBVV95cUxQYW1tVS0tTHhmZW90RlVyaVdWVkVnRjlTd3VENXRlblFuYVBkaEFMU19ialJGS2tTdFE3eW9qaGN1SFlNMjIzWGE5My1pZFA3OXRaa09RM1lWdm1xU29ESzdDQzRTMHo3S244VnVuVlRxdmlzdTg5MW1aSU1vMmd5QjZLajYtcHlwY0lnRy0xWm0yX1d3TW1JRmhndHhUcklmalJtbk94SnRINkF1UThkUEZNWks?oc=5
-- [33] Two British men detained in a suspected antisemitic hate crime are released on bail - AP News | https://news.google.com/rss/articles/CBMisAFBVV95cUxNWHpfWTZfN1dCQm1maVZ2c21kU2JyNzdEWDg0R3BrQVlsSTFpTkJsZEFYWkRQMFZOWmN3RS1nRU9PZlpmcUhKTXZQR3ljRU1lMnJtVHk0b3FHTXdtTlVXSVliWmYteDF6czVUc0k5QW1UTWlUSDJRMEFZYTBKY0ZtTDIza3laSUpwUXF1Ri0xeDl0X3loZW5GZTRCcGtmam04UnNZbjZTSWJ2ZUtZMTlhXw?oc=5
-- [34] Iran Moves to Formalize Toll Plan in Strait of Hormuz - The New York Times | https://news.google.com/rss/articles/CBMiiAFBVV95cUxOaTZ2TFgyZmVUZk1DRUpidjlZcGV1NkpFX2IxVk9QRUZNdGZRWi1ZMktlcDFncGFUOTlNajloY1l6Sy1NdHBpU3hvdk5hakJxMEJDTVVhTnh2TjRRUm9SNFZPdDRhV1J5LTVwNmNsMGNqTy1MTW9ad1ZSaUo2V3duNkhaTjItczdP?oc=5
-- [35] Russia's Oil Is Beating Global Prices, Padding the Kremlin's War Chest - Business Insider | https://news.google.com/rss/articles/CBMiowFBVV95cUxPaDl4RU1oLWI4dUdnZnY5cWJZQzJENGhyOWQwTlZHTm1RSEp1QmtMcE0zMWVqamxSUzdueF9YaDYtVFlhczJQTTh4ZWxSZjZlOF8wX2VMZmlYdmFnNTdhN3doalM3YVZjVHpEVnFIcHZfS1BlVVhvZnM1US1oS1hWbzVESDlCU09fWXJCQnpJRXBiUEpfcFNwQ18xTmtKYS11clNR?oc=5
-- [36] Donald Trump Privately Panicking Over His Own War Mess - The Daily Beast | https://news.google.com/rss/articles/CBMijgFBVV95cUxQSTdLMm5fLWI5SFlLazlPNlREcWVFa19ENVdNZThsZnN6a0hzTWRMX3hrVFd0S3FTOUJMZWVqbFR6UHVnc1dNOTB4VEhEa2lsZW91MnQzMVdGclhGaDVSSU83X05zM2RLa1NGcDFlVFY2QU02TkFtZ2FLRHBGVmRXMXFQQjYxbzRzZ3JLck9B?oc=5
+- [1] Iran War Live Updates: Iran-Backed Houthis Enter War With Missile Attack on Israel - The New York Times | https://www.nytimes.com/live/2026/03/28/world/iran-war-trump-israel-oil
+- [2] 'Terror attack' in Paris foiled at the last minute after suspects 'tried to detonate homemade bomb at Bank of America' - The US Sun | https://www.the-sun.com/news/16149475/terror-attack-paris-foiled-bank-america/
+- [3] Halfway Through Lent, a Small Quebec Island Celebrates With Masks and Jigs - The New York Times | https://www.nytimes.com/2026/03/28/world/canada/mid-lent-celebration-quebec-islands.html
+- [4] Here's what needs to happen before oil starts flowing through the Strait of Hormuz again - CBS News | https://www.cbsnews.com/news/strait-of-hormuz-iran-oil-war-shipping-trump-insurance/
+- [5] 12 Americans injured in Iranian strike on Prince Sultan Air Base in Saudi Arabia - Fox News | https://www.foxnews.com/live-news/us-israel-iran-war-strait-hormuz-03-28-2026
+- [6] Qatar and Ukraine sign defence agreement amid Zelenskyy Gulf tour - euronews.com | https://www.euronews.com/2026/03/28/zelenskyy-arrives-in-qatar-as-gulf-tour-shapes-new-partnerships-for-ukraine
+- [7] Rubio tells allies Iran war will continue 2-4 more weeks - Axios | https://www.axios.com/2026/03/27/iran-war-timeline-rubio-2-4-weeks
+- [8] The war in Iran sparks a global fertilizer shortage and threatens food prices - AP News | https://apnews.com/article/iran-war-fertilizer-exports-farming-3b7c92d58dba0817c3aa8f1db47464b7
+- [9] Minnesota to host 'No Kings' flagship rally, headlining Springsteen amid tensions over ICE and war - AP News | https://apnews.com/article/no-kings-minnesota-springsteen-immigration-war-7ea187c20819de436f1985900aabe7a7
+- [10] Israel bombs 2 IRGC-linked steel plants, 2 nuclear facilities as Iran vows revenge - The Times of Israel | https://www.timesofisrael.com/israel-bombs-2-irgc-linked-steel-plants-2-nuclear-facilities-as-iran-vows-revenge/
+- [11] In Monaco, Pope Leo finds a natural ally in advancing peace, faith - National Catholic Reporter | https://www.ncronline.org/vatican/vatican-news/monaco-pope-leo-finds-natural-ally-advancing-peace-faith
+- [12] Iranian missiles trigger sirens across southern, central Israel - The Jerusalem Post | https://www.jpost.com/middle-east/iran-news/article-891444
+- [13] Iran's Hormuz toll booth points toward an L-shaped price plateau, not the V-shaped recovery traders want - Fortune | https://news.google.com/rss/articles/CBMijgFBVV95cUxPUkZzM0NydW5kR18xWW1OYnlKdk1OM19sTHc4blVDZUdXd05GdnNabU1nUnNDRGNiLTlUVEd3N0tFTGdnRkE3UVhhYXhIZjJfdW5QUV9Ia016b08wLTVFLS1jUUtFYmRjQWdBLXZYeTNEODJYenRQWmVPdTJTMTEwbnkwUDZ6RHNZZ0kzcHZn?oc=5
+- [14] A whale stranded at a Baltic Sea resort has swum off a sandbank. But it isn’t safe yet - AP News | https://news.google.com/rss/articles/CBMiogFBVV95cUxNczJwZS14UzZXM2E3YXEzQXBmZEhobW5reFlKT0pmaFkyLUNxR1BLTlRLc3NBcW5hVkhtMTBGNnFyME1mZEJRVUhzcWxtWTZ2M21ZY1l6WWlXSExJTjRLNjM5dlhiSWRDR0dxMlFGaDRWRzZFaFBtQ0l1b3lfQTlLSUtuVTh4SUU4V2ZlLVZpdFNYZGs0RHZ0blJYMnQ3SHBJVnc?oc=5
+- [15] Dread deepens among U.S. allies in Asia over a protracted Mideast war - The Washington Post | https://news.google.com/rss/articles/CBMigwFBVV95cUxPdFhwN01aXzZSYjZ4dExUZGFJdjBWTVZvcGplZVJEZEp2ZmZLTTUtYnc3RVhMZDBtWFpTT29xR0N6elkzb2FUSXpPTXMwWi16TFl3bFdVNExMMjloSmtmRHZraG5FZExueDVZXzdoY3NuUmVvSzZqOXdJQVVUQ2pYQ2hNZw?oc=5
+- [16] Orbán loses his cool as crowd boos him over Ukraine - TVP World | https://news.google.com/rss/articles/CBMinwFBVV95cUxNOXdHRllnTU5PVUs3VjAxSHdDVHBrOThSSFZGclYxUzNaVjFmckZ2blNZV09qUGlfZTE3OVlXNUwwU3I1QmN1MEk1bzY3cUJZUWNFTmZxNUt3RVUza1JPemd6bXhMck4tandPMDRLU0p6NERPX2dYY1pmM051cG5QcGFNc2xRSS1hYlNfQllhQ1pQaTVUUUVwdEIyeWlhSVU?oc=5
+- [17] Africa is hurting again from a global crisis it had no part in starting - AP News | https://news.google.com/rss/articles/CBMilgFBVV95cUxObGVpc1RaTjFlMUp0YlBmblYzUzQwRU55Yy12UVN3UjJUME9SS1ZHYVhSWXh5UGRONTlydUkwN2ZraGFPaFc1SFpVMHhxQ0NENXlKTFFfSUxtcGFPTTFZMEtLbnpVVW5NU0VOS08tQ25ZWEh4TkhlelZNQlVjektIOEdxSER3aUt3dXlreC15enAyOGhobXc?oc=5
+- [18] A Female Royal Navy Sailor Found Guilty of Repeated Sexual Assaults on Warship Crew - Yahoo | https://news.google.com/rss/articles/CBMiiAFBVV95cUxPYlc5NE1iNmtKdEhlbHQ3V01BdURwRjdvOFVKbE1ja0lVR2FaODd2dWlVR2NVU1Q0VnRfWkx5OTUtMmsyZmhvV3BWQlgxT0pBMnlkVUR1aDJzV0tFWE1qRkVsTWhzN2RTeTc1c1BjMVBiTUtLeVJ3NEptckxlelg0QlU2STNnc1FE?oc=5
+- [19] Scientists film whale giving birth while other whales work together to help her - The Guardian | https://news.google.com/rss/articles/CBMirAFBVV95cUxQZWlQQ0FBSFI5bzhvYlpaZmNqUTBtMEVBS1lSRkVjek1sY0hudVV3WHh5M1RQM3VmVGx3WUpRTm9sd2gtcXNyeHhyQzdkMFduX1VIdUdudmpVRE5qeEZtay1XQmpvYzRDX1A3dzRRaFdTaXdxa1BqR0d5eUZ6MU15X3h6d296MTI3bEI1cWY4SlJzV3daUnR6MDZjQURTRGFGSksxVGhzN1ozaklZ?oc=5
+- [20] Iran's response to US peace proposal expected Friday, source says - Reuters | https://news.google.com/rss/articles/CBMitgFBVV95cUxQdVpTQmJMSGo4by1WSVhpSXJRQjhtcGRiSGd1Q19meU9sdVFRR0xzaWhfRHJ4aXZPdmxmTGwyUW5hcEtINmM2aWNFVWJpeVlqcjJ6eTFWajBXQTdkbUdvYWU5dmszd29QWF80XzNHa3k5bHhQMXZRNjJ6Sy1OZ0U2b1VwYUxINXRQRmI5cEZXNjFjZmkxVHdSVHZWTHVpQzVZdUl0cnE3WnBxVzhtZG9yb2lFMzFaUQ?oc=5
+- [21] Ukrainian drones reportedly strike oil refinery in Russian city of Yaroslavl - kyivindependent.com | https://news.google.com/rss/articles/CBMiqAFBVV95cUxQOGh0cHBxNy1YSUIwdjRncXRPUExWd1ZDeDAtOWZkanhJM2FMOTBkNWZMemV6VWxPV3BiVlNjVDlteXlpRDEyS1hOWlN6NmtLNGlOLU0wRFZoRjJvSUw3OGNKa1g3WU96WVNXSHNUMFByNFVId0ZmNWtEaWJTbF9RR0dNbk5Ud0RtOENnSUpVNjZ3TmZHdEVCV0NoVzVEZ1k4eTZuUVZwMEg?oc=5
+- [22] Orbán’s spies were hunting me, says Hungarian journalist accused of espionage - politico.eu | https://news.google.com/rss/articles/CBMiogFBVV95cUxQOE5zenZNRVpDeUU1VlpDM3hFZTBVdmxiLW1nWkpwbGlhcTdUTmswTXpGc3BCUjFqM1h4RnBmdDVZS2FaSzluVEI5bU5lOHRDYnpleThhMXdkdmVselNRazhENW43MTFKMmRFbWlQMU5jSzBBbHJTVm1aQjV2LUlNV3hZQnZHS2xfV3dnNFhWNXo1T3pnMVRHdENibTlOUTNES0E?oc=5
+- [23] Iran Moves to Assert Control Over Strait While Trading Strikes With Israel - The New York Times | https://news.google.com/rss/articles/CBMiiAFBVV95cUxNQThTZ2RrRndmdUhTS0pfLV9tNmxuUTltOW9uV25fb2J1bG5ZSlJrNFJ0MS1EMUIzQnVqNnNybDdqSkdWY3dKd0NueVJIM2Rhc2NqckljOER5SGN6TmhWWFVGNDBkWmpnQ21BcnYza0ZFTk92YlgySGpuNHE0THlLX2hoeklHMFB6?oc=5
+- [24] Barcelona, Spain euthanasia: Noelia Castillo, 25-year-old Spanish woman, dies by euthanasia in case that drew national spotlight - ABC7 Chicago | https://news.google.com/rss/articles/CBMi2AFBVV95cUxOaDk1REc1d1lWemkyVzRBRmFyMmFuZlFpNmJMMDd1RVNFNkMyMXhEdmY4MXdPS0czamJKbXRZbllHa1JDX25iTHRhMXllempSNEE5Q0F6UmpiNnVUMXNVUmRCXzhNbDZFUWlhVktMT3pDZDNsWnEwdFZRaFJISnhfYUlxS2xxcWU0NTdoZnVhMzZpb2ZGbzR0OGlXUXdTZUNaemZWS0lGTXQxczMzdDJGb3dGbndTOGNZdTBHc0ZmRmN2T1RGTUsxSVJtM2lNcHhISEs3U3NoVWzSAd4BQVVfeXFMT0JfN1lEMzBVX0Y4ZExBSVhrZmEwS1ZJU0hiVkxyaGxRVmk5ZHRhYkxUdkZrRFJoS2NJTXFxNnZibkc5TE9Tako4bWxtQU1BZ2dPUGtjNVRNTmhZdHczVW4tMDkycEtiUWhMNGdRemtpaEd1VGY4NUE2ejBMZkJqNldQNmJPS1pGS2pKbnBKU3NWekN6ZTlWcjF3YnpEdEpMamNzRGY2cXVTQ3Zkc2dWV1hGV01oZDBJX0g5ZGVacWVfcktRV0R0VkxteURvN3E4RW5NTC1XWkl4ZXg4OVdB?oc=5
+- [25] US, Israel Hit Iran’s Nuclear Facilities as Tehran Attacks Gulf - Bloomberg.com | https://news.google.com/rss/articles/CBMiswFBVV95cUxPT1lyU19ZVDZLRWc2emFWcWhUcFo5clVjM0N5R2FVQ3ZZZjQtOExQV0hpZ2xScEU3Xy1yUmYtR3hTenNLaWtlZUREdGZ4Ni1lNjZ0RzZGeWhRaU4wUHhHTm5OM1RYLTZKNUVQY2JfdGVnVzVLODE4N3kwOG1fb3AxWDhvYlBub29XdXZ6MGJkWVVTVXBwRGtET1JkM2Z1dXpXTF9EcEpYUmlnMlVoOVVmcXctaw?oc=5
+- [26] Exclusive: U.S. can only confirm about a third of Iran's missile arsenal destroyed, sources say - Reuters | https://news.google.com/rss/articles/CBMiyAFBVV95cUxQbUNTSTMyWHI1bGtJdHhmRW9JUGZyTTBiRWRiRkw3TGFaVV9RUVBuRkhSaEN3SGpDbXozQlY2S2xJcEJSVjAxb01NVUFIRXFtdUpPckd5b2tlaTlPU3ZWb19pSWx2WkFEWHdmYVVoZHRFOUVmb1BvTUhCRUhLckxXd1l1RXdVaXdRM2lXMWxXTlNlQ0pIM3RLbXZKVEpGcHljZl9hU0lscjU4VXRpTnBqR3dZQWYxR2xXSlA2WWFfcXotVTNmMzB0Wg?oc=5
+- [27] For the US and Israel, the Iran war is exposing an uncomfortable new world order - openDemocracy | https://news.google.com/rss/articles/CBMitgFBVV95cUxOQmxvU1oxZlF0VldDcnFZdUFfS3lHdnc2TnJUNVIzZDFZVjl6VjRRU0JlRGtEUkg4NU9XS3F6NTJLRzU3enRWMDFvZk1aYzZEM09YTExMTzJtWWhRV183em04TlJIT0g4Y0ZMUXVLQmtpZlpORUhJQzRWMS1tZGRWU2p6TlR0WU1VN1NTOXNyMUpaNHlHNDJLUFFlcWhhWEdfMnBYYUdQOS1HRTJVVVR2TzN1eGVoZw?oc=5
+- [28] Live Updates: Houthis enter the Iran war, Strait of Hormuz still locked down as Trump pushes for deal - CBS News | https://news.google.com/rss/articles/CBMikAFBVV95cUxONFp1WFh4TlAya0RwNGhQM25SYktuNDVXOHdOZ2ZhVXEySXRaUUM3aDRHLUk5SzVvV01tanRKUHdTMm1PZXRnZUItSFpNOU4tZzNBZ0dIay1VMWRXenFNYkFzUkxJOVMzZUhMSzRnRGRjdk5SQzVZVXNZTTEweUdVZWtZYmhZcDdNeWZzdXdfYnLSAZYBQVVfeXFMT0N6QTFnQUhnTlNKeFo1S2ZZQ2Vlcmdnc3dsM3N5dE0zaG5laXFRTlVEckI3ajJ2cmJKalhFel9DZmtGMVQ1RFR0Y3JSekpNdG11LVpXNFJCczl5djRrbTNjYzQ4OVlHM0V5R3JJal9hWC1lNE1YSXEyZlRXOWVvSVJxaDY5SVp5OWRJWjNCdDF4Rm5hckZB?oc=5
 
 标签：国际新闻 / 全球经济 / 地缘局势 / 科技商业 / 突发要闻
