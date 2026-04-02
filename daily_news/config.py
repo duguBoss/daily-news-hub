@@ -74,4 +74,5 @@ BOTTOM_BANNER_URL = ""
 CHINA_RELATED_PATTERNS = [
     "china", "chinese", "beijing", "shanghai", "guangzhou", "shenzhen",
     "hong kong", "taiwan", "taipei", "xinjiang", "tibet", "macau", "macao",
-    "people's republic of china", "prc", "ccp", "communist party
+    "people's republic of china", "prc", "ccp", "communist party of china",
+]
