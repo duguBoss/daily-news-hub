@@ -1095,7 +1095,8 @@ def save_outputs(ai_data: dict[str, Any], news_items: list[dict[str, Any]]) -> s
     return json_file_name
 
 
-def clean_old_files(days_to_keep: int = 7) -> None:
+def clean_old_files(days_to_keep: int = 1) -> None:
+    """Clean old files, keeping only the most recent days. Default: 1 day (today only)."""
     cutoff_date = datetime.datetime.now(SHANGHAI_TZ) - datetime.timedelta(days=days_to_keep)
 
     for file_path in Path(".").glob("Daily_News_*.md"):
