@@ -163,23 +163,11 @@ def build_model_candidates(api_key: str) -> list[tuple[str, str, str, Any]]:
     """Build list of model candidates with their API callers.
 
     Returns list of (provider, model_name, api_key, caller_function).
+    Priority: OpenRouter > Gemini > Minimax
     """
     candidates = []
 
-    # Primary: Gemini models
-    gemini_key = api_key
-    if gemini_key:
-        from daily_news.config import GEMINI_MODELS
-        for model in GEMINI_MODELS:
-            candidates.append(("gemini", model, gemini_key, call_gemini))
-
-    # Fallback: Minimax
-    minimax_key = os.environ.get("MINIMAX_API_KEY", "")
-    minimax_model = os.environ.get("MINIMAX_MODEL", "MiniMax-Text-01")
-    if minimax_key:
-        candidates.append(("minimax", minimax_model, minimax_key, call_minimax))
-
-    # Fallback: OpenRouter
+    # Primary: OpenRouter (if configured)
     openrouter_key = os.environ.get("OPENROUTER_API_KEY", "")
     if openrouter_key:
         openrouter_models = [
@@ -191,5 +179,18 @@ def build_model_candidates(api_key: str) -> list[tuple[str, str, str, Any]]:
         ]
         for model in openrouter_models:
             candidates.append(("openrouter", model, openrouter_key, call_openrouter))
+
+    # Secondary: Gemini models
+    gemini_key = api_key
+    if gemini_key:
+        from daily_news.config import GEMINI_MODELS
+        for model in GEMINI_MODELS:
+            candidates.append(("gemini", model, gemini_key, call_gemini))
+
+    # Fallback: Minimax
+    minimax_key = os.environ.get("MINIMAX_API_KEY", "")
+    minimax_model = os.environ.get("MINIMAX_MODEL", "MiniMax-Text-01")
+    if minimax_key:
+        candidates.append(("minimax", minimax_model, minimax_key, call_minimax))
 
     return candidates
