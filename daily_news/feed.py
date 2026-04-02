@@ -8,6 +8,7 @@ import requests
 
 from daily_news.common import is_china_related, now_shanghai, sanitize_text
 from daily_news.config import MAX_NEWS_ITEMS, REQUEST_TIMEOUT, RSS_URL
+from daily_news.deduplication import filter_news_items
 
 
 def fetch_feed() -> Any:
@@ -32,12 +33,17 @@ def resolve_url(url: str) -> str:
         return url
 
 
-def collect_news_items(feed: Any) -> list[dict[str, Any]]:
-    """Collect and process news items from feed."""
-    items: list[dict[str, Any]] = []
+def collect_news_items(feed: Any, max_articles: int = 5) -> list[dict[str, Any]]:
+    """Collect and process news items from feed.
+    
+    Args:
+        feed: Parsed RSS feed
+        max_articles: Maximum number of unique articles to return
+    """
+    raw_items: list[dict[str, Any]] = []
 
     for idx, entry in enumerate(feed.entries, start=1):
-        if len(items) >= MAX_NEWS_ITEMS:
+        if len(raw_items) >= MAX_NEWS_ITEMS:
             break
 
         title = sanitize_text(entry.get("title", ""))
@@ -65,6 +71,7 @@ def collect_news_items(feed: Any) -> list[dict[str, Any]]:
             "image_urls": [],
             "image_paths": [],
         }
-        items.append(item)
+        raw_items.append(item)
 
-    return items
+    # Deduplicate and limit to max_articles
+    return filter_news_items(raw_items, max_articles=max_articles)
