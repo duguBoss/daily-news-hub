@@ -69,3 +69,9 @@ ASSET_ROOT = Path("assets")
 FALLBACK_COVER_URL = ""
 TOP_BANNER_URL = ""
 BOTTOM_BANNER_URL = ""
+
+# China-related patterns for filtering
+CHINA_RELATED_PATTERNS = [
+    "china", "chinese", "beijing", "shanghai", "guangzhou", "shenzhen",
+    "hong kong", "taiwan", "taipei", "xinjiang", "tibet", "macau", "macao",
+    "people's republic of china", "prc", "ccp", "communist party
