@@ -159,6 +159,17 @@ def parse_model_json(text: str) -> dict[str, Any]:
     return json.loads(text)
 
 
+# Default model series matching daily-nasa-hub
+DEFAULT_OPENROUTER_MODELS = (
+    "stepfun/step-3.5-flash:free",
+    "qwen/qwen3.6-plus-preview:free",
+    "nvidia/nemotron-3-super-120b-a12b:free",
+    "arcee-ai/trinity-large-preview:free",
+    "z-ai/glm-4.5-air:free",
+    "nvidia/nemotron-3-nano-30b-a3b:free",
+)
+
+
 def build_model_candidates(api_key: str) -> list[tuple[str, str, str, Any]]:
     """Build list of model candidates with their API callers.
 
@@ -173,7 +184,7 @@ def build_model_candidates(api_key: str) -> list[tuple[str, str, str, Any]]:
         openrouter_models = [
             m.strip()
             for m in os.environ.get(
-                "OPENROUTER_MODELS", "google/gemini-2.5-flash,google/gemini-2.5-pro"
+                "OPENROUTER_MODELS", ",".join(DEFAULT_OPENROUTER_MODELS)
             ).split(",")
             if m.strip()
         ]
@@ -189,7 +200,7 @@ def build_model_candidates(api_key: str) -> list[tuple[str, str, str, Any]]:
 
     # Fallback: Minimax
     minimax_key = os.environ.get("MINIMAX_API_KEY", "")
-    minimax_model = os.environ.get("MINIMAX_MODEL", "MiniMax-Text-01")
+    minimax_model = os.environ.get("MINIMAX_MODEL", "MiniMax-M2.7")
     if minimax_key:
         candidates.append(("minimax", minimax_model, minimax_key, call_minimax))
 

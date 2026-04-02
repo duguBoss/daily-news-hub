@@ -19,18 +19,18 @@ NEWS_SOURCE_URL = (
 DEFAULT_REPOSITORY = "duguBoss/daily-news-hub"
 DEFAULT_BRANCH = "main"
 
-# Gemini configuration
+# Gemini configuration - matching daily-nasa-hub
 GEMINI_MODELS = [
     m.strip()
     for m in os.environ.get(
         "GEMINI_MODELS",
         (
-            "gemini-2.5-flash,"
-            "gemini-2.5-pro,"
-            "gemini-2.5-flash-lite,"
             "gemini-3.1-pro-preview,"
             "gemini-3-flash-preview,"
-            "gemini-3.1-flash-lite-preview"
+            "gemini-3.1-flash-lite-preview,"
+            "gemini-2.5-flash,"
+            "gemini-2.5-flash-lite,"
+            "gemini-2.5-pro"
         ),
     ).split(",")
     if m.strip()
