@@ -64,3 +64,8 @@ SHANGHAI_TZ = pytz.timezone("Asia/Shanghai")
 
 # Asset paths
 ASSET_ROOT = Path("assets")
+
+# Banner URLs
+FALLBACK_COVER_URL = ""
+TOP_BANNER_URL = ""
+BOTTOM_BANNER_URL = ""
