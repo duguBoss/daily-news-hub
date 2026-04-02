@@ -1,6 +1,7 @@
 """Card content generation step."""
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from daily_news.common import count_chinese_chars
@@ -8,10 +9,49 @@ from daily_news.config import MAX_CARD_RETRIES
 from daily_news.models import (
     build_model_candidates,
     is_quota_or_rate_limit_error,
-    parse_model_json,
 )
 from daily_news.prompts import build_article_card_prompt
 from daily_news.rewrite_prompts import build_card_rewrite_prompt
+
+
+def _parse_card_response(text: str) -> dict[str, Any]:
+    """Parse card response from plain text format.
+    
+    Expected format:
+    标题：[title]
+    
+    第1段：
+    [paragraph 1]
+    
+    第2段：
+    [paragraph 2]
+    """
+    result: dict[str, Any] = {"title": "", "paragraphs": []}
+    
+    # Extract title
+    title_match = re.search(r'标题[:：]\s*(.+?)(?:\n|$)', text)
+    if title_match:
+        result["title"] = title_match.group(1).strip()
+    
+    # Extract paragraphs - look for 第1段/第2段 patterns
+    para1_match = re.search(r'第1段[:：]\s*\n?(.+?)(?:\n\s*第2段|$)', text, re.DOTALL)
+    para2_match = re.search(r'第2段[:：]\s*\n?(.+?)(?:\n|$)', text, re.DOTALL)
+    
+    if para1_match:
+        result["paragraphs"].append(para1_match.group(1).strip())
+    if para2_match:
+        result["paragraphs"].append(para2_match.group(1).strip())
+    
+    # Fallback: try to extract any two paragraphs if markers not found
+    if len(result["paragraphs"]) < 2:
+        # Split by double newlines and take first two non-empty paragraphs
+        paragraphs = [p.strip() for p in re.split(r'\n\s*\n', text) if p.strip()]
+        # Filter out title line
+        paragraphs = [p for p in paragraphs if not p.startswith('标题') and not p.startswith('第')]
+        if len(paragraphs) >= 2 and len(result["paragraphs"]) < 2:
+            result["paragraphs"] = paragraphs[:2]
+    
+    return result
 
 
 def _validate_card_content(content: dict[str, Any]) -> tuple[bool, list[int]]:
@@ -65,11 +105,14 @@ def generate_card_step(
                 raw = caller(provider_api_key, current_prompt, model_name)
                 raw = raw.strip()
 
-                # Parse JSON response
+                # Parse response using plain text format
                 try:
-                    content = parse_model_json(raw)
+                    content = _parse_card_response(raw)
+                    if not content["title"] or len(content["paragraphs"]) != 2:
+                        print(f"  ✗ Parse failed: missing title or paragraphs")
+                        continue
                 except Exception as e:
-                    print(f"  ✗ JSON parse failed: {e}")
+                    print(f"  ✗ Parse failed: {e}")
                     continue
 
                 # Validate content
