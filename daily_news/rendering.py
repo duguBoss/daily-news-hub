@@ -48,7 +48,14 @@ def render_html(
         if image_urls:
             parts.append(HTML_ARTICLE_IMAGE.format(url=html.escape(image_urls[0])))
 
-        parts.append(HTML_PARAGRAPH.format(text=html.escape(article["summary_cn"])))
+        # Support both paragraphs array and summary_cn string
+        paragraphs = article.get("paragraphs", [])
+        if paragraphs:
+            for para in paragraphs:
+                parts.append(HTML_PARAGRAPH.format(text=html.escape(para)))
+        else:
+            parts.append(HTML_PARAGRAPH.format(text=html.escape(article.get("summary_cn", ""))))
+
         parts.append(HTML_ARTICLE_END)
 
     notes = ai_data.get("editorial_notes", {})
@@ -81,8 +88,16 @@ def render_markdown(
         lines.append(MD_ARTICLE_HEADER.format(title=article.get("title_cn", "Untitled")))
         if article.get("image_urls"):
             lines.append(MD_ARTICLE_IMAGE.format(url=article["image_urls"][0]))
-        lines.append(article.get("summary_cn", ""))
-        lines.append("")
+
+        # Support both paragraphs array and summary_cn string
+        paragraphs = article.get("paragraphs", [])
+        if paragraphs:
+            for para in paragraphs:
+                lines.append(para)
+                lines.append("")
+        else:
+            lines.append(article.get("summary_cn", ""))
+            lines.append("")
 
     notes = ai_data.get("editorial_notes", {})
     lines.append(MD_EDITORIAL_HEADER)
@@ -101,8 +116,9 @@ def render_markdown(
             )
         )
 
-    tags = ai_data.get("tags", [])
-    lines.append(MD_TAGS.format(tags=" / ".join(tags)))
+    lines.append("")
+    lines.append(MD_TAGS.format(tags=", ".join(ai_data.get("tags", []))))
+
     return "\n".join(lines)
 
 
@@ -110,32 +126,21 @@ def attach_article_images(
     ai_data: dict[str, Any], news_items: list[dict[str, Any]]
 ) -> str:
     """Attach images to articles and return cover URL."""
-    news_by_index = {item["index"]: item for item in news_items}
-    selected_cover = ""
-
-    cover_idx = ai_data.get("cover_source_index")
-    if cover_idx:
-        cover_item = news_by_index.get(cover_idx)
-        if cover_item:
-            normalize_news_item_images(cover_item)
-            if cover_item.get("image_url"):
-                selected_cover = cover_item["image_url"]
-
-    if not selected_cover:
-        for item in news_items:
-            normalize_news_item_images(item)
-            if item.get("image_urls"):
-                selected_cover = item["image_urls"][0]
-                break
+    cover_url = FALLBACK_COVER_URL
 
     for article in ai_data.get("articles", []):
-        item = news_by_index.get(article.get("source_index", 0))
-        if not item:
+        source_index = article.get("source_index")
+        if source_index is None:
             continue
-        normalize_news_item_images(item)
-        article["image_urls"] = item.get("image_urls", [])[:]
-        article["image_caption"] = item.get("title", "")
-        article["original_title"] = item.get("title", "")
-        article["original_url"] = item.get("resolved_url") or item.get("google_news_url", "")
 
-    return selected_cover or FALLBACK_COVER_URL
+        for item in news_items:
+            if item.get("index") == source_index:
+                normalize_news_item_images(item)
+                image_urls = sanitize_image_url_list(item.get("image_urls", []))
+                article["image_urls"] = image_urls
+
+                if source_index == ai_data.get("cover_source_index") and image_urls:
+                    cover_url = image_urls[0]
+                break
+
+    return cover_url

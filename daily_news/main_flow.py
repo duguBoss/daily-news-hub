@@ -1,7 +1,7 @@
 """Main workflow orchestration."""
 from __future__ import annotations
 
-from daily_news.ai_content import build_ai_data_from_articles, build_fallback_ai_data
+from daily_news.ai_content import build_fallback_ai_data, generate_ai_content
 from daily_news.common import format_date, now_shanghai, require_api_key
 from daily_news.config import SHANGHAI_TZ
 from daily_news.feed import collect_news_items, fetch_feed
@@ -23,10 +23,7 @@ def run_daily_news_workflow() -> str:
     ensure_minimum_article_images(news_items, date_str)
 
     try:
-        from daily_news.ai_content import translate_news_items
-
-        translated = translate_news_items(api_key, news_items)
-        ai_data = build_ai_data_from_articles(api_key, translated, news_items)
+        ai_data = generate_ai_content(api_key, news_items, date_str)
         ai_data = validate_ai_data(ai_data, news_items)
     except Exception as exc:
         print(f"AI generation failed, using fallback: {exc}")
