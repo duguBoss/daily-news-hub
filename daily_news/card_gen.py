@@ -67,7 +67,7 @@ def _validate_card_content(content: dict[str, Any]) -> tuple[bool, list[int]]:
     for para in paragraphs:
         length = count_chinese_chars(para)
         lengths.append(length)
-        if not (200 <= length <= 300):
+        if not (300 <= length <= 400):
             return False, lengths
 
     return True, lengths

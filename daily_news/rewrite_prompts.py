@@ -15,13 +15,13 @@ def build_card_rewrite_prompt(
     # Build feedback about what went wrong
     feedback_parts = []
     for i, length in enumerate(paragraph_lengths):
-        if length < 200:
+        if length < 300:
             feedback_parts.append(
-                f"❌ 第{i+1}段：当前只有{length}字，严重不足！需要增加{200-length}字以上"
+                f"❌ 第{i+1}段：当前只有{length}字，严重不足！需要增加{300-length}字以上"
             )
-        elif length > 300:
+        elif length > 400:
             feedback_parts.append(
-                f"❌ 第{i+1}段：当前有{length}字，太长了！需要减少{length-300}字"
+                f"❌ 第{i+1}段：当前有{length}字，太长了！需要减少{length-400}字"
             )
 
     feedback = "\n".join(feedback_parts) if feedback_parts else "字数需要调整"
@@ -38,17 +38,17 @@ def build_card_rewrite_prompt(
     # Build adjustment guide
     adjustment_parts = []
     for i, length in enumerate(paragraph_lengths):
-        if length < 200:
+        if length < 300:
             adjustment_parts.append(
-                f"""【第{i+1}段如何增加字数（当前{length}字，需增加{200-length}字以上）】
+                f"""【第{i+1}段如何增加字数（当前{length}字，需增加{300-length}字以上）】
 - 在现有内容基础上扩展，不要删除已有内容
 - 添加更多细节：具体时间、数据、背景信息
 - 详细解释相关概念和影响
 - 补充例子或对比说明"""
             )
-        elif length > 300:
+        elif length > 400:
             adjustment_parts.append(
-                f"""【第{i+1}段如何减少字数（当前{length}字，需减少{length-300}字）】
+                f"""【第{i+1}段如何减少字数（当前{length}字，需减少{length-400}字）】
 - 精简表达，删除冗余词语
 - 合并相似句子
 - 保留核心信息，删除次要细节"""
@@ -57,7 +57,7 @@ def build_card_rewrite_prompt(
     adjustment_guide = (
         "\n\n".join(adjustment_parts)
         if adjustment_parts
-        else "【字数调整指南】\n- 检查每段字数，确保在200-300字范围内"
+        else "【字数调整指南】\n- 检查每段字数，确保在300-400字范围内"
     )
 
     article_block = f"""【文章素材】
@@ -83,8 +83,8 @@ def build_card_rewrite_prompt(
 {adjustment_guide}
 
 【硬性要求 - 必须满足】
-- 第1段：200-300个汉字
-- 第2段：200-300个汉字
+- 第1段：300-400个汉字
+- 第2段：300-400个汉字
 - 写完后逐字统计，确认符合要求后再输出
 
 【输出格式】
@@ -93,8 +93,8 @@ def build_card_rewrite_prompt(
 标题：[15-25字的中文标题]
 
 第1段：
-[200-300字的第1段内容]
+[300-400字的第1段内容]
 
 第2段：
-[200-300字的第2段内容]
+[300-400字的第2段内容]
 """

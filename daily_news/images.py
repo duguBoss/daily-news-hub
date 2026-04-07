@@ -1,6 +1,7 @@
 """Image handling and download functions."""
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from typing import Any
 
@@ -9,6 +10,8 @@ import requests
 from daily_news.common import normalize_news_item_images
 from daily_news.config import (
     ASSET_ROOT,
+    DEFAULT_BRANCH,
+    DEFAULT_REPOSITORY,
     MAX_IMAGE_DISCOVERY_ITEMS,
     MAX_IMAGES_PER_ARTICLE,
     MIN_IMAGE_HEIGHT,
@@ -20,13 +23,32 @@ from daily_news.config import (
 from daily_news.image_processing import process_image_to_jpeg
 
 
+def get_github_raw_url(local_path: str) -> str:
+    """Convert local path to GitHub raw content URL."""
+    # Extract the relative path from assets/
+    path_parts = Path(local_path).parts
+    if "assets" in path_parts:
+        assets_idx = path_parts.index("assets")
+        relative_path = "/".join(path_parts[assets_idx:])
+    else:
+        relative_path = local_path.replace("\\", "/")
+
+    # Build GitHub raw URL
+    repo = os.environ.get("GITHUB_REPOSITORY", DEFAULT_REPOSITORY)
+    branch = os.environ.get("GITHUB_REF_NAME", DEFAULT_BRANCH)
+    return f"https://raw.githubusercontent.com/{repo}/{branch}/{relative_path}"
+
+
 def download_image(
     image_url: str,
     target_dir: Path,
     file_stem: str,
     referer: str = "",
 ) -> tuple[str, str]:
-    """Download image, convert to JPEG, and compress if needed."""
+    """Download image, convert to JPEG, and compress if needed.
+
+    Returns (local_path, github_url).
+    """
     local_name = f"{file_stem}.jpg"
     local_path = target_dir / local_name
 
@@ -40,7 +62,9 @@ def download_image(
     image_data = process_image_to_jpeg(response.content)
     local_path.write_bytes(image_data)
 
-    return str(local_path), image_url
+    # Return GitHub raw URL instead of original URL
+    github_url = get_github_raw_url(str(local_path))
+    return str(local_path), github_url
 
 
 def choose_image_candidates(candidates: list[dict[str, Any]], max_count: int) -> list[dict[str, Any]]:
@@ -143,25 +167,32 @@ def enrich_news_images(
 def ensure_minimum_article_images(
     news_items: list[dict[str, Any]], date_str: str
 ) -> None:
-    """Ensure minimum number of articles have images."""
+    """Ensure all articles have images (5 articles required)."""
     from daily_news.common import count_news_items_with_images
 
     current = count_news_items_with_images(news_items)
     if current >= MIN_REQUIRED_ARTICLE_IMAGES:
+        print(f"All {MIN_REQUIRED_ARTICLE_IMAGES} articles have images")
         return
 
-    limits = [
-        max(MAX_IMAGE_DISCOVERY_ITEMS, MIN_REQUIRED_ARTICLE_IMAGES * 4),
-        min(len(news_items), max(MAX_IMAGE_DISCOVERY_ITEMS * 2, MIN_REQUIRED_ARTICLE_IMAGES * 8)),
-        len(news_items),
-    ]
+    # First pass: try to get images for all items
+    print(f"Getting images for articles: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
+    enrich_news_images(news_items, date_str, len(news_items), only_missing=True)
+    current = count_news_items_with_images(news_items)
+    print(f"Image coverage after first pass: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
 
-    for limit in limits:
-        if current >= MIN_REQUIRED_ARTICLE_IMAGES:
-            break
-        enrich_news_images(news_items, date_str, limit, only_missing=True)
+    # Second pass: retry for items still missing images
+    if current < MIN_REQUIRED_ARTICLE_IMAGES:
+        print("Retrying for articles without images...")
+        for item in news_items:
+            if not item.get("image_urls") and item.get("resolved_url"):
+                try:
+                    # Try one more time for this specific item
+                    enrich_news_images([item], date_str, 1, only_missing=False)
+                except Exception as e:
+                    print(f"Failed to get image for {item.get('title', 'unknown')}: {e}")
         current = count_news_items_with_images(news_items)
-        print(f"Image coverage: {current}/{MIN_REQUIRED_ARTICLE_IMAGES} (scanned {limit})")
+        print(f"Image coverage after retry: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
 
     if current < MIN_REQUIRED_ARTICLE_IMAGES:
         raise RuntimeError(f"Not enough images: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
