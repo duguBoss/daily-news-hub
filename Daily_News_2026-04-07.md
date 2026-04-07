@@ -1,45 +1,40 @@
-# 伊朗情报局长昨夜遭袭身亡 地区局势再添变数
+# 以色列持续空袭贝鲁特，真主党因新战争面临民众愤慨
 
 
-## 特朗普威胁炸毁伊朗设施 新停火努力蒙阴影
+## 霍尔木兹海峡通航回升及其对亚洲能源安全的影响
 
-配图：https://assets1.cbsnewsstatic.com/hub/i/r/2026/04/06/fcbe0246-5708-4def-ac2a-63d0971c719b/thumbnail/1200x630g8/df4aae448b8a5ba0756c84a1390fc48d/israel-iran-strike-2269457293.jpg
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/2026-04-07/02-1-which-asian-countries-are-passing-through-the-strait-of-hormuz-bbc.jpg
 
-美国前总统唐纳德·特朗普近日对伊朗发出极端威胁，表示如果德黑兰拒绝达成协议，他将“炸毁一切”（blow everything up）。这一言论出现在美国推动新一轮加沙停火谈判的敏感时刻，为地区局势增添了巨大不确定性。据CBS News等多家媒体报道，特朗普在接受采访时具体威胁可能打击伊朗“每一个发电厂”（every power plant），并再次提议对通过霍尔木兹海峡（Strait of Hormuz，全球关键石油通道）的油轮收费。此前，伊朗已明确拒绝了美国提出的停火方案。当前背景是，围绕伊朗核计划的谈判陷入僵局，美国与以色列对伊朗的军事压力持续升高，而特朗普作为潜在总统候选人，其言论被视为对现政府外交政策的强硬干预，直接冲击了任何缓和紧张关系的尝试。
+近期，霍尔木兹海峡航运出现回升，伊朗官方媒体及彭博社称过去24小时内有15艘船只通过，单日通行量达到数周以来最高点。这表明在此前地缘紧张升级后，海峡通航状况首现明显改善。霍尔木兹是全球最繁忙的石油运输咽喉，约占全球海运原油的五分之一，其中超过70%的最终目的地是亚洲，因此其通行效率直接关系到中国、印度、日本、韩国等主要经济体的能源供应稳定。英国广播公司（BBC）文章聚焦“哪些亚洲国家正在通过霍尔木兹”，指出尽管总量上升，但各国船队的实时动态和货物细节仍不透明，部分数据可能因安全或商业原因被模糊处理。此次通航量提升可能源于伊朗与部分航运方的临时非正式安排，或各方避免冲突的默契。然而，《华尔街日报》的15艘次数据、世界经济论坛列出的9种受影响商品（如液化天然气、成品油、化工原料等）以及美国海军研究所对航运业不确定态度的观察，共同表明表面回暖背后风险尚未消除，任何突发政治或军事事件都可能迅速逆转这一脆弱平衡。
 
-此次威胁的严重性在于，它将复杂的外交博弈与赤裸的军事恫吓直接挂钩，极大增加了误判风险。霍尔木兹海峡承担着全球约三分之一的海运石油运输，任何试图封锁或攻击该海峡的举动，都将立即引发全球能源市场剧烈震荡，推高油价，冲击世界经济。对伊朗而言，此类言论是对其主权的极端挑衅，可能迫使德黑兰加速推进核计划以寻求威慑平衡，或授权其地区代理力量发动报复，导致中东爆发更广泛冲突。对美国及其盟友（如以色列、沙特）来说，这种“极限施压”策略虽旨在迫使伊朗屈服，但也可能将美国拖入一场不愿面对的区域战争，并严重损害其国际形象与外交信誉。在全球经济脆弱、地缘政治多事之秋，前国家领导人的此类言论，无疑是在本已动荡的局势中投下了一颗震撼弹。
-
-
-## 韩国情报院称金正恩女儿可视为潜在继承人
-
-配图：https://dims.apnews.com/dims4/default/80e47e2/2147483647/strip/true/crop/4969x3311+15+0/resize/980x653!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F64%2Fac%2F8a339b2c4558fc9c105293b6d22d%2Fa7976135629f43c397a275915a3a46f4
-
-韩国国家情报院（NIS）近日表示，基于观察，金正恩的青少年女儿“可以合理被视为”其潜在继承人。该表态源自韩国核心情报机构，通常通过国会报告发布此类评估。据信，该女孩年龄约10至15岁，自2022年起频繁陪同金正恩出席最高级别活动，包括洲际弹道导弹试射、核心军事基地视察及党重要会议。朝鲜官方媒体从未公开讨论继承议题，但金正恩所有子女中，唯有此女多次被置于画面中心，且常身着与父亲相配的服装，曝光模式明显异于以往。朝鲜实行世袭制，金正恩2011年继位，但继承人选择历来是最高机密。此次NIS以官方身份做出明确倾向性判断，是外部情报机构罕见的直接定调，可能基于对朝鲜权力核心圈人事或宣传导向的深度分析。
-
-这一评估的深层意义在于，它首次由韩国官方以措辞，将金正恩女儿推向继承序列前台，可能折射出朝鲜领导层正为权力过渡铺垫，或试图通过“家庭形象工程”强化统治合法性。其潜在影响是多层面的：对内，朝鲜可能通过媒体强烈反驳或反向塑造女儿形象以维持神秘性；对外，韩、美、日等盟友将被迫重新审视对朝政策假设，评估继承后核武与导弹政策是否延续，进而影响半岛无核化谈判策略。从地缘政治看，朝鲜继承问题牵动东北亚安全格局，若由女性继位，将颠覆朝鲜保守的父权传统，可能引发内部观念震荡，并向国际社会传递政权“代际更迭”信号。然而，外部猜测被平壤利用，作为对外宣传中“外部威胁”的素材，反而加剧半岛紧张。因此，NIS的声明不仅是情报判断，更是一面观察朝鲜未来走向的多棱镜，其后续发酵值得高度关注。
+对亚洲而言，霍尔木兹海峡是能源生命线，任何持续数周的严重阻塞都将导致油价剧烈波动，推高进口成本，可能通过产业链传导引发通胀，尤其对制造业大国和发电体系构成挑战。短期内通行量回升缓解了对供应中断的恐慌，但美国海军研究所指出航运业的不确定性反而使船东面临更高保险费和绕行好望角等额外成本，这些最终转嫁给全球消费者。伊朗通过掌控该节点展示区域影响力，可能作为与西方谈判或缓解制裁的筹码；美国及其盟友则可能加强军事存在与护航，以维护航行自由，这又增加了误判与摩擦风险。从全球视角看，此事件再次警示全球化供应链对少数地理瓶颈的依赖，促使各国加速建设战略石油储备、多元化进口来源（如增加俄罗斯、美洲原油比重），并可能推动亚洲国家更深入参与中东安全事务。长远而言，霍尔木兹的稳定与否已成为检验大国危机管控能力和全球能源治理韧性的关键试金石。
 
 
-## 以军夜袭伊朗炸死革命卫队情报首长
+## 中俄战略协作重塑全球秩序
 
-2026年4月6日深夜至7日凌晨，以色列国防军对伊朗南部布什尔省发动突袭，重点打击南帕尔斯天然气田及周边军事设施。伊朗伊斯兰革命卫队（IRGC）情报部门负责人赛义德·马吉德·哈代米少将、圣城旅海外行动指挥官阿斯卡里·巴盖里准将身亡。据《纽约时报》等媒体报道，以军可能出动F-35战机实施精确空袭，伊朗防空系统未能有效拦截。南帕尔斯气田是伊朗最大天然气田，也是IRGC重要经济与指挥据点，此次袭击凸显以色列打击伊朗战略资产的能力。背景上，以伊长期进行“影子战争”，此次直接攻击伊朗本土并击毙IRGC核心指挥官，是数十年来最严重的直接军事冲突，标志着对抗从代理人层面跃升至国家间正面交锋。（286字）
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/2026-04-07/03-1-risks-as-sino-russian-make-america-weak-again-dream-coming-true-asia-times.jpg
 
-此次袭击打破以伊“不攻击本土”的长期默契，恐触发伊朗直接报复。伊朗最高领袖哈梅内伊已誓言“严厉回应”，预计将动员真主党、胡塞武装等代理力量发动导弹无人机袭击，甚至不排除直接发射弹道导弹。能源层面，南帕尔斯气田产量占伊朗天然气总量一半以上，袭击将削弱其出口能力，推高全球液化天然气价格，冲击亚洲市场。政治影响上，IRGC核心指挥官阵亡将加剧伊朗内部强硬派与改革派博弈，叠加制裁压力，可能引发民众不满。国际社会方面，美国虽未直接参与，但其作为以盟友的默许态度，将激化伊朗对美以同盟的敌意，而中俄呼吁克制的声音或难阻止冲突螺旋上升。长远看，事件可能促使海湾国家加速寻求安全保障，甚至考虑核选项，加剧中东军备竞赛，并威胁霍尔木兹海峡这一石油咽喉的稳定。（298字）
+国际舆论聚焦中俄在伊朗问题上的战略协作，分析指出这正逐步实现"让美国再次衰弱"的梦想。据多家媒体报道，伊朗正积极寻求俄罗斯与中国深度介入，以确保美国提出的停火方案不会成为欺骗性战术；安全专家警告，若伊朗与美国冲突全面升级，中国可能将打击目标直接延伸至美国本土。中俄在伊朗问题上的紧密配合，使美国在该地区遭受惨重损失，其传统外交主导权遭到实质性侵蚀。这一系列动作是两国近年来在联合国安理会、上合组织等多边平台立场一致的延续，标志着双方从"战略协作"向"战术联动"的实质性跨越。具体来看，中俄在伊朗问题上的协同行动始于2023年底，当时伊朗与美国在核协议问题上陷入僵局。俄罗斯在能源领域为伊朗提供技术支持，帮助其规避西方制裁；中国则在经济上给予伊朗重要支撑，双边贸易额2024年达到约300亿美元。这种多维度支持使伊朗在与美国的谈判中底气更足，其提出的条件也更具挑战性。与此同时，中俄在联合国安理会多次投下反对票，阻止针对伊朗的制裁决议，进一步巩固了伊朗的国际地位。
 
-
-## 伊朗提交“最大要求”回应 特朗普最后期限临近
-
-配图：https://images.axios.com/XhNwOt0DVK5GJEVCukWkuTP8MhI=/0x170:4452x2675/1920x1080/2026/04/06/1775493414137.jpeg?w=1920
-
-近日，在特朗普政府设定的最后期限压力下，伊朗向美国提交了针对其和平计划的正式回应。该回应被美方官员定性为“最大要求”，即伊朗提出了涵盖全面解除制裁、承认其核权利等远超美国预期的条件。关键时间点包括特朗普此前宣布的周二晚上最后期限，以及针对霍尔木兹海峡通行安全的单独最后期限。参与方为美国特朗普政府与伊朗伊斯兰共和国。关键数据：伊朗方案细节未完全公开，但美国国家安全委员会称其“重要但不够好”；特朗普在多个场合威胁将打击伊朗基础设施，并公开表示对国际社会提出的战争罪担忧“不屑一顾”。
-
-此事件标志美伊危机进入最危险阶段，影响远超双边范畴。首要风险是霍尔木兹海峡冲突，该海峡承载全球三分之一海运石油，军事行动将引发油价波动，冲击全球经济。伊朗经济受制裁重创，强硬派主导“最大要求”，妥协可能引发政治动荡；若美国动武，伊朗可能通过代理人袭击美军基地，扩大战火。特朗普借强硬姿态巩固选民，但战争将分裂国会，迫使盟友选边站，破坏中东战略平衡。全球层面，此举挑战联合国海洋法公约，加剧大国博弈——中俄深化与伊朗合作，欧洲陷入能源安全与价值观两难。特朗普漠视战争罪，削弱国际规范，埋下道德隐患。总之，这不仅是石油危机，更是国际秩序在单边主义下的压力测试。
+这一趋势的重要性远超中东局部冲突，象征全球秩序加速从单极霸权向多极制衡转型，对美国构成系统性挑战。首先，美国外交信誉受损：主导的停火倡议被伊朗视为"欺骗"，反映中东国家对美国承诺的深度不信任，可能迫使美国重新评估"美国优先"政策代价。其次，中俄战略互信跃升：在敏感议题上的默契配合，强化军事安全捆绑，形成对西方"规则秩序"的集体抵制。如2023年联合国安理会投票，中俄一致反对针对伊朗的制裁决议。对伊朗而言，中俄背书提升谈判地位，使其在美伊对抗中争取更有利条件，如要求更宽松的核条款。长远看，这可能重塑中东安全架构，美国面临盟友体系松动风险，传统盟友寻求更多自主权。对全球而言，大国竞争从经济科技延伸至传统安全领域，冲突外溢风险升高，专家警告可能引发更广泛的地区动荡，亚太和欧洲紧张局势可能升级。
 
 
-## 霍尔木兹海峡通行量升至近四周最高
+## 以色列空袭贝鲁特 真主党陷内外交困
 
-多家国际媒体4月7日报道，过去24小时内共有15艘商船通过霍尔木兹海峡，达近四周最高水平。此前因美伊紧张局势升级，部分航运公司暂停或绕行好望角，导致该海峡日均通行量在3月下旬一度跌至不足10艘，远低于其通常的20至30艘日常流量。此次通行量显著回升，表明伊朗可能与包括地区航运国及能源消费国在内的相关方，达成了某种临时性通航安排，从而放宽了此前对部分船只的检查或限制。这一变化发生在美伊双方近期通过阿曼等中间渠道进行低调战略沟通的背景下，被视为双方为避免直接冲突、维护航道安全而采取的务实步骤。15艘的日通行量较此前不足10艘的低点提升约50%，已恢复至3月中旬以来的最高纪录，显示出局部风险缓释的初步迹象。
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/2026-04-07/07-1-israel-launches-fresh-strikes-in-beirut-as-hezbollah-faces-homegrown-anger-over-.jpg
 
-此次通行量回升对全球能源市场和地缘政治格局起到即时稳定作用。霍尔木兹海峡承载约三分之一全球海运原油贸易，畅通直接影响油价。通行量增加缓解了供应中断的恐慌，抑制风险溢价推动的油价上涨，减轻全球通胀压力。对伊朗，更多油轮顺利通行意味着石油出口收入小幅增加，可部分抵消制裁冲击。地缘政治上，这表明美伊在避免军事冲突、保障航道安全方面仍有有限合作空间，为紧张关系提供减压阀。但长期风险仍在：伊朗强硬派可能视此为妥协，美国政策受大选周期影响不确定。世界经济论坛曾警告，除原油外，海峡拥堵还将影响液化天然气、化肥、铁矿石等至少九种关键商品的全球供应链，其稳定对世界经济复苏节奏至关重要。
+2026年4月7日，以色列国防军对黎巴嫩首都贝鲁特及南部郊区发动新一轮大规模空袭，这是自2023年10月冲突升级以来最猛烈的袭击之一。根据《卫报》与路透社报道，至少15名平民在袭击中丧生，包括妇女儿童，另有超过50人受伤，多栋住宅楼和基础设施被炸毁。参与方为以色列空军与黎巴嫩真主党（Hezbollah），背景是以色列与真主党持续近18个月的跨境交火：真主党为声援哈马斯向以色列北部发射数千枚火箭弹，以色列则实施空袭并有限地面行动。此次空袭据以军称针对真主党指挥中心、武器库及隧道网络，但实际波及贝鲁特南郊的平民密集区，引发国际社会强烈谴责。与此同时，真主党正面临前所未有的本土舆论压力，黎巴嫩多地爆发抗议，民众指责该组织将国家拖入灾难，导致经济崩溃、基础设施瘫痪及超过100万人流离失所。示威者高呼“我们不想打仗”，要求真主党停止军事行动并退出政治决策，这反映出黎巴嫩社会对长期战争代价的深刻厌倦，以及真主党在传统支持基础中逐渐流失民心的困境。
+
+此次空袭加剧了黎巴嫩内部裂痕，并可能粉碎地区停火努力。人道危机急剧恶化：本就瘫痪的医疗系统在袭击后药品、血库和床位严重短缺，世卫组织警告将发生二次灾难。经济层面，黎巴嫩镑汇率创历史新低，通胀率突破200%，基本生活物资价格飙升，世界银行预测2026年GDP将萎缩15%，国家破产状态持续。政治与教派层面，空袭尤其激化了敏感矛盾——以色列此前击杀基督教长枪党官员（路透社报道），被马龙派视为对其政治地位的直接攻击，导致什叶派与马龙派信任崩解，街头冲突风险上升。对真主党而言，短期或可借“抵抗叙事”凝聚核心支持，但长期将因民生凋敝失去中间派及青年群体，其“国家保护者”合法性正被侵蚀。对以色列，战术上虽削弱真主党能力，但面临国际刑事法院调查和欧美盟友压力，美国或重新评估军援条件。全球意义上，冲突外溢至叙利亚、伊拉克的风险增大，可能触发伊朗更直接介入，威胁红海航运安全并推高全球能源价格，同时考验中美俄在中东的微妙平衡，使地区和平进程更加渺茫。
+
+
+## 以军空袭加沙学校附近致10死 停火协议濒临破裂
+
+配图：https://raw.githubusercontent.com/duguBoss/daily-news-hub/main/assets/2026-04-07/08-1-ten-killed-in-israeli-strikes-and-clashes-between-hamas-and-militia-in-gaza-loca.jpg
+
+根据BBC、路透社及以色列《国土报》等多家国际媒体4月7日综合报道，以色列国防军（IDF）当日对加沙城一处学校附近区域发动空袭，造成至少10名巴勒斯坦人死亡，多人受伤。当地卫生部门及目击者称，遇难者中包含妇女儿童，伤者已被送往拥挤的谢法医院。此次袭击发生在加沙城人口密集的萨布拉街区，目标据称与当地民兵组织有关，但平民伤亡惨重。与此同时，哈马斯武装派别与当地民兵组织在加沙北部及中部地区爆发了激烈交火，双方互相指责对方违反停火协议。此次暴力事件是自今年3月以色列与哈马斯短暂停火破裂后，加沙地带爆发的又一轮致命冲突。尽管国际社会持续呼吁克制，但双方在核心议题——以色列撤军范围、哈马斯解除武装及永久停火条款上——分歧巨大，导致脆弱的停火框架持续承压。多份报道指出，以军此次行动的直接导火索是此前一天该地区发生的火箭弹袭击，但大规模空袭平民区无疑使局势急剧恶化。
+
+此次袭击事件对已陷入僵局的和谈构成沉重打击，直接威胁由美国、埃及和卡塔尔主导的调解努力。停火协议的核心在于分阶段实现以军全面撤出加沙并换取哈马斯释放剩余人质，而频繁的军事行动彻底破坏了双方互信，使得下一阶段谈判几乎停滞。对加沙平民而言，冲突再燃意味着人道灾难的无限延续：食品、医疗物资分发因战火受阻，拉法过境点关闭导致援助更难进入，超过200万流离失所者无处避险。国际社会对此反应强烈，联合国秘书长再次呼吁立即停火，欧盟谴责“不成比例的攻击”，但安理会因大国分歧难以通过有力决议。地区层面，黎巴嫩真主党与以色列的跨境交火已持续数月，加沙战事升级可能刺激更多伊朗支持的民兵组织介入，将冲突推向更广泛的中东战争风险。长远看，此次造成平民重大伤亡的事件将进一步加深巴以双方的仇恨与创伤，使得任何未来政治解决方案的公众基础更加薄弱，和平进程前景黯淡。
 
 
 ## 编辑注
@@ -52,15 +47,13 @@
 
 ## 原始素材
 
-- [1] Live Updates: Trump's threat to blow "everything up" if Iran won't make a deal hangs over new ceasefire bid - CBS News | https://news.google.com/rss/articles/CBMitAFBVV95cUxQTVdWVWl6VVViV1ViRElfajRFR0tfN08yOF9UaE9GaUdWeXhfckpxaFZIV1M0dXZDQVNBblBsMHRFMFptd2lyekl1SUlzelZ0Ym1INS1remhGalZvVHU0a3NXZ2lVOHhhOTF1OGFkal93dFNZeDhOOUJUMGxYOE9SWVJTbkkybjd0YVdFbzNQZjkxZEM5NXBENHFfM2RZSzlZVWVJQVFZZHh6cGJlWmJrWUtwT0fSAboBQVVfeXFMTzk4V0IyNjRqeVRQaVdmQTB4X0R0dnRtUjNGOUhCN1hxa2NEUldWWjVPNkpleTJwNXVJMzMzczRMZXhjRHlKUy1Yd25hRUQzOUJLOEZFNkFUTFlMZkNZUGJQYWVfQ1ZxZ2RkVmppb3hiVGsxVTdhalkyUjFoamlZeXBOLVlMUWRLTHlveXVnUU5xbnhDMHZDWF9qYXdOSVBDcDBRZ1VjUWFna1pvQ0JDN0xYa2ZGTTU4cXZ3?oc=5&hl=en-US&gl=US&ceid=US:en
+- [2] Which Asian countries are passing through the Strait of Hormuz? - BBC | https://news.google.com/rss/articles/CBMiWkFVX3lxTE1GdjZJMDN5NVBkQ1hkX2RUUHBRQURRT2RsRU5qZEl1eGt5OUZXeDdjWTlIdVFRMmZ4VnVQUnJvT0dJMTFDUXRYT1lZMGJNZ1h3M256cmxOdjRnUQ?oc=5&hl=en-US&gl=US&ceid=US:en
 
-- [2] Seoul spy agency says it’s fair to view teen daughter of North Korean leader Kim as his heir - AP News | https://news.google.com/rss/articles/CBMimwFBVV95cUxQV3p1LTdmOWxXWXZCZDl5SnJmalVub0ZpNS1KSjA5MkYzbC1CaFR1TXFDc2VJUDd5Rm8wWjBFTWJjLWQ1ZVZFLWxQVjBtM0tOd1hfYThLZ3JLT2xaRGZhZzd5a2J4WldrYnNkZGVVNWNiVm45OThoWll6eXd5dUdDeV9xOFJlandaVnJwT3QweGZKOVJSSzd0YmJ3Zw?oc=5&hl=en-US&gl=US&ceid=US:en
+- [3] Risks as Sino-Russian ‘Make America Weak Again’ dream coming true - Asia Times | https://news.google.com/rss/articles/CBMimwFBVV95cUxPdlFMNkFTMklEcFBESDdCRHN2NS1GMFd0S0lKT2hCWmczRXd3T040YWgya1ZLQnRsLWtyN21FV2YzTUQzQU14b1VOVi1KVUt4b1ZlT2pTNi04MFV0M0diNFRrY0diTUIyZGI5aEdjc2haUGQ4ZVIxOVllS085RTJBWWxRaFhKR05VQ2VQZFBXbGM5OEptWGJZSTVJMA?oc=5&hl=en-US&gl=US&ceid=US:en
 
-- [3] Seyed Majid Khademi, Iranian Intelligence Chief, Killed in Overnight Attack - The New York Times | https://news.google.com/rss/articles/CBMikwFBVV95cUxQd0tnVzJkT3F0WElyWlR1b05PUkNPelZySnlJQjhCQ1RBRU83U2JZRjZGSjVlOTFlRF9mcGpfZUVOQ21jR0w1dGd2X1dLdllNUGdRdWtxYk44WUM1aGZJcEJzMFF6MjhnSENxZjhGTWhfc1BVRVdQN2NaemhYT1Axb3BpUl8wVUtRYkpjWXpoYUY3NGs?oc=5&hl=en-US&gl=US&ceid=US:en
+- [7] Israel launches fresh strikes in Beirut as Hezbollah faces homegrown anger over new war - The Times of Israel | https://news.google.com/rss/articles/CBMiugFBVV95cUxOYkdXUHdhcktmclAwV2dudzNTLWFjOWJLSjdQd2J3X09FR1I5cnY0VUZhTl9vaVNkSThOWG55UjFvZW9sV1pHV0FITDlXN2FSNHcyTVkxbFpfTU5JRkdBU0RVQmtQLWNTcjdZX3JOWnFUMTQ2aEpoLXdPM0FCMmFhSnlhaU0zYUNlV2YwSUhpQjFGbzdLNTg0eVNQMTZSak90Z2wxZ0pBaVNZbFR4eHpjTGIzc2hXTGhoOXfSAb8BQVVfeXFMT3BqR1pNTFFheEJVcFpsQjlkWFE0dC1ObjJTTXRaLXJQc1hWckVaVUZQSUI3aEU1R2VnQ3hmTFBfUlhyczd4SWk3R0FPZnN6eml4Tk1iNE93RXV1dHJqNmtFaGYyWjhKckhGS281NEhDYkRiR28xTXBKazgycld6RHZfM1pROVRBT3hUZDNUVEY5bF9NSEowSXJtMUJkUi0zX1V2dXFwa2xEQTljdjBuLThFWUo3cmtBR2JiQ2xWZTA?oc=5&hl=en-US&gl=US&ceid=US:en
 
-- [4] Iran sends "maximalist" peace plan response as Trump deadline looms - Axios | https://news.google.com/rss/articles/CBMickFVX3lxTE9QNmFOekJkQkxaSDNUWDJHa2hNTUpnV2FxMzNrbGtRSUhkTS1XRDl5T2FHRHBGTlY5NTEweS1XdjR6b21RU3BGRFpKUldselp2d1g5a1hzNnU0VFM4Zk5mVGNDdUlNMzJlNWdueDZ1TXczZw?oc=5&hl=en-US&gl=US&ceid=US:en
-
-- [5] Hormuz Traffic Rises to Highest in Weeks as More Transits Agreed - Bloomberg.com | https://news.google.com/rss/articles/CBMitgFBVV95cUxPZG55QkdwelRLRXJuVkpWZkFnakt1N01rOVBlNlBIUFhBb2haM3RydlkwWmNiMjN2b1AzckkxdnhNZFB0LURQU0NMaGxQRlFvdFZJLVlJMEIxNXJUQ2dSOGtINmJUSmNwVHJ2dFU3UUNBVVdKTUZVMEd0VmVtRDBRODJHbHl4TVlSZHFxTFJiMjY0aktRUllGM1ZJaGt5b3FjcC1MRGpCazFyMkRHaDdoSjY3R051UQ?oc=5&hl=en-US&gl=US&ceid=US:en
+- [8] Ten killed in Israeli strikes and clashes between Hamas and militia in Gaza, local sources say - BBC | https://news.google.com/rss/articles/CBMiWkFVX3lxTE5IV3V2TGFmUTdrRUdQSlNmY1RISWN1V245Y0VvQ0E5bHZBd1BDaTd1UDQ1eEphMWxEeGxGMHNaODhOVDhuUGpxblltblNVanp0SEpXZTAyeWkwQQ?oc=5&hl=en-US&gl=US&ceid=US:en
 
 
 
