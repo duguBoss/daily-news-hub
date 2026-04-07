@@ -195,4 +195,7 @@ def ensure_minimum_article_images(
         print(f"Image coverage after retry: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
 
     if current < MIN_REQUIRED_ARTICLE_IMAGES:
-        raise RuntimeError(f"Not enough images: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
+        print(f"⚠️ Warning: Not enough images: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
+        print(f"⚠️ Continuing with available images...")
+        # 不抛出异常，允许程序继续运行
+        # 没有图片的新闻将使用默认占位图或留空

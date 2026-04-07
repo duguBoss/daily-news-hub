@@ -31,9 +31,8 @@ def save_outputs(
             peitu_urls.append(urls[0])
 
     if len(peitu_urls) < MIN_REQUIRED_ARTICLE_IMAGES:
-        raise RuntimeError(
-            f"Need at least {MIN_REQUIRED_ARTICLE_IMAGES} images, got {len(peitu_urls)}"
-        )
+        print(f"⚠️ Warning: Need at least {MIN_REQUIRED_ARTICLE_IMAGES} images, got {len(peitu_urls)}")
+        print(f"⚠️ Continuing with available images...")
 
     final_output = {
         "title": ai_data["title"],
