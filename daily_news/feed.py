@@ -33,12 +33,13 @@ def resolve_url(url: str) -> str:
         return url
 
 
-def collect_news_items(feed: Any, max_articles: int = 5) -> list[dict[str, Any]]:
+def collect_news_items(feed: Any, max_articles: int = 10) -> list[dict[str, Any]]:
     """Collect and process news items from feed.
     
     Args:
         feed: Parsed RSS feed
         max_articles: Maximum number of unique articles to return
+        (默认获取10条，以便在过滤无图片新闻后有足够数量)
     """
     raw_items: list[dict[str, Any]] = []
 

@@ -166,14 +166,19 @@ def enrich_news_images(
 
 def ensure_minimum_article_images(
     news_items: list[dict[str, Any]], date_str: str
-) -> None:
-    """Ensure all articles have images (5 articles required)."""
+) -> list[dict[str, Any]]:
+    """Ensure all articles have images (5 articles required).
+    
+    Returns filtered list with only articles that have images.
+    """
     from daily_news.common import count_news_items_with_images
 
     current = count_news_items_with_images(news_items)
     if current >= MIN_REQUIRED_ARTICLE_IMAGES:
         print(f"All {MIN_REQUIRED_ARTICLE_IMAGES} articles have images")
-        return
+        # 过滤掉没有图片的新闻
+        filtered = [item for item in news_items if item.get("image_urls")]
+        return filtered[:MIN_REQUIRED_ARTICLE_IMAGES]
 
     # First pass: try to get images for all items
     print(f"Getting images for articles: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
@@ -194,8 +199,12 @@ def ensure_minimum_article_images(
         current = count_news_items_with_images(news_items)
         print(f"Image coverage after retry: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
 
-    if current < MIN_REQUIRED_ARTICLE_IMAGES:
-        print(f"⚠️ Warning: Not enough images: {current}/{MIN_REQUIRED_ARTICLE_IMAGES}")
-        print(f"⚠️ Continuing with available images...")
-        # 不抛出异常，允许程序继续运行
-        # 没有图片的新闻将使用默认占位图或留空
+    # 过滤掉没有图片的新闻，只保留有图片的
+    filtered_items = [item for item in news_items if item.get("image_urls")]
+    
+    if len(filtered_items) < MIN_REQUIRED_ARTICLE_IMAGES:
+        print(f"⚠️ Warning: Only {len(filtered_items)}/{MIN_REQUIRED_ARTICLE_IMAGES} articles have images")
+        print(f"⚠️ Consider increasing MAX_NEWS_ITEMS to get more candidate articles")
+    
+    print(f"✅ Returning {len(filtered_items)} articles with images")
+    return filtered_items[:MIN_REQUIRED_ARTICLE_IMAGES]

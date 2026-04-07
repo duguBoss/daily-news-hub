@@ -20,7 +20,7 @@ def run_daily_news_workflow() -> str:
     news_items = collect_news_items(feed)
 
     date_str = format_date()
-    ensure_minimum_article_images(news_items, date_str)
+    news_items = ensure_minimum_article_images(news_items, date_str)
 
     try:
         ai_data = generate_ai_content(api_key, news_items, date_str)
